@@ -9,13 +9,4 @@
                c![ g fis cis] 
                c![ g fis cis]}
   }
-  \new Staff = "left" {
-    \clef bass
-  \relative c{<<{c[ cis fis g]} \\ {c,,[ cis fis g]}>>}
-            c! cis fis g
-            
-    \clef treble
-            e!'[ eis']
-              
-  }
 >>
