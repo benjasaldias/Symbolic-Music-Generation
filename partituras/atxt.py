@@ -1,5 +1,6 @@
 import re
 import numpy as np
+import torch
 
 # Función para leer el archivo LilyPond
 def leer_partitura_lilypond(nombre_archivo):
@@ -61,7 +62,7 @@ def separar_substrings(cadena):
 
 def extraer_notas_duraciones(contenido): 
     # Expresión regular para encontrar las notas, duraciones, y grupos de corcheas con sostenidos y bemoles
-    patron = r'([a-g][is|es|,\'\d]*\d*|\[[a-gisess\s]+\])'
+    patron = r'([a-g][is|es|,\'\d]*[,\']*\d*|\[[a-gisess\s]+\])'
     notas_duraciones = []
     for partitura in contenido:
         lista = re.findall(patron, partitura)
@@ -74,10 +75,17 @@ def convertir_a_matriz(notas_duraciones):
     rango_notas = [
         'c', 'cis', 'des', 'd', 'dis', 'ees', 'e', 
         'f', 'fis', 'ges', 'g', 'gis', 'aes', 'a', 
-        'ais', 'bes', 'b', 'bis', 'ces']
+        'ais', 'bes', 'b', 'bis', 'ces',
+        "c'", "cis'", "des'", "d'", "dis'", "ees'", "e'", 
+        "f'", "fis'", "ges'", "g'", "gis'", "aes'", "a'", 
+        "ais'", "bes'", "b'", "bis'", "ces'",
+        "c''", "cis''", "des''", "d''", "dis''", "ees''", "e''", 
+        "f''", "fis''", "ges''", "g''", "gis''", "aes''", "a''", 
+        "ais''", "bes''", "b''", "bis''", "ces''"
+        ]
     
     # Definir una matriz vacía para almacenar las notas
-    tiempo_max = 50  # Asumimos un tiempo máximo para la partitura
+    tiempo_max = 42  # Asumimos un tiempo máximo para la partitura
     num_notas = len(rango_notas)
     matriz = np.zeros((tiempo_max, num_notas))
     
@@ -90,14 +98,13 @@ def convertir_a_matriz(notas_duraciones):
     # Procesar cada nota y duración
     for nota_duracion in notas_duraciones:
         # Extraer la nota y la duración (si no hay duración, se asume negra por defecto)
-        nota = re.match(r'[a-g](is|es)?', nota_duracion).group()
+        nota = re.match(r'[a-g](is|es)?[,\']*', nota_duracion).group()
         duracion = re.findall(r'\d+', nota_duracion)
         duracion = duracion[0] if duracion else '16'  # Negra por defecto
             
         # Buscar el índice de la nota en el rango
         if nota in rango_notas:
             indice_nota = rango_notas.index(nota)
-            print(f'{indice_nota}, {nota}, {tiempo_actual}')
             matriz[int(tiempo_actual), indice_nota] = 1  # Marcar la nota en la matriz
             
         # Avanzar en el tiempo según la duración
@@ -115,11 +122,15 @@ def convertir_tesauro(notas_duraciones):
 nombre_archivo = 'thesaurus.ly'  # Nombre de tu archivo LilyPond
 contenido_partitura = leer_partitura_lilypond(nombre_archivo)
 notas_duraciones = extraer_notas_duraciones(contenido_partitura)
-# matriz_partitura = convertir_a_matriz(notas_duraciones[0])
 matrices_tesauro = convertir_tesauro(notas_duraciones)
 
-# print(contenido_partitura)
-# print(notas_duraciones[0])
-for matriz in matrices_tesauro:
-    print(matriz)
-# print(matrices_tesauro)
+np.set_printoptions(threshold=np.inf)
+
+# print(notas_duraciones[-2])
+print(matrices_tesauro[-2])
+
+# Convierte cada matriz NumPy a un tensor PyTorch y apílalas en el batch
+torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in matrices_tesauro]) 
+
+# Verifica el tamaño del tensor resultante
+print(torch_data.shape)  # (32, 1, 28, 28)
