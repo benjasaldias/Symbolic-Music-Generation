@@ -1,3 +1,4 @@
+import sys
 import re
 import numpy as np
 import torch
@@ -81,11 +82,11 @@ def convertir_a_matriz(notas_duraciones):
         "ais'", "bes'", "b'", "bis'", "ces'",
         "c''", "cis''", "des''", "d''", "dis''", "ees''", "e''", 
         "f''", "fis''", "ges''", "g''", "gis''", "aes''", "a''", 
-        "ais''", "bes''", "b''", "bis''", "ces''"
+        "ais''", "bes''", "b''", "bis''", "ces''", "c'''"
         ]
     
     # Definir una matriz vacía para almacenar las notas
-    tiempo_max = 42  # Asumimos un tiempo máximo para la partitura
+    tiempo_max = 37  # Asumimos un tiempo máximo para la partitura
     num_notas = len(rango_notas)
     matriz = np.zeros((tiempo_max, num_notas))
     
@@ -126,11 +127,23 @@ matrices_tesauro = convertir_tesauro(notas_duraciones)
 
 np.set_printoptions(threshold=np.inf)
 
-# print(notas_duraciones[-2])
-print(matrices_tesauro[-2])
-
 # Convierte cada matriz NumPy a un tensor PyTorch y apílalas en el batch
 torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in matrices_tesauro]) 
+torch_data = torch_data.float()
 
 # Verifica el tamaño del tensor resultante
-print(torch_data.shape)  # (32, 1, 28, 28)
+print(torch_data.shape)  # (10, 1, 37, 58)
+
+def torcher(archivo:str):
+    if archivo[-3:] != '.ly':
+        raise SyntaxError("El archivo debe terminar con .ly (archivo lilypond).") 
+    nombre_archivo = archivo  # Nombre de tu archivo LilyPond
+    contenido_partitura = leer_partitura_lilypond(nombre_archivo)
+    notas_duraciones = extraer_notas_duraciones(contenido_partitura)
+    matrices_tesauro = convertir_tesauro(notas_duraciones)
+
+    np.set_printoptions(threshold=np.inf)
+
+    # Convierte cada matriz NumPy a un tensor PyTorch y apílalas en el batch
+    torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in matrices_tesauro]) 
+    torch_data = torch_data.float()
