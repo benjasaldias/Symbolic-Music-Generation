@@ -49,17 +49,16 @@ data_loader = DataLoader(dataset, batch_size=9, shuffle=True)
 
 
 # Entrenamiento
-num_epochs = 100  # Ajusta según sea necesario
+num_epochs = 100
 for epoch in range(num_epochs):
     for data in data_loader:
         # Limpiar gradientes
         optimizer.zero_grad()
         
-        # Forward pass
         output = model(data)
         
-        # Calcular la pérdida
-        loss = criterion(output, data)  # Comparar la salida con la entrada original
+        # Pérdida
+        loss = criterion(output, data)
         
         # Backward pass y optimización
         loss.backward()

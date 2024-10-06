@@ -143,6 +143,7 @@ def torcher(archivo:str):
     matrices_tesauro = convertir_tesauro(notas_duraciones)
 
     np.set_printoptions(threshold=np.inf)
+    print(matrices_tesauro)
 
     # Convierte cada matriz NumPy a un tensor PyTorch y apílalas en el batch
     torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in matrices_tesauro]) 
