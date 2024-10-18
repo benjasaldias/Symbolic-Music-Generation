@@ -2,7 +2,7 @@ import torch
 from torch import nn
 
 class VariationalAutoEncoder(nn.Module):
-    def __init__(self, input_dim, h_dim=200, z_dim=20):
+    def __init__(self, input_dim, h_dim=400, z_dim=80):
         super().__init__()
 
         # encoder
@@ -37,7 +37,7 @@ class VariationalAutoEncoder(nn.Module):
 
 if __name__ == "__main__":
     x = torch.randn(4, 37*58)
-    vae = VariationalAutoEncoder(input_dim = 2146)
+    vae = VariationalAutoEncoder(input_dim=2146)
     x_reconstructed, mu, sigma = vae(x)
     print(x_reconstructed.shape)
     print(mu.shape)

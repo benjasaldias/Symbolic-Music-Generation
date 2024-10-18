@@ -81,3 +81,4 @@ for epoch in range(NUM_EPOCHS):
         scheduler.step()
         loop.set_postfix(loss = loss.item())
     
+torch.save(model.state_dict(), 'vae.pth')
