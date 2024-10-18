@@ -1,357 +1,357 @@
 % 1ED2P_1N_1
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%               r4
-%   \relative c'{
-%                c16[ cis fis g] 
-%                c![ cis fis g] 
-%                c![ g fis cis] 
-%                c![ g fis cis]
-%               }
-%               r4
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+              r4
+  \relative c'{
+               c16[ cis fis g] 
+               c![ cis fis g] 
+               c![ g fis cis] 
+               c![ g fis cis]
+              }
+              r4
               
-%   }
+  }
 
-%   \new Staff = "left" {
-%     \clef bass
-%   \relative c{
-%             <<{c16[ cis fis g]} \\ {c,,[ cis fis g]}>>
-%             c![ cis fis g]
-%              }
+  \new Staff = "left" {
+    \clef bass
+  \relative c{
+            <<{c16[ cis fis g]} \\ {c,,[ cis fis g]}>>
+            c![ cis fis g]
+             }
 
-%     \clef treble
-%   \relative c'{
-%             c![ cis fis g]
-%             c![ g fis cis]
-%               }
+    \clef treble
+  \relative c'{
+            c![ cis fis g]
+            c![ g fis cis]
+              }
     
-%     \clef bass
-%   \relative c'{
-%             c![ g fis d]
-%             <<{c'[ gis fis cis]} \\ {c[ gis fis cis]}>>
-%             c1
-%              }
+    \clef bass
+  \relative c'{
+            c![ g fis d]
+            <<{c'[ gis fis cis]} \\ {c[ gis fis cis]}>>
+            c1
+             }
 
-%   }
-% >>
+  }
+>>
 
-% % 1ED2P_1N_2
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%               r4
-%   \relative c'{
-%                c16[ d fis gis] 
-%                c![ d fis gis] 
-%                c![ gis fis d] 
-%                c![ gis fis d]
-%               }
-%               r4
+% 1ED2P_1N_2
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+              r4
+  \relative c'{
+               c16[ d fis gis] 
+               c![ d fis gis] 
+               c![ gis fis d] 
+               c![ gis fis d]
+              }
+              r4
               
-%   }
+  }
 
-%   \new Staff = "left" {
-%     \clef bass
-%   \relative c{
-%             <<{c16[ d fis gis]} \\ {c,,[ d fis gis]}>>
-%             c![ d fis gis]
-%              }
+  \new Staff = "left" {
+    \clef bass
+  \relative c{
+            <<{c16[ d fis gis]} \\ {c,,[ d fis gis]}>>
+            c![ d fis gis]
+             }
 
-%     \clef treble
-%   \relative c'{
-%             c![ d fis gis]
-%             c![ gis fis d]
-%               }
+    \clef treble
+  \relative c'{
+            c![ d fis gis]
+            c![ gis fis d]
+              }
     
-%     \clef bass
-%   \relative c'{
-%             c![ gis fis d]
-%             <<{c'[ gis fis d]} \\ {c[ gis fis d]}>>
-%             c1
-%              }
+    \clef bass
+  \relative c'{
+            c![ gis fis d]
+            <<{c'[ gis fis d]} \\ {c[ gis fis d]}>>
+            c1
+             }
 
-%   }
-% >>
+  }
+>>
 
-% % 1ED2P_1N_3
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%               r4
-%   \relative c'{
-%                c16[ e fis bes] 
-%                c![ e fis bes] 
-%                c![ bes fis e] 
-%                c![ bes fis e]
-%               }
-%               r4
+% 1ED2P_1N_3
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+              r4
+  \relative c'{
+               c16[ e fis bes] 
+               c![ e fis bes] 
+               c![ bes fis e] 
+               c![ bes fis e]
+              }
+              r4
               
-%   }
+  }
 
-%   \new Staff = "left" {
-%     \clef bass
-%   \relative c{
-%             <<{c16[ e fis bes]} \\ {c,,[ e fis bes]}>>
-%             c![ e fis bes]
-%              }
+  \new Staff = "left" {
+    \clef bass
+  \relative c{
+            <<{c16[ e fis bes]} \\ {c,,[ e fis bes]}>>
+            c![ e fis bes]
+             }
 
-%     \clef treble
-%   \relative c'{
-%             c![ e fis bes]
-%             c![ bes fis e]
-%               }
+    \clef treble
+  \relative c'{
+            c![ e fis bes]
+            c![ bes fis e]
+              }
     
-%     \clef bass
-%   \relative c'{
-%             c![ bes fis d]
-%             <<{c'[ bes fis e]} \\ {c[ bes fis e]}>>
-%             c1
-%              }
+    \clef bass
+  \relative c'{
+            c![ bes fis d]
+            <<{c'[ bes fis e]} \\ {c[ bes fis e]}>>
+            c1
+             }
 
-%   }
-% >>
+  }
+>>
 
-% % 1ED2P_1N_4
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%               r4
-%   \relative c'{
-%                c16[ f fis b] 
-%                c![ f fis b] 
-%                c![ b fis f] 
-%                c![ b fis f]
-%               }
-%               r4
+% 1ED2P_1N_4
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+              r4
+  \relative c'{
+               c16[ f fis b] 
+               c![ f fis b] 
+               c![ b fis f] 
+               c![ b fis f]
+              }
+              r4
               
-%   }
+  }
 
-%   \new Staff = "left" {
-%     \clef bass
-%   \relative c{
-%             <<{c16[ f fis b]} \\ {c,,[ f fis b]}>>
-%             c![ f fis b]
-%              }
+  \new Staff = "left" {
+    \clef bass
+  \relative c{
+            <<{c16[ f fis b]} \\ {c,,[ f fis b]}>>
+            c![ f fis b]
+             }
 
-%     \clef treble
-%   \relative c'{
-%             c![ f fis b]
-%             c![ b fis f]
-%               }
+    \clef treble
+  \relative c'{
+            c![ f fis b]
+            c![ b fis f]
+              }
     
-%     \clef bass
-%   \relative c'{
-%             c![ b fis f]
-%             <<{c'[ b fis f]} \\ {c[ b fis f]}>>
-%             c1
-%              }
+    \clef bass
+  \relative c'{
+            c![ b fis f]
+            <<{c'[ b fis f]} \\ {c[ b fis f]}>>
+            c1
+             }
 
-%   }
-% >>
+  }
+>>
 
-% % 1ED2P__2N_5
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%               r4
-%               r8
-%   \relative c'{
-%                c16[ cis d fis g aes] 
-%                c![ cis d fis g aes] 
-%                c![ aes g fis d cis]
-%                c![ aes g fis d cis]
-%               }
-%               r4
-%               r8
+% 1ED2P__2N_5
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+              r4
+              r8
+  \relative c'{
+               c16[ cis d fis g aes] 
+               c![ cis d fis g aes] 
+               c![ aes g fis d cis]
+               c![ aes g fis d cis]
+              }
+              r4
+              r8
               
-%   }
+  }
 
-%   \new Staff = "left" {
-%     \clef bass
-%   \relative c{
-%             <<{c16[ cis d fis g aes]} \\ {c,,[ cis d fis g  aes]}>>
-%             c![ cis d fis g aes]
-%              }
+  \new Staff = "left" {
+    \clef bass
+  \relative c{
+            <<{c16[ cis d fis g aes]} \\ {c,,[ cis d fis g  aes]}>>
+            c![ cis d fis g aes]
+             }
 
-%     \clef treble
-%   \relative c'{
-%             c![ cis d fis g aes]
-%             c![ aes g fis d cis]
-%               }
+    \clef treble
+  \relative c'{
+            c![ cis d fis g aes]
+            c![ aes g fis d cis]
+              }
     
-%     \clef bass
-%   \relative c'{
-%             c![ aes g fis d cis]
-%             <<{c'[ aes g fis d cis]} \\ {c[ aes g fis d cis]}>>
-%             c1
-%              }
+    \clef bass
+  \relative c'{
+            c![ aes g fis d cis]
+            <<{c'[ aes g fis d cis]} \\ {c[ aes g fis d cis]}>>
+            c1
+             }
 
-%   }
-% >>
+  }
+>>
 
-% % 1ED2P__2N_6
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%               r4
-%               r8
-%   \relative c'{
-%                c16[ des ees fis g a] 
-%                c![ des ees fis g a] 
-%                c![ a g fis ees des]
-%                c![ a g fis ees des]
-%               }
-%               r4
-%               r8
+% 1ED2P__2N_6
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+              r4
+              r8
+  \relative c'{
+               c16[ des ees fis g a] 
+               c![ des ees fis g a] 
+               c![ a g fis ees des]
+               c![ a g fis ees des]
+              }
+              r4
+              r8
               
-%   }
+  }
 
-%   \new Staff = "left" {
-%     \clef bass
-%   \relative c{
-%             <<{c16[ des ees fis g a]} \\ {c,,[ des ees fis g a]}>>
-%             c![ des ees fis g a]
-%              }
+  \new Staff = "left" {
+    \clef bass
+  \relative c{
+            <<{c16[ des ees fis g a]} \\ {c,,[ des ees fis g a]}>>
+            c![ des ees fis g a]
+             }
 
-%     \clef treble
-%   \relative c'{
-%             c![ cis d fis g aes]
-%             c![ aes g fis d cis]
-%               }
+    \clef treble
+  \relative c'{
+            c![ cis d fis g aes]
+            c![ aes g fis d cis]
+              }
     
-%     \clef bass
-%   \relative c'{
-%             c![ aes g fis d cis]
-%             <<{c'[ aes g fis d cis]} \\ {c[ aes g fis d cis]}>>
-%             c1
-%              }
+    \clef bass
+  \relative c'{
+            c![ aes g fis d cis]
+            <<{c'[ aes g fis d cis]} \\ {c[ aes g fis d cis]}>>
+            c1
+             }
 
-%   }
-% >>
+  }
+>>
 
-% %%% SYMMETRIC INTERPOLATION OF ONE NOTE (SI_1N) %%%
-% % SI_1N_27
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef bass
-%   \relative c{
-%                c16[ cis fis b]
-%   }           
-%   \clef treble
-%   \relative c'{
-%                c![ cis fis b] 
-%                c![ cis fis b] 
-%                c![ b fis cis]
-%                c![ b fis cis]
-%   }
-%   \clef bass
-%   \relative c'{
-%                c![ b fis cis]
-%                c1
-%   }     
-%   }
-% >>
+%%% SYMMETRIC INTERPOLATION OF ONE NOTE (SI_1N) %%%
+% SI_1N_27
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+  \relative c{
+               c16[ cis fis b]
+  }           
+  \clef treble
+  \relative c'{
+               c![ cis fis b] 
+               c![ cis fis b] 
+               c![ b fis cis]
+               c![ b fis cis]
+  }
+  \clef bass
+  \relative c'{
+               c![ b fis cis]
+               c1
+  }     
+  }
+>>
 
 
-% % SI_1N_28
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef bass
-%   \relative c{
-%                c16[ d fis bes]
-%   }           
-%   \clef treble
-%   \relative c'{
-%                c[ d fis bes] 
-%                c[ d fis bes]
-%                c[ bes fis d]
-%                c[ bes fis d]
-%   }
-%   \clef bass
-%   \relative c'{
-%                c[ bes fis d]
-%                c1
-%   }     
-%   }
-% >>
+% SI_1N_28
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+  \relative c{
+               c16[ d fis bes]
+  }           
+  \clef treble
+  \relative c'{
+               c[ d fis bes] 
+               c[ d fis bes]
+               c[ bes fis d]
+               c[ bes fis d]
+  }
+  \clef bass
+  \relative c'{
+               c[ bes fis d]
+               c1
+  }     
+  }
+>>
 
-% % SI_1N_29
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef bass
-%   \relative c{
-%                c16[ ees fis a]
-%   }           
-%   \clef treble
-%   \relative c'{
-%                c[ ees fis a]
-%                c[ ees fis a]
-%                c[ a fis ees]
-%                c[ a fis ees]
-%   }
-%   \clef bass
-%   \relative c'{
-%                c[ a fis ees]
-%                c1
-%   }     
-%   }
-% >>
+% SI_1N_29
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+  \relative c{
+               c16[ ees fis a]
+  }           
+  \clef treble
+  \relative c'{
+               c[ ees fis a]
+               c[ ees fis a]
+               c[ a fis ees]
+               c[ a fis ees]
+  }
+  \clef bass
+  \relative c'{
+               c[ a fis ees]
+               c1
+  }     
+  }
+>>
 
-% % SI_1N_30
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef bass
-%   \relative c{
-%                c16[ e fis gis]
-%   }           
-%   \clef treble
-%   \relative c'{
-%                c[ e fis gis]
-%                c[ e fis gis]
-%                c[ gis fis e]
-%                c[ gis fis e]
-%   }
-%   \clef bass
-%   \relative c'{
-%                c[ gis fis e]
-%                c1
-%   }     
-%   }
-% >>
+% SI_1N_30
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+  \relative c{
+               c16[ e fis gis]
+  }           
+  \clef treble
+  \relative c'{
+               c[ e fis gis]
+               c[ e fis gis]
+               c[ gis fis e]
+               c[ gis fis e]
+  }
+  \clef bass
+  \relative c'{
+               c[ gis fis e]
+               c1
+  }     
+  }
+>>
 
-% % SI_1N_31
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef bass
-%   \relative c{
-%                c16[ f fis g]
-%   }           
-%   \clef treble
-%   \relative c'{
-%                c[ f fis g]
-%                c[ f fis g]
-%                c[ g fis f]
-%                c[ g fis f]
-%   }
-%   \clef bass
-%   \relative c'{
-%                c[ g fis f]
-%                c1
-%   }     
-%   }
-% >>
+% SI_1N_31
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+  \relative c{
+               c16[ f fis g]
+  }           
+  \clef treble
+  \relative c'{
+               c[ f fis g]
+               c[ f fis g]
+               c[ g fis f]
+               c[ g fis f]
+  }
+  \clef bass
+  \relative c'{
+               c[ g fis f]
+               c1
+  }     
+  }
+>>
 
 %%% SYMMETRIC INTERPOLATION OF TWO NOTES (SI_2N) %%%
 
@@ -527,37 +527,37 @@
 %%% SYMMETRIC INTERPOLATION OF THREE NOTES (SI_3N) %%%
 
 % SI_3N_41
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%                c'16[ cis' d' ees']
-%                fis'[ a' bes' b']
-%                c''[ cis'' d'' ees'']
-%                fis''[ a'' bes'' b'']
-%                c'''[ b'' bes'' a'']
-%                fis''[ ees'' d'' cis'']
-%                c''[ b' bes' a']
-%                fis'[ ees' d' cis']
-%                c'1       
-%   }
-% >>
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ cis' d' ees']
+               fis'[ a' bes' b']
+               c''[ cis'' d'' ees'']
+               fis''[ a'' bes'' b'']
+               c'''[ b'' bes'' a'']
+               fis''[ ees'' d'' cis'']
+               c''[ b' bes' a']
+               fis'[ ees' d' cis']
+               c'1       
+  }
+>>
 
-% % SI_3N_42
-% \new PianoStaff <<
-% \cadenzaOn
-%   \new Staff = "right" {
-%   \clef treble
-%   \relative c'{
-%                c16[ cis d e]
-%                fis[ gis bes b]
-%                c[ cis d e]
-%                fis[ gis bes b]
-%                c[ b bes gis]
-%                fis[ e d cis]
-%                c[ b bes gis]
-%                fis[ e d cis]
-%                c1
-%   }       
-%   }
-% >>
+% SI_3N_42
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+  \relative c'{
+               c16[ cis d e]
+               fis[ gis bes b]
+               c[ cis d e]
+               fis[ gis bes b]
+               c[ b bes gis]
+               fis[ e d cis]
+               c[ b bes gis]
+               fis[ e d cis]
+               c1
+  }       
+  }
+>>
