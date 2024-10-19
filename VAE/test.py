@@ -22,6 +22,8 @@ import model as m
 input_data = atxt.torch_data
 
 # Configuration
+CANTIDAD_TESTS = 10
+
 # DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DEVICE = "cpu"
 INPUT_DIM = 3922
@@ -45,36 +47,36 @@ class CustomDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        # Asegúrate de que el formato sea adecuado para el modelo
-        matrix = self.data[idx].reshape(-1)  # Aplanar a un vector de 2109 elementos
+        matrix = self.data[idx].reshape(-1) # aplanar
         return torch.tensor(matrix, dtype=torch.float32)
 
 # Generar una muestra aleatoria del espacio latente Z_DIM
-z = torch.randn(1, Z_DIM).to(DEVICE)
 
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
 model.load_state_dict(torch.load('vae.pth'))
 model.eval()
 
-# Pasar la muestra por el decoder para obtener la reconstrucción
-with torch.no_grad():
-    reconstructed_matrix = model.decode(z)
+for i in range(CANTIDAD_TESTS):
 
-# Si el output tiene valores en rango [0, 1], lo conviertes a binario (0 o 1)
-# Dependiendo del uso de tu VAE, la salida puede necesitar una activación, como sigmoid.
-binary_output = (reconstructed_matrix > 0.5).float()
+    z = torch.randn(1, Z_DIM).to(DEVICE)
+    
+    with torch.no_grad():
+        reconstructed_matrix = model.decode(z)
 
-# Si el tamaño de la salida es un vector, darle forma a una matriz 37x58
-output_matrix = binary_output.view(37, 106).cpu().numpy()
+    # Si el output tiene valores en rango [0, 1], lo conviertes a binario (0 o 1)
+    binary_output = (reconstructed_matrix > 0.5).float()
 
-# Visualizar la matriz como imagen
+    # Si el tamaño de la salida es un vector, darle forma a una matriz 37x58
+    output_matrix = binary_output.view(37, 106).cpu().numpy()
 
-lilypond_output = ash.matrix_to_lilypond(output_matrix)
-print(lilypond_output)
+    # Visualizar la matriz como imagen
 
-with open('output.ly', 'w') as f:
-    f.write(lilypond_output)
+    lilypond_output = ash.matrix_to_lilypond(output_matrix)
+    print(lilypond_output)
 
-plt.imshow(output_matrix, cmap='gray')
-plt.title("Output del Decoder (Partitura)")
-plt.show()
+    with open(f'output{i}.ly', 'w') as f:
+        f.write(lilypond_output)
+
+    plt.imshow(output_matrix, cmap='gray')
+    plt.title("Output del Decoder (Partitura)")
+    plt.show()
