@@ -24,18 +24,18 @@ input_data = atxt.torch_data
 # Configuration
 # DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DEVICE = "cpu"
-INPUT_DIM = 2146
-H_DIM = 400
-Z_DIM = 80
+INPUT_DIM = 3922
+H_DIM = 800
+Z_DIM = 120
 NUM_EPOCHS = 4000
-BATCH_SIZE = 9
+BATCH_SIZE = 25
 LR_RATE = 3e-4 # Karpathy constant = 3e-4
 
 # Peso reconstruction loss
 ALPHA = 1
 
 # Peso kl_div
-BETA = 0.2
+BETA = 0.1
 
 class CustomDataset(Dataset):
     def __init__(self, data):
@@ -65,7 +65,7 @@ with torch.no_grad():
 binary_output = (reconstructed_matrix > 0.5).float()
 
 # Si el tamaño de la salida es un vector, darle forma a una matriz 37x58
-output_matrix = binary_output.view(37, 58).cpu().numpy()
+output_matrix = binary_output.view(37, 106).cpu().numpy()
 
 # Visualizar la matriz como imagen
 
@@ -75,6 +75,6 @@ print(lilypond_output)
 with open('output.ly', 'w') as f:
     f.write(lilypond_output)
 
-# plt.imshow(output_matrix, cmap='gray')
-# plt.title("Output del Decoder (Partitura)")
-# plt.show()
+plt.imshow(output_matrix, cmap='gray')
+plt.title("Output del Decoder (Partitura)")
+plt.show()
