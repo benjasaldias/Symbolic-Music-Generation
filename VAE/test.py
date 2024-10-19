@@ -15,7 +15,7 @@ from partituras import atxt as atxt
 from torch.utils.data import Dataset, DataLoader
 sys.path.append('../')
 from partituras import atxt as atxt
-
+from partituras import ash as ash
 import model as m
 
 # Data Loading
@@ -68,6 +68,10 @@ binary_output = (reconstructed_matrix > 0.5).float()
 output_matrix = binary_output.view(37, 58).cpu().numpy()
 
 # Visualizar la matriz como imagen
-plt.imshow(output_matrix, cmap='gray')
-plt.title("Output del Decoder (Partitura)")
-plt.show()
+
+lilypond = ash.matrix_to_lilypond(output_matrix)
+print(lilypond)
+
+# plt.imshow(output_matrix, cmap='gray')
+# plt.title("Output del Decoder (Partitura)")
+# plt.show()
