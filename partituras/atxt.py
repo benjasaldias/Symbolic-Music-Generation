@@ -74,15 +74,21 @@ def extraer_notas_duraciones(contenido):
 def convertir_a_matriz(notas_duraciones):
     # Definir el rango de notas (por ejemplo, desde C3 hasta B5, incluyendo sostenidos y bemoles)
     rango_notas = [
-        'c', 'cis', 'des', 'd', 'dis', 'ees', 'e', 
-        'f', 'fis', 'ges', 'g', 'gis', 'aes', 'a', 
+        'c,', 'cis,', 'des,', 'd,', 'dis,', 'ees,', 'e,', 'eis,',
+        "fes,", 'f,', 'fis,', 'ges,', 'g,', 'gis,', 'aes,', 'a,', 
+        'ais,', 'bes,', 'b,', 'bis,', 'ces,',
+        'c', 'cis', 'des', 'd', 'dis', 'ees', 'e', 'eis',
+        "fes", 'f', 'fis', 'ges', 'g', 'gis', 'aes', 'a', 
         'ais', 'bes', 'b', 'bis', 'ces',
-        "c'", "cis'", "des'", "d'", "dis'", "ees'", "e'", 
-        "f'", "fis'", "ges'", "g'", "gis'", "aes'", "a'", 
+        "c'", "cis'", "des'", "d'", "dis'", "ees'", "e'", "eis'",
+        "fes'", "f'", "fis'", "ges'", "g'", "gis'", "aes'", "a'", 
         "ais'", "bes'", "b'", "bis'", "ces'",
-        "c''", "cis''", "des''", "d''", "dis''", "ees''", "e''", 
-        "f''", "fis''", "ges''", "g''", "gis''", "aes''", "a''", 
-        "ais''", "bes''", "b''", "bis''", "ces''", "c'''"
+        "c''", "cis''", "des''", "d''", "dis''", "ees''", "e''", "eis''",
+        "fes''", "f''", "fis''", "ges''", "g''", "gis''", "aes''", "a''", 
+        "ais''", "bes''", "b''", "bis''", "ces''", 
+        "c'''", "cis'''", "des'''", "d'''", "dis'''", "ees'''", "e'''", "eis'''",
+        "fes'''", "f'''", "fis'''", "ges'''", "g'''", "gis'''", "aes'''", "a'''",
+        "ais'''", "bes'''", "b'''", "bis'''", "ces'''", "c''''"
         ]
     
     # Definir una matriz vacía para almacenar las notas
@@ -132,7 +138,7 @@ torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in ma
 torch_data = torch_data.float()
 
 # Verifica el tamaño del tensor resultante
-print(torch_data.shape)  # (10, 1, 37, 58)
+print(torch_data.shape)  # (10, 1, 37, 106)
 
 def torcher(archivo:str):
     if archivo[-3:] != '.ly':

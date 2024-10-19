@@ -1,0 +1,67 @@
+RESULTADOS:
+
+### Primer entrenamiento: batch_size = 9 ###
+scale1:     # Dura menos?!?! 
+c[d fis bes]
+c'[d' fis' bes']
+c''[d'' fis'' bes'']
+c'''[bes'' fis'' d'']
+c''[bes' fis' d']
+c'[bes fis d]
+c
+
+scale2:
+c[ ees e fis gis a]
+c'[ ees' e' fis' gis' a']
+c''[ ees'' e'' fis'' gis'' a'']
+c'''[ a'' gis'' fis'' e'' ees'']
+c''[ a' gis' fis' e' ees']
+c'[ a gis fis e ees]
+c
+
+scale3:
+c [ d e fis gis bes ]
+c' [ d' e' fis' gis' bes' ]
+c'' [ d'' e'' fis'' gis'' bes'' ]
+c''' [ bes'' gis'' fis'' e'' d'' ]
+c'' [ bes' gis' fis' e' d' ]
+c' [ bes gis fis e d ]
+c
+
+scale4:
+c [ d fis a bes ]
+c' [ d' fis' a' bes' ]
+c'' [ d'' fis'' a'' bes'' ]
+c''' [ bes'' a'' fis'' d'' ]
+c'' [ bes' a' fis' d' ]
+c' [ bes a fis d ]
+c
+
+
+### Segundo entrenamiento: batch_size = 25 ###
+scale5:
+c [ e fis gis ]
+c' [ e' fis' gis' ]
+c'' [ e'' fis'' gis'' ]
+c''' [ gis'' fis'' e'' ]
+c'' [ gis' fis' e' ]
+c' [ gis fis e ]
+c
+
+scale6:
+c [ d e fis gis bes ]
+c' [ d' e' fis' gis' bes' ]
+c'' [ d'' e'' fis'' gis'' bes'' ]
+c''' [ bes'' gis'' fis'' e'' d'' ]
+c'' [ bes' gis' fis' e' d' ]
+c' [ bes gis fis e d ]
+c
+
+scale7:   # Dura menos?!?! 
+c [ f fis g ]
+c' [ f' fis' g' ]
+c'' [ f'' fis'' g'' ]
+c''' [ g'' fis'' f'' ]
+c'' [ g' fis' f' ]
+c' [ g fis f ]
+c

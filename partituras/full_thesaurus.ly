@@ -1,4 +1,14 @@
-% 1ED2P_1N_1
+% Thesaurus of Scales and Melodic Patterns by Nicolas Slonimsky, 1947.
+
+% Nota: toda partitura está hecha sin ciertos comandos que facilitan la transcripción,
+% pues esto dificulta la manipulación de los datos. Tampoco se tienen títulos visibles en PDF,
+% éstos se encuentran comentados.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% TRITONE PROGRESSION %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 1. TRITONE: 1 NOTE INTERPOLATION
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -37,7 +47,7 @@
   }
 >>
 
-% 1ED2P_1N_2
+% 2. TRITONE: 1 NOTE INTERPOLATION
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -76,7 +86,7 @@
   }
 >>
 
-% 1ED2P_1N_3
+% 3. TRITONE: 1 NOTE INTERPOLATION
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -115,7 +125,7 @@
   }
 >>
 
-% 1ED2P_1N_4
+% 1. TRITONE: 1 NOTE INTERPOLATION
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -154,7 +164,7 @@
   }
 >>
 
-% 1ED2P__2N_5
+% 5. TRITONE: 2 NOTE INTERPOLATION
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -195,7 +205,7 @@
   }
 >>
 
-% 1ED2P__2N_6
+% 6. TRITONE: 2 NOTE INTERPOLATION
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -236,8 +246,7 @@
   }
 >>
 
-%%% SYMMETRIC INTERPOLATION OF ONE NOTE (SI_1N) %%%
-% SI_1N_27
+% 27. TRITONE: SYMMETRIC INTERPOLATION OF ONE NOTE
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -261,7 +270,7 @@
 >>
 
 
-% SI_1N_28
+% 28. TRITONE: SYMMETRIC INTERPOLATION OF ONE NOTE
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -284,7 +293,7 @@
   }
 >>
 
-% SI_1N_29
+% 29. TRITONE: SYMMETRIC INTERPOLATION OF ONE NOTE
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -307,7 +316,7 @@
   }
 >>
 
-% SI_1N_30
+% 30. TRITONE: SYMMETRIC INTERPOLATION OF ONE NOTE
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -330,7 +339,7 @@
   }
 >>
 
-% SI_1N_31
+% 31. TRITONE: SYMMETRIC INTERPOLATION OF ONE NOTE
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -353,9 +362,9 @@
   }
 >>
 
-%%% SYMMETRIC INTERPOLATION OF TWO NOTES (SI_2N) %%%
+%%% SYMMETRIC INTERPOLATION OF TWO NOTES %%%
 
-% SI_2N_32
+% 32. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -375,7 +384,7 @@
   }
 >>
 
-% SI_2N_33
+% 33. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -394,7 +403,7 @@
   }
 >>
 
-% SI_2N_34
+% 34. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -413,7 +422,7 @@
   }
 >>
 
-% SI_2N_35 
+% 35. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -432,12 +441,12 @@
   }
 >>
 
-% SI_2N_36
+% 36. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
   \clef bass
-               c16[ d e fis gis bes]        
+               c16[ d e fis gis bes]         
   \clef treble
                c'[ d' e' fis' gis' bes']
                c''[ d'' e'' fis'' gis'' bes'']
@@ -449,7 +458,7 @@
   }
 >>
 
-% SI_2N_37
+% 37. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -468,7 +477,7 @@
   }
 >>
 
-% SI_2N_38
+% 38. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -487,7 +496,7 @@
   }
 >>
 
-% SI_2N_39
+% 39. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -506,7 +515,7 @@
   }
 >>
 
-% SI_2N_40
+% 40. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -524,9 +533,9 @@
   }
 >>
 
-%%% SYMMETRIC INTERPOLATION OF THREE NOTES (SI_3N) %%%
+%%% SYMMETRIC INTERPOLATION OF THREE NOTES %%%
 
-% SI_3N_41
+% 41. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -543,21 +552,216 @@
   }
 >>
 
-% SI_3N_42
+% 42. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
   \clef treble
-  \relative c'{
-               c16[ cis d e]
-               fis[ gis bes b]
-               c[ cis d e]
-               fis[ gis bes b]
-               c[ b bes gis]
-               fis[ e d cis]
-               c[ b bes gis]
-               fis[ e d cis]
-               c1
-  }       
+               c'16[ cis' d' e']
+               fis'[ gis' bes' b']
+               c''[ cis'' d'' e'']
+               fis''[ gis'' bes'' b'']
+               c'''[ b'' bes'' gis'']
+               fis''[ e'' d'' cis'']
+               c''[ b' bes' gis']
+               fis'[ e' d' cis']
+               c'1     
   }
+>>
+
+% 43. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ cis' d' f']
+               fis'[ g' bes' b']
+               c''[ cis'' d'' f'']
+               fis''[ g'' bes'' b'']
+               c'''[ b'' bes'' g'']
+               fis''[ f'' d'' cis'']
+               c''[ b' bes' g']
+               fis'[ e' d' cis']
+               c'1     
+  }
+>>
+
+% 44. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ des' ees' e']
+               fis'[ gis' a' b']
+               c''[ des'' ees'' e'']
+               fis''[ gis'' a'' b'']
+               c'''[ b'' a'' gis'']
+               fis''[ e'' ees'' des'']
+               c''[ b' a' gis']
+               fis'[ e' ees' des']
+               c'1       
+  }
+>>
+
+% 45. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ cis' e' f']
+               fis'[ g' gis' b']
+               c''[ cis'' e'' f'']
+               fis''[ g'' gis'' b'']
+               c'''[ b'' gis'' g'']
+               fis''[ f'' e'' cis'']
+               c''[ b' gis' g']
+               fis'[ f' e' cis']
+               c'1       
+  }
+>>
+
+% 46. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ d' ees' f']
+               fis'[ g' a' bes']
+               c''[ d'' ees'' f'']
+               fis''[ g'' a'' bes'']
+               c'''[ bes'' a'' g'']
+               fis''[ f'' ees'' d'']
+               c''[ bes' a' g']
+               fis'[ f' ees' d']
+               c'1       
+  }
+>>
+
+% 47. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ d' e' f']
+               fis'[ g' aes' bes']
+               c''[ d'' e'' f'']
+               fis''[ g'' aes'' bes'']
+               c'''[ bes'' aes'' g'']
+               fis''[ f'' e'' d'']
+               c''[ bes' aes' g']
+               fis'[ f' e' d']
+               c'1       
+  }
+>>
+
+% 48. TRITONE: SYMMETRIC INTERPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ ees' e' f']
+               fis'[ g' gis' a']
+               c''[ ees'' e'' f'']
+               fis''[ g'' gis'' a'']
+               c'''[ a'' gis'' g'']
+               fis''[ f'' e'' ees'']
+               c''[ a' gis' g']
+               fis'[ f' e' ees']
+               c'1       
+  }
+>>
+
+%%% NON-SYMMETRIC INTERPOLATION %%%
+
+% 49. TRITONE: NON-SYMMETRIC INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis e fis a bes]
+
+  \clef treble
+               c'[ cis' e' fis' a' bes']
+               c''[ cis'' e'' fis'' a'' bes'']
+               c'''[ bes'' a'' fis'' e'' cis'']
+               c''[ bes' a' fis' e' cis']
+  \clef bass
+               c'[ bes a fis e cis]
+               c1
+  }
+>>
+
+% 50. TRITONE: NON-SYMMETRIC INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d e fis a bes]
+
+  \clef treble
+               c'[ d' e' fis' a' bes']
+               c''[ d'' e'' fis'' a'' bes'']
+               c'''[ bes'' a'' fis'' e'' d'']
+               c''[ bes' a' fis' e' d']
+  \clef bass
+               c'[ bes a fis e d]
+               c1
+  }
+>>
+
+% 51. TRITONE: NON-SYMMETRIC INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ des' ees' f']
+               fis'[ gis' ais' b']
+               c''[ des'' ees'' f'']
+               fis''[ gis'' ais'' b'']
+               c'''[ b'' ais'' gis'']
+               fis''[ f'' ees'' des'']
+               c''[ b' ais' gis']
+               fis'[ f' ees' des']
+               c'1
+ }
+>>
+
+% 52. TRITONE: NON-SYMMETRIC INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef treble
+               c'16[ des' ees' e' f']
+               fis'[ gis' a' ais' b']
+               c''[ des'' ees'' e'' f'']
+               fis''[ gis'' a'' ais'' b'']
+               c'''[ b'' ais'' a'' gis'']
+               fis''[ f'' e'' ees'' des'']
+               c''[ b' ais' a' gis']
+               fis'[ f' e' ees' des']
+               c'1
+ }
+>>
+
+%%% ULTRAPOLATION OF ONE NOTE %%%
+
+
+%%% ULTRAPOLATION OF TWO NOTES %%%
+
+% 59. TRITONE: NON-SYMMETRIC INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ aes g fis d' des']
+  
+  \clef treble
+               c'16[ aes' g' fis' d'' des'']
+               c''[ aes'' g'' fis'' d''' des''']
+               c'''[ des''' d''' fis'' g'' aes'']
+               c''[ des'' d'' fis' g' aes']
+  \clef bass
+               c'[ des' d' fis g aes]
+               c1
+ }
 >>
