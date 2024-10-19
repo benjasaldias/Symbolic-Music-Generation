@@ -69,8 +69,11 @@ output_matrix = binary_output.view(37, 58).cpu().numpy()
 
 # Visualizar la matriz como imagen
 
-lilypond = ash.matrix_to_lilypond(output_matrix)
-print(lilypond)
+lilypond_output = ash.matrix_to_lilypond(output_matrix)
+print(lilypond_output)
+
+with open('output.ly', 'w') as f:
+    f.write(lilypond_output)
 
 # plt.imshow(output_matrix, cmap='gray')
 # plt.title("Output del Decoder (Partitura)")
