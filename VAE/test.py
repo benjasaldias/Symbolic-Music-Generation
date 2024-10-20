@@ -28,7 +28,7 @@ CANTIDAD_TESTS = 10
 DEVICE = "cpu"
 INPUT_DIM = 3922
 H_DIM = 800
-Z_DIM = 120
+Z_DIM = 2
 NUM_EPOCHS = 4000
 BATCH_SIZE = 25
 LR_RATE = 3e-4 # Karpathy constant = 3e-4
@@ -74,7 +74,7 @@ for i in range(CANTIDAD_TESTS):
     lilypond_output = ash.matrix_to_lilypond(output_matrix)
     print(lilypond_output)
 
-    with open(f'output{i}.ly', 'w') as f:
+    with open(f'partitura{i}.ly', 'w') as f:
         f.write(lilypond_output)
 
     plt.imshow(output_matrix, cmap='gray')

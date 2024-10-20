@@ -17,7 +17,7 @@ from torch.utils.data import Dataset, DataLoader
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 INPUT_DIM = 3922
 H_DIM = 800
-Z_DIM = 120
+Z_DIM = 2
 NUM_EPOCHS = 20000
 BATCH_SIZE = 25
 LR_RATE = 4e-4 # Karpathy constant = 3e-4
