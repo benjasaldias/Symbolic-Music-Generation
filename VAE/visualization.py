@@ -16,6 +16,9 @@ Z_DIM = 2  # Dimensionalidad del espacio latente
 # DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DEVICE = "cpu"
 
+with open('partituras.ly', 'a') as f:  # Cambiar 'w' por 'a' para modo de adición
+    f.write('')
+
 # Cargar el modelo
 model = m.VariationalAutoEncoder(input_dim=3922)  # Asegúrate de que el input_dim coincide
 model.load_state_dict(torch.load('vae.pth'))
