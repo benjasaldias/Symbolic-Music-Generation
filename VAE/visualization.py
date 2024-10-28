@@ -10,13 +10,13 @@ from partituras import atxt as atxt
 from partituras import ash as ash
 
 # Configuration
-CANTIDAD_TESTS = 100  # Cambia a la cantidad de muestras deseadas
+CANTIDAD_TESTS = 500  # Cambia a la cantidad de muestras deseadas
 Z_DIM = 2  # Dimensionalidad del espacio latente
 
 # DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DEVICE = "cpu"
 
-with open('partituras.ly', 'a') as f:  # Cambiar 'w' por 'a' para modo de adición
+with open('partituras.ly', 'w') as f:  # Cambiar 'w' por 'a' para modo de adición
     f.write('')
 
 # Cargar el modelo

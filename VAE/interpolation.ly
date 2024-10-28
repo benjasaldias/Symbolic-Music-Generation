@@ -4,12 +4,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ cis' gis fis g' d' ]
-    c' [ cis'' gis' fis' g'' d'' ]
-    c'' [ cis''' gis'' fis'' g''' d''' ]
-    c''' [ d''' g''' fis'' gis'' cis''' ]
-    c'' [ d'' g'' fis' gis' cis'' ]
-    c' [ d' g' fis gis cis' ]
+    c16 [ bes, e d gis fis ]
+    c' [ bes e' d' gis' fis' ]
+    c'' [ bes' e'' d'' gis'' fis'' ]
+    c''' [ fis'' gis'' d'' e'' bes' ]
+    c'' [ fis' gis' d' e' bes ]
+    c' [ fis gis d e bes, ]
     c
 }
 >>
@@ -19,12 +19,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ cis' gis fis g' d' ]
-    c' [ cis'' gis' fis' g'' d'' ]
-    c'' [ cis''' gis'' fis'' g''' d''' ]
-    c''' [ d''' g''' fis'' gis'' cis''' ]
-    c'' [ d'' g'' fis' gis' cis'' ]
-    c' [ d' g' fis gis cis' ]
+    c16 [ b, e ees gis g ]
+    c' [ b e' ees' gis' g' ]
+    c'' [ b' e'' ees'' gis'' fis'' g'' ]
+    c''' [ fis'' g'' gis'' ees'' e'' b' ]
+    c'' [ g' gis' ees' e' b ]
+    c' [ g gis ees e b, ]
     c
 }
 >>
@@ -34,12 +34,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ cis' gis fis g' d' ]
-    c' [ cis'' gis' fis' g'' d'' ]
-    c'' [ cis''' gis'' fis'' g''' d''' ]
-    c''' [ d''' g''' fis'' gis'' cis''' ]
-    c'' [ d'' g'' fis' gis' cis'' ]
-    c' [ d' g' fis gis cis' ]
+    c16 [ b, e ees gis g ]
+    c' [ b e' ees' gis' g' ]
+    c'' [ b' e'' ees'' gis'' g'' ]
+    c''' [ g'' gis'' ees'' e'' b' ]
+    c'' [ g' gis' ees' e' b ]
+    c' [ g gis ees e b, ]
     c
 }
 >>
@@ -49,12 +49,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ cis' gis fis g' d' ]
-    c' [ cis'' gis' fis' g'' d'' ]
-    c'' [ cis''' gis'' fis'' g''' d''' ]
-    c''' [ d''' g''' fis'' gis'' cis''' ]
-    c'' [ d'' g'' fis' gis' cis'' ]
-    c' [ d' g' fis gis cis' ]
+    c16 [ b, e ees gis g ]
+    c' [ b e' ees' gis' g' ]
+    c'' [ b' e'' ees'' gis'' g'' ]
+    c''' [ g'' gis'' ees'' e'' b' ]
+    c'' [ g' gis' ees' e' b ]
+    c' [ g gis ees e b, ]
     c
 }
 >>
@@ -64,12 +64,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ gis fis d' ]
-    c' [ gis' fis' d'' ]
-    c'' [ gis'' fis'' d''' ]
-    c''' [ d''' fis'' gis'' ]
-    c'' [ d'' fis' gis' ]
-    c' [ d' fis gis ]
+    c16 [ e b, gis ]
+    c' [ e' b gis' ]
+    c'' [ e'' b' gis'' ]
+    c''' [ gis'' b' e'' ]
+    c'' [ gis' b e' ]
+    c' [ gis b, e ]
     c
 }
 >>
@@ -79,12 +79,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ g gis fis des' d' ]
-    c' [ g' gis' fis' des'' d'' ]
-    c'' [ g'' gis'' fis'' des''' d''' ]
-    c''' [ des''' d''' fis'' g'' gis'' ]
-    c'' [ des'' d'' fis' g' gis' ]
-    c' [ des' d' fis g gis ]
+    c16 [ g, e b, gis dis ]
+    c' [ g e' b gis' dis' ]
+    c'' [ g' e'' b' gis'' dis'' ]
+    c''' [ dis'' gis'' b' e'' g' ]
+    c'' [ dis' gis' b e' g ]
+    c' [ dis gis b, e g, ]
     c
 }
 >>
@@ -94,12 +94,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ bes g fis e' des' ]
-    c' [ bes' g' fis' e'' des'' ]
-    c'' [ bes'' g'' fis'' e''' des''' ]
-    c''' [ des''' e''' fis'' g'' bes'' ]
-    c'' [ des'' e'' fis' g' bes' ]
-    c' [ des' e' fis g bes ]
+    c16 [ g, a, e b, cis gis f ]
+    c' [ g a e' b cis' gis' f' ]
+    c'' [ g' e'' b' cis'' gis'' f'' ]
+    c''' [ f'' gis'' b' cis'' e'' g' ]
+    c'' [ f' gis' b cis' e' g a ]
+    c' [ f gis b, cis e g, a, ]
     c
 }
 >>
@@ -109,12 +109,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ bes g fis e' des' ]
-    c' [ bes' g' fis' e'' des'' ]
-    c'' [ bes'' g'' fis'' e''' des''' ]
-    c''' [ des''' e''' fis'' g'' bes'' ]
-    c'' [ des'' e'' fis' g' bes' ]
-    c' [ des' e' fis g bes ]
+    c16 [ a, e cis gis f ]
+    c' [ a e' cis' gis' f' ]
+    c'' [ a' e'' cis'' gis'' f'' ]
+    c''' [ f'' gis'' cis'' e'' a' ]
+    c'' [ f' gis' cis' e' a ]
+    c' [ f gis cis e a, ]
     c
 }
 >>
@@ -124,12 +124,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ bes g fis e' des' ]
-    c' [ bes' g' fis' e'' des'' ]
-    c'' [ bes'' g'' fis'' e''' des''' ]
-    c''' [ des''' e''' fis'' g'' bes'' ]
-    c'' [ des'' e'' fis' g' bes' ]
-    c' [ des' e' fis g bes ]
+    c16 [ a, e fis ees bes ]
+    c' [ a e' fis' ees' bes' ]
+    c'' [ a' e'' fis'' ees'' bes'' ]
+    c''' [ bes'' ees'' fis'' e'' a' ]
+    c'' [ bes' ees' fis' e' a ]
+    c' [ bes ees fis e a, ]
     c
 }
 >>
@@ -139,12 +139,12 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ bes g fis e' des' ]
-    c' [ bes' g' fis' e'' des'' ]
-    c'' [ bes'' g'' fis'' e''' des''' ]
-    c''' [ des''' e''' fis'' g'' bes'' ]
-    c'' [ des'' e'' fis' g' bes' ]
-    c' [ des' e' fis g bes ]
+    c16 [ a, e fis ees bes ]
+    c' [ a e' fis' ees' bes' ]
+    c'' [ a' e'' fis'' ees'' bes'' ]
+    c''' [ bes'' ees'' fis'' e'' a' ]
+    c'' [ bes' ees' fis' e' a ]
+    c' [ bes ees fis e a, ]
     c
 }
 >>

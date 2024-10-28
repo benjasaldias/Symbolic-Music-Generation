@@ -1,18 +1,12 @@
 import sys
-import os
 
 import torch
-import torch.nn as nn
 import numpy as np
-import torch.nn.functional as F
-import torch.optim as optim
 import matplotlib.pyplot as plt
-
-from torchvision import datasets, transforms
 
 sys.path.append('../')
 from partituras import atxt as atxt
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 sys.path.append('../')
 from partituras import atxt as atxt
 from partituras import ash as ash
@@ -30,7 +24,7 @@ INPUT_DIM = 3922
 H_DIM = 800
 Z_DIM = 2
 NUM_EPOCHS = 4000
-BATCH_SIZE = 25
+BATCH_SIZE = 114
 LR_RATE = 3e-4 # Karpathy constant = 3e-4
 
 # Peso reconstruction loss
@@ -59,14 +53,23 @@ model.eval()
 for i in range(CANTIDAD_TESTS):
 
     z = torch.randn(1, Z_DIM).to(DEVICE)
-    
+    print('vector z: ', z)
     with torch.no_grad():
         reconstructed_matrix = model.decode(z)
 
-    # Si el output tiene valores en rango [0, 1], lo conviertes a binario (0 o 1)
-    binary_output = (reconstructed_matrix > 0.5).float()
+    print('shape: ', reconstructed_matrix.shape)
+    reconstructed_37by106 = reconstructed_matrix.view(37, 106)
 
-    # Si el tamaño de la salida es un vector, darle forma a una matriz 37x58
+    # Crear una matriz de ceros del mismo tamaño que la salida
+    binary_output = torch.zeros_like(reconstructed_37by106)
+
+    # Encontrar el índice del valor máximo de cada fila
+    max_indices = torch.argmax(reconstructed_37by106, dim=1)
+
+    # Usar los índices para asignar 1 en el valor máximo de cada fila
+    binary_output[torch.arange(reconstructed_37by106.size(0)), max_indices] = 1
+
+    # Si el tamaño de la salida es un vector, darle forma a una matriz 37x106
     output_matrix = binary_output.view(37, 106).cpu().numpy()
 
     # Visualizar la matriz como imagen

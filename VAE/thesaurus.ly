@@ -1398,3 +1398,739 @@
                c1
  }
 >>
+
+%%% INFRA.INTER-ULTRAPOLATION %%%
+
+% --- falta --- %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% DITONE PROGRESSION %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% INTERPOLATION OF ONE NOTE %%%
+
+% 181. DITONE: INTERPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des e f gis a]
+  
+  \clef treble
+               c'[ des' e' f' gis' a']
+               c''[ des'' e'' f'' gis'' a'']
+               c'''[ a'' gis'' f'' e'' des'']
+               c''[ a' gis' f' e' des']
+  \clef bass
+               c'[ a gis f e des]
+               c1
+ }
+>>
+
+% 182. DITONE: INTERPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ dis e g gis b]
+  
+  \clef treble
+               c'[ dis' e' g' gis' b']
+               c''[ dis'' e'' g'' gis'' b'']
+               c'''[ b'' gis'' g'' e'' dis'']
+               c''[ b' gis' g' e' dis']
+  \clef bass
+               c'[ b gis g e dis]
+               c1
+ }
+>>
+
+
+%%% INTERPOLATION OF TWO NOTES %%%
+
+% 183. DITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis d e f fis gis a bes]
+  
+  \clef treble
+               c'[ cis' d' e' f' fis' gis' a' bes']
+               c''[ bes' a' gis' fis' f' e' d' cis']
+  \clef bass
+               c'[ bes a gis fis f e d cis]
+               c1
+ }
+>>
+
+% 184. DITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis dis e f g gis a b]
+  
+  \clef treble
+               c'[ cis' dis' e' f' g' gis' a' b']
+               c''[ b' a' gis' g' f' e' dis' cis']
+  \clef bass
+               c'[ b a gis g f e dis cis]
+               c1
+ }
+>>
+
+% 185. DITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d dis e fis g gis ais b]
+  
+  \clef treble
+               c'[ d' dis' e' fis' g' gis' ais' b']
+               c''[ b' ais' gis' g' fis' e' dis' d']
+  \clef bass
+               c'[ b ais gis g fis e dis d]
+               c1
+ }
+>>
+
+%%% ULTRAPOLATION OF ONE NOTE %%%
+
+% 186. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f e a gis des']
+  
+  \clef treble
+               c'[ f' e' a' gis' des'']
+               c''[ f'' e'' a'' gis'' des''']
+               c'''[ des''' gis'' a'' e'' f'']
+               c''[ des'' gis' a' e' f']
+  \clef bass         
+               c'[ des' gis a e f]
+               c1
+ }
+>>
+
+% 187. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis e bes gis d']
+  
+  \clef treble
+               c'[ fis' e' bes' gis' d'']
+               c''[ fis'' e'' bes'' gis'' d''']
+               c'''[ d''' gis'' bes'' e'' fis'']
+               c''[ d'' gis' bes' e' fis']
+  \clef bass         
+               c'[ d' gis bes e fis]
+               c1
+ }
+>>
+
+% 188. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f e b gis ees']
+  
+  \clef treble
+               c'[ f' e' b' gis' ees'']
+               c''[ f'' e'' b'' gis'' ees''']
+               c'''[ ees''' gis'' b'' e'' f'']
+               c''[ ees'' gis' b' e' f']
+  \clef bass         
+               c'[ ees' gis b e f]
+               c1
+ }
+>>
+
+% 189. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ gis e c' gis e']
+  
+  \clef treble
+               c'[ gis' e' c'' gis' e'']
+               c''[ gis'' e'' c''' gis'' e''']
+               c'''[ e''' gis'' c''' e'' gis'']
+               c''[ e'' gis' c'' e' gis']
+  \clef bass         
+               c'[ e' gis c' e gis]
+               c1
+ }
+>>
+
+% 190. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a e des' gis f']
+  
+  \clef treble
+               c'[ a' e' des'' gis' f'']
+               c''[ a'' e'' des''' gis'' f''']
+               c'''[ f''' gis'' des''' e'' a'']
+               c''[ f'' gis' des'' e' a']
+  \clef bass         
+               c'[ f' gis des' e a]
+               c1
+ }
+>>
+
+% 191. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes e d' gis fis']
+  
+  \clef treble
+               c'[ bes' e' d'' gis' fis'']
+               c''[ bes'' e'' d''' gis'' fis''']
+               c'''[ fis''' gis'' d''' e'' bes'']
+               c''[ fis'' gis' d'' e' bes']
+  \clef bass         
+               c'[ fis' gis d' e bes]
+               c1
+ }
+>>
+
+% 192. DITONE: ULTRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b e dis' gis g']
+  
+  \clef treble
+               c'[ b' e' dis'' gis' g'']
+               c''[ b'' e'' dis''' gis'' g''']
+               c'''[ g''' gis'' dis''' e'' b'']
+               c''[ g'' gis' dis'' e' b']
+  \clef bass         
+               c'[ g' gis dis' e b]
+               c1
+ }
+>>
+
+%%% ULTRAPOLATION OF TWO NOTES %%%
+
+% 193. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f fis e a bes gis cis' d']
+  
+  \clef treble
+               c'[ f' fis' e' a' bes' gis' cis'' d'']
+               c''[ d'' cis'' gis' bes' a' e' fis' f']
+  \clef bass  
+               c'[ d' cis' gis bes a e fis f]
+               c1
+       
+
+ }
+>>
+
+% 194. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f g e a b gis des' ees']
+  
+  \clef treble
+               c'[ f' g' e' a' b' gis' des'' ees'']
+               c''[ ees'' des'' gis' b' a' e' g' f']
+  \clef bass  
+               c'[ ees' des' gis b a e g f]
+               c1
+       
+
+ }
+>>
+
+% 195. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f aes e a c' gis cis' e']
+  
+  \clef treble
+               c'[ f' aes' e' a' c'' gis' cis'' e'']
+               c''[ e'' cis'' gis' c'' a' e' aes' f']
+  \clef bass  
+               c'[ e' cis' gis c' a e aes f]
+               c1
+       
+
+ }
+>>
+
+% 196. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f a e a cis' gis des' f']
+  
+  \clef treble
+               c'[ f' a' e' a' cis'' gis' des'' f'']
+               c''[ f'' des'' gis' cis'' a' e' a' f']
+  \clef bass  
+               c'[ f' des' gis cis' a e a f]
+               c1
+       
+
+ }
+>>
+
+% 197. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f bes e a d' gis des' ges']
+  
+  \clef treble
+               c'[ f' bes' e' a' d'' gis' des'' ges'']
+               c''[ ges'' des'' gis' d'' a' e' bes' f']
+  \clef bass  
+               c'[ ges' des' gis d' a e bes f]
+               c1
+       
+
+ }
+>>
+
+% 198. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f b e a ees' gis des' g']
+  
+  \clef treble
+               c'[ f' b' e' a' ees'' gis' des'' g'']
+               c''[ g'' des'' gis' ees'' a' e' b' f']
+  \clef bass  
+               c'[ g' des' gis ees' a e b f]
+               c1
+       
+
+ }
+>>
+
+% 199. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis g e ais b gis d' ees']
+  
+  \clef treble
+               c'[ fis' g' e' ais' b' gis' d'' ees'']
+               c''[ ees'' d'' gis' b' ais' e' g' fis']
+  \clef bass  
+               c'[ ees' d' gis b ais e g fis]
+               c1
+       
+
+ }
+>>
+
+% 200. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ges aes e bes c' gis d' e']
+  
+  \clef treble
+               c'[ ges' aes' e' bes' c'' gis' d'' e'']
+               c''[ e'' d'' gis' c'' bes' e' aes' ges']
+  \clef bass  
+               c'[ e' d' gis c' bes e aes ges]
+               c1
+       
+
+ }
+>>
+
+% 201. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis a e bes des' gis d' f']
+  
+  \clef treble
+               c'[ fis' a' e' bes' des'' gis' d'' f'']
+               c''[ f'' d'' gis' des'' bes' e' a' fis']
+  \clef bass  
+               c'[ f' d' gis des' bes e a fis]
+               c1
+       
+
+ }
+>>
+
+% 202. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis bes e bes d' gis d' fis']
+  
+  \clef treble
+               c'[ fis' bes' e' bes' d'' gis' d'' fis'']
+               c''[ fis'' d'' gis' d'' bes' e' bes' fis']
+  \clef bass  
+               c'[ fis' d' gis d' bes e bes fis]
+               c1
+       
+
+ }
+>>
+
+% 203. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis b e bes ees' gis d' g']
+  
+  \clef treble
+               c'[ fis' b' e' bes' ees'' gis' d'' g'']
+               c''[ g'' d'' gis' ees'' bes' e' b' fis']
+  \clef bass  
+               c'[ g' d' gis ees' bes e b fis]
+               c1
+       
+
+ }
+>>
+
+% 204. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g gis e b c' gis dis' e']
+  
+  \clef treble
+               c'[ g' gis' e' b' c'' gis' dis'' e'']
+               c''[ e'' dis'' gis' c'' b' e' gis' g']
+  \clef bass  
+               c'[ e' dis' gis c' b e gis g]
+               c1
+       
+
+ }
+>>
+
+% 205. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g a e b cis' gis ees' f']
+  
+  \clef treble
+               c'[ g' a' e' b' cis'' gis' ees'' f'']
+               c''[ f'' ees'' gis' cis'' b' e' a' g']
+  \clef bass  
+               c'[ f' ees' gis cis' b e a g]
+               c1
+       
+
+ }
+>>
+
+% 206. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g bes e b d' gis ees' ges']
+  
+  \clef treble
+               c'[ g' bes' e' b' d'' gis' ees'' ges'']
+               c''[ ges'' ees'' gis' d'' b' e' bes' g']
+  \clef bass  
+               c'[ ges' ees' gis d' b e bes g]
+               c1
+       
+
+ }
+>>
+
+% 207. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g b e b dis' gis ees' g']
+  
+  \clef treble
+               c'[ g' b' e' b' dis'' gis' ees'' g'']
+               c''[ g'' ees'' gis' dis'' b' e' b' g']
+  \clef bass  
+               c'[ g' ees' gis dis' b e b g]
+               c1
+       
+
+ }
+>>
+
+% 208. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ gis a e c' cis' gis e' f']
+  
+  \clef treble
+               c'[ gis' a' e' c'' cis'' gis' e'' f'']
+               c''[ f'' e'' gis' cis'' c'' e' a' gis']
+  \clef bass  
+               c'[ f' e' gis cis' c' e a gis]
+               c1
+       
+
+ }
+>>
+
+% 209. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ aes bes e c' d' gis e' fis']
+  
+  \clef treble
+               c'[ aes' bes' e' c'' d'' gis' e'' fis'']
+               c''[ fis'' e'' gis' d'' c'' e' bes' aes']
+  \clef bass  
+               c'[ fis' e' gis d' c' e bes aes]
+               c1
+       
+
+ }
+>>
+
+% 210. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ gis b e c' ees' gis e' g']
+  
+  \clef treble
+               c'[ gis' b' e' c'' ees'' gis' e'' g'']
+               c''[ g'' e'' gis' ees'' c'' e' b' gis']
+  \clef bass  
+               c'[ g' e' gis ees' c' e b gis]
+               c1
+       
+
+ }
+>>
+
+% 211. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a bes e cis' d' gis f' fis']
+  
+  \clef treble
+               c'[ a' bes' e' cis'' d'' gis' f'' fis'']
+               c''[ fis'' f'' gis' d'' cis'' e' bes' a']
+  \clef bass  
+               c'[ fis' f' gis d' cis' e bes a]
+               c1
+       
+
+ }
+>>
+
+% 212. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a b e cis' dis' gis f' g']
+  
+  \clef treble
+               c'[ a' b' e' cis'' dis'' gis' f'' g'']
+               c''[ g'' f'' gis' dis'' cis'' e' b' a']
+  \clef bass  
+               c'[ g' f' gis dis' cis' e b a]
+               c1
+       
+
+ }
+>>
+
+% 213. DITONE: ULTRAPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes b e d' ees' gis fis' g']
+  
+  \clef treble
+               c'[ bes' b' e' d'' ees'' gis' fis'' g'']
+               c''[ g'' fis'' gis' ees'' d'' e' b' bes']
+  \clef bass  
+               c'[ g' fis' gis ees' d' e b bes]
+               c1
+       
+
+ }
+>>
+
+%%% ULTRAPOLATION OF THREE NOTES %%%
+
+% --- falta --- %
+
+%%% INFRAPOLATION OF ONE NOTE %%%
+
+% 231. DITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, e ees gis g]
+  
+  \clef treble
+               c'[ b e' ees' gis' g']
+               c''[ b' e'' ees'' gis'' g'']
+               c'''[ g'' gis'' ees'' e'' b']
+               c''[ g' gis' ees' e' b]
+  \clef bass  
+               c'[ g gis ees e b,]
+               c1
+       
+
+ }
+>>
+
+% 232. DITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, e d gis fis]
+  
+  \clef treble
+               c'[ bes e' d' gis' fis']
+               c''[ bes' e'' d'' gis'' fis'']
+               c'''[ fis'' gis'' d'' e'' bes']
+               c''[ fis' gis' d' e' bes]
+  \clef bass  
+               c'[ fis gis d e bes,]
+               c1
+       
+
+ }
+>>
+
+% 233. DITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, e cis gis f]
+  
+  \clef treble
+               c'[ a e' cis' gis' f']
+               c''[ a' e'' cis'' gis'' f'']
+               c'''[ f'' gis'' cis'' e'' a']
+               c''[ f' gis' cis' e' a]
+  \clef bass  
+               c'[ f gis cis e a,]
+               c1
+       
+
+ }
+>>
+
+% 234. DITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g, e b, gis dis]
+  
+  \clef treble
+               c'[ g e' b gis' dis']
+               c''[ g' e'' b' gis'' dis'']
+               c'''[ dis'' gis'' b' e'' g']
+               c''[ dis' gis' b e' g]
+  \clef bass  
+               c'[ dis gis b, e g,]
+               c1
+       
+
+ }
+>>
+
+% 235. DITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis, e bes, gis d]
+  
+  \clef treble
+               c'[ fis e' bes gis' d']
+               c''[ fis' e'' bes' gis'' d'']
+               c'''[ d'' gis'' bes' e'' fis']
+               c''[ d' gis' bes e' fis]
+  \clef bass  
+               c'[ d gis bes, e fis,]
+               c1
+       
+
+ }
+>>
+
+% 236. DITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f, e a, gis des]
+  
+  \clef treble
+               c'[ f e' a gis' des']
+               c''[ f' e'' a' gis'' des'']
+               c'''[ des'' gis'' a' e'' f']
+               c''[ des' gis' a e' f]
+  \clef bass  
+               c'[ des gis a, e f,]
+               c1
+       
+
+ }
+>>
+
+%%% INFRAPOLATION OF TWO NOTES %%%
+

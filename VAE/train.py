@@ -18,15 +18,15 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 INPUT_DIM = 3922
 H_DIM = 800
 Z_DIM = 2
-NUM_EPOCHS = 20000
-BATCH_SIZE = 25
-LR_RATE = 4e-4 # Karpathy constant = 3e-4
+NUM_EPOCHS = 15000
+BATCH_SIZE = 114
+LR_RATE = 5e-4 # Karpathy constant = 3e-4
 
 # Peso reconstruction loss
 ALPHA = 1
 
 # Peso kl_div
-BETA = 0.1
+BETA = 0.4
 
 # Dataset Loading
 input_data = atxt.torch_data
@@ -43,7 +43,7 @@ class CustomDataset(Dataset):
         matrix = self.data[idx].reshape(-1)  # Aplanar a un vector de 2109 elementos
         return torch.tensor(matrix, dtype=torch.float32)
 
-# Lista de matirces 37x58
+# Lista de matirces 37x106
 data_list = input_data
 
 # Convertir a un array de NumPy
@@ -58,7 +58,7 @@ model = m.VariationalAutoEncoder(INPUT_DIM, H_DIM, Z_DIM).to(DEVICE)
 optimizer = torch.optim.Adam(model.parameters(), lr=LR_RATE)
 loss_fn = nn.BCELoss(reduction="sum") # puede ser MSELoss o AbsoluteError Loss. Probar
 
-scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=4e-4, max_lr=5e-4, step_size_up=2000, mode='triangular')
+scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-4, max_lr=7e-4, step_size_up=2000, mode='triangular')
 
 # Start Training
 for epoch in range(NUM_EPOCHS):
