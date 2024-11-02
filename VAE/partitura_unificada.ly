@@ -8,102 +8,101 @@
 %partitura0
 
 \clef treble
-    c16 [ bes, e d gis fis ]
-    c' [ bes e' d' gis' fis' ]
-    c'' [ bes' e'' d'' gis'' fis'' ]
-    c''' [ fis'' gis'' d'' e'' bes' ]
-    c'' [ fis' gis' d' e' bes ]
-    c' [ fis gis d e bes, ]
+    c16 [ fis ]
+    c' [ fis' ]
+    c'' [ fis'' ]
+    c''' [ fis'' ]
+    c'' [ fis' ]
+    c' [ fis ]
 
 %partitura1
 
 \clef treble
-    c16 [ b, e ees gis g ]
-    c' [ b e' ees' gis' g' ]
-    c'' [ b' e'' ees'' gis'' fis'' g'' ]
-    c''' [ fis'' g'' gis'' ees'' e'' b' ]
-    c'' [ g' gis' ees' e' b ]
-    c' [ g gis ees e b, ]
+    c16 c' [ a e' ]
+    c'' [ a' ]
+    c''' [ a' ]
+    c'' [ a ]
+    c'
 
 %partitura2
 
 \clef treble
-    c16 [ b, e ees gis g ]
-    c' [ b e' ees' gis' g' ]
-    c'' [ b' e'' ees'' gis'' g'' ]
-    c''' [ g'' gis'' ees'' e'' b' ]
-    c'' [ g' gis' ees' e' b ]
-    c' [ g gis ees e b, ]
+    c16 [ a, ]
+    c' [ a e' ]
+    c'' [ a' ]
+    c''' [ a' ]
+    c'' [ e' a ]
+    c' [ a, ]
 
 %partitura3
 
 \clef treble
-    c16 [ b, e ees gis g ]
-    c' [ b e' ees' gis' g' ]
-    c'' [ b' e'' ees'' gis'' g'' ]
-    c''' [ g'' gis'' ees'' e'' b' ]
-    c'' [ g' gis' ees' e' b ]
-    c' [ g gis ees e b, ]
+    c16 [ a, e gis ]
+    c' [ a e' ]
+    c'' [ a' e'' gis'' ]
+    c''' [ gis'' e'' a' ]
+    c'' [ e' a ]
+    c' [ gis e a, ]
 
 %partitura4
 
 \clef treble
-    c16 [ e b, gis ]
-    c' [ e' b gis' ]
-    c'' [ e'' b' gis'' ]
-    c''' [ gis'' b' e'' ]
-    c'' [ gis' b e' ]
-    c' [ gis b, e ]
+    c16 [ a, e gis ]
+    c' [ a e' gis' ]
+    c'' [ a' e'' gis'' f'' ]
+    c''' [ f'' gis'' e'' a' ]
+    c'' [ gis' e' a ]
+    c' [ gis e a, ]
 
 %partitura5
 
 \clef treble
-    c16 [ g, e b, gis dis ]
-    c' [ g e' b gis' dis' ]
-    c'' [ g' e'' b' gis'' dis'' ]
-    c''' [ dis'' gis'' b' e'' g' ]
-    c'' [ dis' gis' b e' g ]
-    c' [ dis gis b, e g, ]
+    c16 [ e gis ]
+    c' [ a e' gis' ]
+    c'' [ a' e'' gis'' f'' ]
+    c''' [ f'' gis'' e'' a' ]
+    c'' [ gis' e' a ]
+    c' [ gis e ]
 
 %partitura6
 
 \clef treble
-    c16 [ g, a, e b, cis gis f ]
-    c' [ g a e' b cis' gis' f' ]
-    c'' [ g' e'' b' cis'' gis'' f'' ]
-    c''' [ f'' gis'' b' cis'' e'' g' ]
-    c'' [ f' gis' b cis' e' g a ]
-    c' [ f gis b, cis e g, a, ]
+    c16 [ e gis ]
+    c' [ gis' ]
+    c'' [ e'' gis'' ]
+    c''' [ gis'' e'' ]
+    c'' [ gis' e' ]
+    c' [ gis e ]
 
 %partitura7
 
 \clef treble
-    c16 [ a, e cis gis f ]
-    c' [ a e' cis' gis' f' ]
-    c'' [ a' e'' cis'' gis'' f'' ]
-    c''' [ f'' gis'' cis'' e'' a' ]
-    c'' [ f' gis' cis' e' a ]
-    c' [ f gis cis e a, ]
+    c16 [ b, e ]
+    c' [ b gis' ]
+    c'' [ e'' ]
+    c''' [ e'' b' ]
+    c'' [ b ]
+    c' [ gis e b, ]
 
 %partitura8
 
 \clef treble
-    c16 [ a, e fis ees bes ]
-    c' [ a e' fis' ees' bes' ]
-    c'' [ a' e'' fis'' ees'' bes'' ]
-    c''' [ bes'' ees'' fis'' e'' a' ]
-    c'' [ bes' ees' fis' e' a ]
-    c' [ bes ees fis e a, ]
+    c16 [ b, fis f ]
+    c' [ b fis' f' ]
+    c'' [ b' fis'' f'' ]
+    c''' [ f'' fis'' b' ]
+    c'' [ f' fis' b ]
+    c' [ f fis b, ]
 
 %partitura9
 
 \clef treble
-    c16 [ a, e fis ees bes ]
-    c' [ a e' fis' ees' bes' ]
-    c'' [ a' e'' fis'' ees'' bes'' ]
-    c''' [ bes'' ees'' fis'' e'' a' ]
-    c'' [ bes' ees' fis' e' a ]
-    c' [ bes ees fis e a, ]
+    c16 [ b, fis f ]
+    c' [ b fis' f' ]
+    c'' [ b' fis'' f'' ]
+    c''' [ f'' fis'' b' ]
+    c'' [ f' fis' b ]
+    c' [ f fis b, ]
     c
 }
 >>

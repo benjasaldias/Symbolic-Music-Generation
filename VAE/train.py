@@ -17,16 +17,16 @@ from torch.utils.data import Dataset, DataLoader
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 INPUT_DIM = 3922
 H_DIM = 800
-Z_DIM = 2
-NUM_EPOCHS = 15000
+Z_DIM = 12
+NUM_EPOCHS = 8000
 BATCH_SIZE = 114
-LR_RATE = 5e-4 # Karpathy constant = 3e-4
+LR_RATE = 3e-4 # Karpathy constant = 3e-4
 
 # Peso reconstruction loss
 ALPHA = 1
 
 # Peso kl_div
-BETA = 0.4
+BETA = 0.5
 
 # Dataset Loading
 input_data = atxt.torch_data
@@ -58,7 +58,7 @@ model = m.VariationalAutoEncoder(INPUT_DIM, H_DIM, Z_DIM).to(DEVICE)
 optimizer = torch.optim.Adam(model.parameters(), lr=LR_RATE)
 loss_fn = nn.BCELoss(reduction="sum") # puede ser MSELoss o AbsoluteError Loss. Probar
 
-scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-4, max_lr=7e-4, step_size_up=2000, mode='triangular')
+scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=3e-4, max_lr=5e-4, step_size_up=2000, mode='triangular')
 
 # Start Training
 for epoch in range(NUM_EPOCHS):

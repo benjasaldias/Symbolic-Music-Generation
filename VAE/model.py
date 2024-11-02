@@ -2,7 +2,7 @@ import torch
 from torch import nn
 
 class VariationalAutoEncoder(nn.Module):
-    def __init__(self, input_dim, h_dim=800, z_dim=2):
+    def __init__(self, input_dim, h_dim=800, z_dim=12):
         super().__init__()
 
         # encoder
