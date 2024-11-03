@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sys.path.append('../')
+import utils as u
 from partituras import atxt as atxt
 from torch.utils.data import Dataset
 from partituras import ash as ash
@@ -16,8 +17,8 @@ input_data = atxt.torch_data
 # Configuration
 CANTIDAD_TESTS = 10
 DEVICE = "cpu"
-INPUT_DIM = 3922
-Z_DIM = 12
+INPUT_DIM = u.INPUT_DIM
+Z_DIM = u.Z_DIM
 
 # Crear el directorio para almacenar las partituras, si no existe
 output_dir = "tests"

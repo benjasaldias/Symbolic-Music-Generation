@@ -5,13 +5,13 @@ import plotly.express as px
 import numpy as np
 import model as m
 import pandas as pd
-import math  # Importar math para funciones matemáticas
+import utils as u
 sys.path.append('../')
 from partituras import atxt as atxt
 from partituras import ash as ash
 
 CANTIDAD_VECTORES = 10
-Z_DIM = 12 
+Z_DIM = u.Z_DIM
 
 DEVICE = "cpu"
 

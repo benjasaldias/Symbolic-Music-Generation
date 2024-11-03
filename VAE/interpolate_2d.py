@@ -3,13 +3,14 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import model as m
+import utils as u
 import sys
 
 sys.path.append('../')
 from partituras import ash
 
 GRID_SIZE = 5  # Tamaño de la cuadrícula
-Z_DIM = 12  # Dimensión del espacio latente
+Z_DIM = u.Z_DIM  # Dimensión del espacio latente
 
 DEVICE = "cpu"
 

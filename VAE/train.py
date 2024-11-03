@@ -7,6 +7,7 @@ from torch import nn
 import model as m
 from torchvision import transforms
 import numpy as np
+import utils as u
 from torchvision.utils import save_image
 
 sys.path.append('../')
@@ -15,11 +16,11 @@ from torch.utils.data import Dataset, DataLoader
 
 # Configuration
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-INPUT_DIM = 3922
-H_DIM = 800
-Z_DIM = 12
+INPUT_DIM = u.INPUT_DIM
+H_DIM = u.H_DIM
+Z_DIM = u.Z_DIM
 NUM_EPOCHS = 8000
-BATCH_SIZE = 114
+BATCH_SIZE = u.BATCH_SIZE
 LR_RATE = 3e-4 # Karpathy constant = 3e-4
 
 # Peso reconstruction loss

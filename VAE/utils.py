@@ -1,0 +1,5 @@
+### DATA ###
+INPUT_DIM = 3922
+H_DIM = 800
+Z_DIM = 12
+BATCH_SIZE = 148

@@ -3,12 +3,10 @@
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ cis fis g ]
-    c' [ cis' fis' g' ]
-    c'' [ cis'' fis'' g'' ]
-    c''' [ g'' fis'' cis'' ]
-    c'' [ g' fis' cis' ]
-    c' [ g fis cis ]
+    c16 [ a, e cis gis f ]
+    c' [ a e' cis' gis' f' ]
+    c'' [ f' gis' cis' e' a ]
+    c' [ f gis cis e a, ]
     c
 }
 >>
