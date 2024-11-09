@@ -2754,3 +2754,775 @@
 
 %%% INFRA-ULTRAPOLATION %%%
 
+% 295. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, f e dis a gis g des']
+  
+  \clef treble
+               c'[ b f' e' dis' a' gis' g' des'']
+               c''[ des'' g' gis' a' dis' e' f' b]
+               
+  \clef bass  
+               c'[ des' g gis a dis e f b,]
+               c1   
+
+ }
+>>
+
+% 296. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, fis e dis ais gis g d']
+  
+  \clef treble
+               c'[ b fis' e' dis' ais' gis' g' d'']
+               c''[ d'' g' gis' ais' dis' e' fis' b]
+               
+  \clef bass  
+               c'[ d' g gis ais dis e fis b,]
+               c1   
+
+ }
+>>
+
+% 297. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, g e dis b gis g ees']
+  
+  \clef treble
+               c'[ b g' e' dis' b' gis' g' ees'']
+               c''[ ees'' g' gis' b' dis' e' g' b]
+               
+  \clef bass  
+               c'[ ees' g gis b dis e g b,]
+               c1   
+
+ }
+>>
+
+% 298. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, gis e ees c' gis g e']
+  
+  \clef treble
+               c'[ b gis' e' ees' c'' gis' g' e'']
+               c''[ e'' g' gis' c'' ees' e' gis' b]
+               
+  \clef bass  
+               c'[ e' g gis c' ees e gis b,]
+               c1   
+
+ }
+>>
+
+% 299. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, a e ees des' gis g f']
+  
+  \clef treble
+               c'[ b a' e' ees' des'' gis' g' f'']
+               c''[ f'' g' gis' des'' ees' e' a' b]
+               
+  \clef bass  
+               c'[ f' g gis des' ees e a b,]
+               c1   
+
+ }
+>>
+
+% 300. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, bes e ees d' gis g fis']
+  
+  \clef treble
+               c'[ b bes' e' ees' d'' gis' g' fis'']
+               c''[ fis'' g' gis' d'' ees' e' bes' b]
+               
+  \clef bass  
+               c'[ fis' g gis d' ees e bes b,]
+               c1   
+
+ }
+>>
+
+% 301. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, f e d a gis fis cis']
+  
+  \clef treble
+               c'[ bes f' e' d' a' gis' fis' cis'']
+               c''[ cis'' fis' gis' a' d' e' f' bes]
+               
+  \clef bass  
+               c'[ cis' fis gis a d e f bes,]
+               c1   
+
+ }
+>>
+
+% 302. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, fis e d ais gis fis d']
+  
+  \clef treble
+               c'[ bes fis' e' d' ais' gis' fis' d'']
+               c''[ d'' fis' gis' ais' d' e' fis' bes]
+               
+  \clef bass  
+               c'[ d' fis gis ais d e fis bes,]
+               c1   
+
+ }
+>>
+
+% 303. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, b e d b gis fis dis']
+  
+  \clef treble
+               c'[ bes b' e' d' b' gis' fis' dis'']
+               c''[ dis'' fis' gis' b' d' e' b' bes]
+               
+  \clef bass  
+               c'[ dis' fis gis b d e b bes,]
+               c1   
+
+ }
+>>
+
+% 304. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, gis e d c' gis fis e']
+  
+  \clef treble
+               c'[ bes gis' e' d' c'' gis' fis' e'']
+               c''[ e'' fis' gis' c'' d' e' gis' bes]
+               
+  \clef bass  
+               c'[ e' fis gis c' d e gis bes,]
+               c1   
+
+ }
+>>
+
+% 305. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, a e d des' gis fis f']
+  
+  \clef treble
+               c'[ bes a' e' d' des'' gis' fis' f'']
+               c''[ f'' fis' gis' des'' d' e' a' bes]
+               
+  \clef bass  
+               c'[ f' fis gis des' d e a bes,]
+               c1   
+
+ }
+>>
+
+% 306. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, f e cis a gis f des']
+  
+  \clef treble
+               c'[ a f' e' cis' a' gis' f' des'']
+               c''[ des'' f' gis' a' cis' e' f' a]
+               
+  \clef bass  
+               c'[ des' f gis a cis e f a,]
+               c1   
+
+ }
+>>
+
+% 307. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, fis e cis bes gis f d']
+  
+  \clef treble
+               c'[ a fis' e' cis' bes' gis' f' d'']
+               c''[ d'' f' gis' bes' cis' e' fis' a]
+               
+  \clef bass  
+               c'[ d' f gis bes cis e fis a,]
+               c1   
+
+ }
+>>
+
+% 308. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, g e cis b gis f ees']
+  
+  \clef treble
+               c'[ a g' e' cis' b' gis' f' ees'']
+               c''[ ees'' f' gis' b' cis' e' g' a]
+               
+  \clef bass  
+               c'[ ees' f gis b cis e g a,]
+               c1   
+
+ }
+>>
+
+% 309. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, gis e cis c' gis f e']
+  
+  \clef treble
+               c'[ a gis' e' cis' c'' gis' f' e'']
+               c''[ e'' f' gis' c'' cis' e' gis' a]
+               
+  \clef bass  
+               c'[ e' f gis c' cis e gis a,]
+               c1   
+
+ }
+>>
+
+% 310. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ aes, f e c a gis e cis']
+  
+  \clef treble
+               c'[ aes f' e' c' a' gis' e' cis'']
+               c''[ cis'' e' gis' a' c' e' f' aes]
+               
+  \clef bass  
+               c'[ cis' e gis a c e f aes,]
+               c1   
+
+ }
+>>
+
+% 311. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ aes, fis e c ais gis e d']
+  
+  \clef treble
+               c'[ aes fis' e' c' ais' gis' e' d'']
+               c''[ d'' e' gis' ais' c' e' fis' aes]
+               
+  \clef bass  
+               c'[ d' e gis ais c e fis aes,]
+               c1   
+
+ }
+>>
+
+% 312. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ aes, g e c b gis e ees']
+  
+  \clef treble
+               c'[ aes g' e' c' b' gis' e' ees'']
+               c''[ ees'' e' gis' b' c' e' g' aes]
+               
+  \clef bass  
+               c'[ ees' e gis b c e g aes,]
+               c1   
+
+ }
+>>
+
+
+% 313. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g, f e b, a gis ees des']
+  
+  \clef treble
+               c'[ g f' e' b a' gis' ees' des'']
+               c''[ des'' ees' gis' a' b e' f' g]
+               
+  \clef bass  
+               c'[ des' ees gis a b, e f g,]
+               c1   
+
+ }
+>>
+
+% 314. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g, fis e b, bes gis ees d']
+  
+  \clef treble
+               c'[ g fis' e' b bes' gis' ees' d'']
+               c''[ d'' ees' gis' bes' b e' fis' g]
+               
+  \clef bass  
+               c'[ d' ees gis bes b, e fis g,]
+               c1   
+
+ }
+>>
+
+% 315. DITONE: INFRA-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ fis, f e bes, a gis d des']
+  
+  \clef treble
+               c'[ fis f' e' bes a' gis' d' des'']
+               c''[ des'' d' gis' a' bes e' f' fis]
+               
+  \clef bass  
+               c'[ des' d gis a bes, e f fis,]
+               c1   
+
+ }
+>>
+
+
+%%% INTER-ULTRAPOLATION %%%
+
+% 316. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des f e f a gis a cis']
+  
+  \clef treble
+               c'[ des' f' e' f' a' gis' a' cis'']
+               c''[ cis'' a' gis' a' f' e' f' des']
+               
+  \clef bass  
+               c'[ cis' a gis a f e f des]
+               c1   
+
+ }
+>>
+
+% 317. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis fis e f bes gis a d']
+  
+  \clef treble
+               c'[ cis' fis' e' f' bes' gis' a' d'']
+               c''[ d'' a' gis' bes' f' e' fis' cis']
+               
+  \clef bass  
+               c'[ d' a gis bes f e fis cis]
+               c1   
+
+ }
+>>
+
+% 318. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des g e f b gis a ees']
+  
+  \clef treble
+               c'[ des' g' e' f' b' gis' a' ees'']
+               c''[ ees'' a' gis' b' f' e' g' des']
+               
+  \clef bass  
+               c'[ ees' a gis b f e g des]
+               c1   
+
+ }
+>>
+
+% 319. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis gis e f c' gis a e']
+  
+  \clef treble
+               c'[ cis' gis' e' f' c'' gis' a' e'']
+               c''[ e'' a' gis' c'' f' e' gis' cis']
+               
+  \clef bass  
+               c'[ e' a gis c' f e gis cis]
+               c1   
+
+ }
+>>
+
+% 320. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis a e f des' gis a f']
+  
+  \clef treble
+               c'[ cis' a' e' f' des'' gis' a' f'']
+               c''[ f'' a' gis' des'' f' e' a' cis']
+               
+  \clef bass  
+               c'[ f' a gis des' f e a cis]
+               c1   
+
+ }
+>>
+
+% 321. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des bes e f d' gis a fis']
+  
+  \clef treble
+               c'[ des' bes' e' f' d'' gis' a' fis'']
+               c''[ fis'' a' gis' d'' f' e' bes' des']
+               
+  \clef bass  
+               c'[ fis' a gis d' f e bes des]
+               c1   
+
+ }
+>>
+
+% 322. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis b e f ees' gis a g']
+  
+  \clef treble
+               c'[ cis' b' e' f' ees'' gis' a' g'']
+               c''[ g'' a' gis' ees'' f' e' b' cis']
+               
+  \clef bass  
+               c'[ g' a gis ees' f e b cis]
+               c1   
+
+ }
+>>
+
+% 323. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d f e fis a gis ais cis']
+  
+  \clef treble
+               c'[ d' f' e' fis' a' gis' ais' cis'']
+               c''[ cis'' ais' gis' a' fis' e' f' d']
+               
+  \clef bass  
+               c'[ cis' ais gis a fis e f d]
+               c1   
+
+ }
+>>
+
+% 324. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d fis e fis bes gis bes d']
+  
+  \clef treble
+               c'[ d' fis' e' fis' bes' gis' bes' d'']
+               c''[ d'' bes' gis' bes' fis' e' fis' d']
+               
+  \clef bass  
+               c'[ d' bes gis bes fis e fis d]
+               c1   
+
+ }
+>>
+
+% 325. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d g e fis b gis bes ees']
+  
+  \clef treble
+               c'[ d' g' e' fis' b' gis' bes' ees'']
+               c''[ ees'' bes' gis' b' fis' e' g' d']
+               
+  \clef bass  
+               c'[ ees' bes gis b fis e g d]
+               c1   
+
+ }
+>>
+
+% 326. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d gis e fis c' gis bes e']
+  
+  \clef treble
+               c'[ d' gis' e' fis' c'' gis' bes' e'']
+               c''[ e'' bes' gis' c'' fis' e' gis' d']
+               
+  \clef bass  
+               c'[ e' bes gis c' fis e gis d]
+               c1   
+
+ }
+>>
+
+% 327. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d a e fis cis' gis bes f']
+  
+  \clef treble
+               c'[ d' a' e' fis' cis'' gis' bes' f'']
+               c''[ f'' bes' gis' cis'' fis' e' a' d']
+               
+  \clef bass  
+               c'[ f' bes gis cis' fis e a d]
+               c1   
+
+ }
+>>
+
+% 328. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d bes e fis d' gis bes fis']
+  
+  \clef treble
+               c'[ d' bes' e' fis' d'' gis' bes' fis'']
+               c''[ fis'' bes' gis' d'' fis' e' bes' d']
+               
+  \clef bass  
+               c'[ fis' bes gis d' fis e bes d]
+               c1   
+
+ }
+>>
+
+% 329. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d b e fis ees' gis bes g']
+  
+  \clef treble
+               c'[ d' b' e' fis' ees'' gis' bes' g'']
+               c''[ g'' bes' gis' ees'' fis' e' b' d']
+               
+  \clef bass  
+               c'[ g' bes gis ees' fis e b d]
+               c1   
+
+ }
+>>
+
+% 330. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees f e g a gis b cis']
+  
+  \clef treble
+               c'[ ees' f' e' g' a' gis' b' cis'']
+               c''[ cis'' b' gis' a' g' e' f' ees']
+               
+  \clef bass  
+               c'[ cis' b gis a g e f ees]
+               c1   
+
+ }
+>>
+
+% 331. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees fis e g bes gis b d']
+  
+  \clef treble
+               c'[ ees' fis' e' g' bes' gis' b' d'']
+               c''[ d'' b' gis' bes' g' e' fis' ees']
+               
+  \clef bass  
+               c'[ d' b gis bes g e fis ees]
+               c1   
+
+ }
+>>
+
+% 332. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees g e g b gis b dis']
+  
+  \clef treble
+               c'[ ees' g' e' g' b' gis' b' dis'']
+               c''[ dis'' b' gis' b' g' e' g' ees']
+               
+  \clef bass  
+               c'[ dis' b gis b g e g ees]
+               c1   
+
+ }
+>>
+
+% 333. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees aes e g c' gis b e']
+  
+  \clef treble
+               c'[ ees' aes' e' g' c'' gis' b' e'']
+               c''[ e'' b' gis' c'' g' e' aes' ees']
+               
+  \clef bass  
+               c'[ e' b gis c' g e aes ees]
+               c1   
+
+ }
+>>
+
+% 334. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees a e g cis' gis b f']
+  
+  \clef treble
+               c'[ ees' a' e' g' cis'' gis' b' f'']
+               c''[ f'' b' gis' cis'' g' e' a' ees']
+               
+  \clef bass  
+               c'[ f' b gis cis' g e a ees]
+               c1   
+
+ }
+>>
+
+% 335. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees bes e g d' gis b fis']
+  
+  \clef treble
+               c'[ ees' bes' e' g' d'' gis' b' fis'']
+               c''[ fis'' b' gis' d'' g' e' bes' ees']
+               
+  \clef bass  
+               c'[ fis' b gis d' g e bes ees]
+               c1   
+
+ }
+>>
+
+% 336. DITONE: INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees b e g dis' gis b g']
+  
+  \clef treble
+               c'[ ees' b' e' g' dis'' gis' b' g'']
+               c''[ g'' b' gis' dis'' g' e' b' ees']
+               
+  \clef bass  
+               c'[ g' b gis dis' g e b ees]
+               c1   
+
+ }
+>>
+
+%%% INFRA-INTER-ULTRAPOLATION %%%
+
+% --- falta --- %
+
+%%% MISCELLANEOUS PATTERNS %%%
+
+% --- falta --- %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% SESQUITONE PROGRESSION %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

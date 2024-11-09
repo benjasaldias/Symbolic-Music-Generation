@@ -45,11 +45,22 @@ for i in range(CANTIDAD_TESTS):
     print('vector z:', z)
 
     with torch.no_grad():
-        reconstructed_matrix = model.decode(z)
+        reconstructed_matrix = model.decode(z)  # `reconstructed_matrix` tiene tamaño (1, 3922)
 
-    # Convertir la salida a formato binario
-    binary_output = (reconstructed_matrix > 0.5).float()
-    output_matrix = binary_output.view(37, 106).cpu().numpy()
+    # Cambiar la forma a (37, 106)
+    reconstructed_matrix = reconstructed_matrix.view(37, 106)
+
+    # Crear una matriz de ceros del mismo tamaño
+    binary_output = torch.zeros_like(reconstructed_matrix)
+
+    # Obtener el índice del valor máximo en cada fila
+    max_indices = torch.argmax(reconstructed_matrix, dim=1)
+
+    # Usar los índices para colocar 1 en el valor máximo de cada fila
+    binary_output[torch.arange(reconstructed_matrix.size(0)), max_indices] = 1
+
+    # Convertir a formato numpy si es necesario
+    output_matrix = binary_output.cpu().numpy()
 
     # Convertir la matriz binaria a formato LilyPond
     lilypond_output = ash.matrix_to_lilypond(output_matrix)

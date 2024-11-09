@@ -5,6 +5,7 @@ import model as m
 import utils as u
 sys.path.append('../')
 from partituras import atxt as atxt
+from partituras import ash as ash
 import matplotlib.pyplot as plt
 from scipy.stats import entropy
 
@@ -45,30 +46,37 @@ def calculate_metrics(original, generated, mu, logvar):
     return metrics
 
 # Generar muestras y calcular métricas
-def evaluate_model(dataset, model, num_samples=10):
+def evaluate_model(dataset, model, num_samples=100):
     all_metrics = []
     for i in range(num_samples):
         # Seleccionar muestra aleatoria del dataset
         original = dataset[i].to(DEVICE).unsqueeze(0)
 
         # Codificar y decodificar la muestra
-        with torch.no_grad():
-            mu, logvar = model.encode(original)
-            epsilon = torch.randn_like(logvar)
-            z_reparametrized = mu + logvar*epsilon
-            reconstructed = model.decode(z_reparametrized).view(37, 106)
+        reconstructed_matrixes = []
+        binary_generated_list = []
+        for _ in range(num_samples):
+            with torch.no_grad():
+                mu, logvar = model.encode(original)
+                z_reparametrized = torch.randn(1, Z_DIM).to(DEVICE)
+                reconstructed = model.decode(z_reparametrized).view(37, 106)
+                reconstructed_matrixes.append(reconstructed)
 
-        # Convertir a binario para formato piano roll
-        binary_generated = (reconstructed > 0.5).float()
-        
+            # Convertir a binario para formato piano roll
+            binary_generated = (reconstructed > 0.5).float()
+            print(ash.matrix_to_lilypond(binary_generated))
+            binary_generated_list.append(binary_generated)
+
+
         # Calcular métricas para esta muestra
-        metrics = calculate_metrics(original.view(37, 106), binary_generated, mu, logvar)
-        all_metrics.append(metrics)
-        
+        for matrix in binary_generated_list:
+            metrics = calculate_metrics(original.view(37, 106), matrix, mu, logvar)
+            all_metrics.append(metrics)
+            
         # Visualizar la generación
-        plt.imshow(binary_generated.cpu().numpy(), cmap="gray")
-        plt.title(f"Generación {i+1}")
-        plt.show()
+        # plt.imshow(binary_generated.cpu().numpy(), cmap="gray")
+        # plt.title(f"Generación {i+1}")
+        # plt.show()
 
     # Promediar métricas para todas las muestras
     avg_metrics = {k: np.mean([m[k] for m in all_metrics]) for k in all_metrics[0]}
@@ -78,6 +86,14 @@ def evaluate_model(dataset, model, num_samples=10):
     return avg_metrics
 
 # Evaluar el modelo en un conjunto de datos
-input_data = atxt.torch_data  # Asume que el dataset está cargado en atxt.torch_data
+input_data = atxt.torch_data  # Carga datos originales
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
 average_metrics = evaluate_model(dataset, model)
+
+
+# Promedio de métricas:
+# MSE: 0.0117
+# KL Divergence: 5.9092
+# Sparseness: 0.0065
+# Pitch Coverage: 0.1229
+# Rhythmic Diversity: 3.1519
