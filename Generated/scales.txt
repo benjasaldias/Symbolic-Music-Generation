@@ -65,3 +65,22 @@ c''' [ g'' fis'' f'' ]
 c'' [ g' fis' f' ]
 c' [ g fis f ]
 c
+
+### Tercer entrenamiento: batch_size = 190 ###
+scale8:
+c16 [ b, f, fis g' a, ]
+c' [ cis'' ais' fis' g'' f ]
+c'' [ cis''' a fis'' g''' e''' ]
+c''' [ e''' g''' fis'' a cis''' ]
+c'' [ f g'' fis' ais' cis'' ]
+c' [ a, g' fis f, b, ]
+c
+
+scale9:
+c16 [ des f e f a gis ais cis' ]
+c' [ des' f' e' ]
+c'' [ a' gis' e'' cis'' ]
+c'' [ cis'' e'' gis' a' ]
+c'' [ e' f' des' ]
+c' [ cis' ais gis a f e f des ]
+c

@@ -19,9 +19,9 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 INPUT_DIM = u.INPUT_DIM
 H_DIM = u.H_DIM
 Z_DIM = u.Z_DIM
-NUM_EPOCHS = 8000
+NUM_EPOCHS = u.NUM_EPOCHS
 BATCH_SIZE = u.BATCH_SIZE
-LR_RATE = 3e-4 # Karpathy constant = 3e-4
+LR_RATE = u.LR_RATE # Karpathy constant = 3e-4
 
 # Peso reconstruction loss
 ALPHA = 1

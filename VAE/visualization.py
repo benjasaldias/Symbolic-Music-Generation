@@ -5,6 +5,7 @@ import plotly.express as px
 import numpy as np
 import model as m
 import pandas as pd
+import utils as u
 from sklearn.decomposition import PCA  # Para reducir la dimensionalidad a 2D
 sys.path.append('../')
 from partituras import atxt as atxt
@@ -12,7 +13,7 @@ from partituras import ash as ash
 
 # Configuration
 CANTIDAD_TESTS = 500  # Cambia a la cantidad de muestras deseadas
-Z_DIM = 12  # Dimensionalidad del espacio latente
+Z_DIM = u.Z_DIM  # Dimensionalidad del espacio latente
 
 DEVICE = "cpu"
 

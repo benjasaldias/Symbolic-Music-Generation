@@ -126,7 +126,7 @@ def convertir_tesauro(notas_duraciones):
     return matrices
 
 # Ejemplo de uso
-nombre_archivo = 'thesaurus.ly'  # Nombre de tu archivo LilyPond
+nombre_archivo = 'thesaurus_data.ly'  # Nombre de tu archivo LilyPond
 contenido_partitura = leer_partitura_lilypond(nombre_archivo)
 notas_duraciones = extraer_notas_duraciones(contenido_partitura)
 matrices_tesauro = convertir_tesauro(notas_duraciones)
