@@ -40,7 +40,7 @@ def calculate_metrics(original, generated, mu, logvar):
     metrics['Pitch Coverage'] = pitch_coverage
 
     # Rhythmic Diversity (diversidad rítmica)
-    rhythmic_diversity = entropy(generated.sum(axis=1).cpu().numpy())
+    rhythmic_diversity = entropy(generated.sum(axis=0).cpu().numpy())
     metrics['Rhythmic Diversity'] = rhythmic_diversity
 
     return metrics
@@ -48,9 +48,10 @@ def calculate_metrics(original, generated, mu, logvar):
 # Generar muestras y calcular métricas
 def evaluate_model(dataset, model, num_samples=100):
     all_metrics = []
-    for i in range(num_samples):
+    for i in range(BATCH_SIZE):
         # Seleccionar muestra aleatoria del dataset
         original = dataset[i].to(DEVICE).unsqueeze(0)
+        print(original[0])
 
         # Codificar y decodificar la muestra
         reconstructed_matrixes = []
@@ -64,7 +65,10 @@ def evaluate_model(dataset, model, num_samples=100):
 
             # Convertir a binario para formato piano roll
             binary_generated = (reconstructed > 0.5).float()
-            print(ash.matrix_to_lilypond(binary_generated))
+            binary_generated = torch.tensor(binary_generated.reshape(-1), dtype=torch.float32)
+            binary_generated = binary_generated.view(37, 106)
+            print(binary_generated)
+            # print(ash.matrix_to_lilypond(binary_generated))
             binary_generated_list.append(binary_generated)
 
 
@@ -86,10 +90,12 @@ def evaluate_model(dataset, model, num_samples=100):
     return avg_metrics
 
 # Evaluar el modelo en un conjunto de datos
+
 input_data = atxt.torch_data  # Carga datos originales
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
-average_metrics = evaluate_model(dataset, model)
+average_metrics = evaluate_model(dataset, model, num_samples=100)
 
+# print(len(atxt.torch_data[189][0]))
 
 # Promedio de métricas:
 # MSE: 0.0117
