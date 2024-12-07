@@ -4062,3 +4062,450 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% SESQUITONE PROGRESSION %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% QUADRITONE PROGRESSION %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% INTERPOLATION OF TWO NOTES %%%
+
+% 664. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des ees gis a b e' f' g']
+  
+  \clef treble
+               c''[ des'' ees'' gis'' a'' b'' e''' f''' g''']
+               c''''[ g''' f''' e''' b'' a'' gis'' ees'' des'']
+                           
+  \clef bass  
+               c''[ g' f' e' b a gis ees des]
+               c1   
+
+ }
+>>
+
+% 665. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis e gis a c' e' f' aes']
+  
+  \clef treble
+               c''[ cis'' e'' gis'' a'' c''' e''' f''' aes''']
+               c''''[ aes''' f''' e''' c''' a'' gis'' e'' cis'']
+                           
+  \clef bass  
+               c''[ aes' f' e' c' a gis e cis]
+               c1   
+
+ }
+>>
+
+% 666. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des f aes a cis' e' f' a']
+  
+  \clef treble
+               c''[ des'' f'' aes'' a'' cis''' e''' f''' a''']
+               c''''[ a''' f''' e''' cis''' a'' aes'' f'' des'']
+                           
+  \clef bass  
+               c''[ a' f' e' cis' a aes f des]
+               c1   
+
+ }
+>>
+
+% 667. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis fis gis a d' e' f' b']
+  
+  \clef treble
+               c''[ cis'' fis'' gis'' a'' d''' e''' f''' b''']
+               c''''[ b''' f''' e''' d''' a'' gis'' fis'' cis'']
+                           
+  \clef bass  
+               c''[ b' f' e' d' a gis fis cis]
+               c1   
+
+ }
+>>
+
+% 668. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis g gis a dis' e' f' b']
+  
+  \clef treble
+               c''[ cis'' g'' gis'' a'' dis''' e''' f''' b''']
+               c''''[ b''' f''' e''' dis''' a'' gis'' g'' cis'']
+                           
+  \clef bass  
+               c''[ b' f' e' dis' a gis g cis]
+               c1   
+
+ }
+>>
+
+
+% 669. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d ees aes bes b e' fis' g']
+  
+  \clef treble
+               c''[ d'' ees'' aes'' bes'' b'' e''' fis''' g''']
+               c''''[ g''' fis''' e''' b'' bes'' aes'' ees'' d'']
+                           
+  \clef bass  
+               c''[ g' fis' e' b bes aes ees d]
+               c1   
+
+ }
+>>
+
+% 670. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d e aes bes c' e' fis' gis']
+  
+  \clef treble
+               c''[ d'' e'' aes'' bes'' c''' e''' fis''' gis''']
+               c''''[ gis''' fis''' e''' c''' bes'' aes'' e'' d'']
+                           
+  \clef bass  
+               c''[ gis' fis' e' c' bes aes e d]
+               c1   
+
+ }
+>>
+
+% 671. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d f aes bes des' e' fis' a']
+  
+  \clef treble
+               c''[ d'' f'' aes'' bes'' des''' e''' fis''' a''']
+               c''''[ a''' fis''' e''' des''' bes'' aes'' f'' d'']
+                           
+  \clef bass  
+               c''[ a' fis' e' des' bes aes f d]
+               c1   
+
+ }
+>>
+
+% 672. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d fis aes bes d' e' fis' bes']
+  
+  \clef treble
+               c''[ d'' fis'' aes'' bes'' d''' e''' fis''' bes''']
+               c''''[ bes''' fis''' e''' d''' bes'' aes'' fis'' d'']
+                           
+  \clef bass  
+               c''[ bes' fis' e' d' bes aes fis d]
+               c1   
+
+ }
+>>
+
+
+% 673. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d g aes bes ees' e' fis' b']
+  
+  \clef treble
+               c''[ d'' g'' aes'' bes'' ees''' e''' fis''' b''']
+               c''''[ b''' fis''' e''' ees''' bes'' aes'' g'' d'']
+                           
+  \clef bass  
+               c''[ b' fis' e' ees' bes aes g d]
+               c1   
+
+ }
+>>
+
+% 674. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees e aes b c' e' g' aes']
+  
+  \clef treble
+               c''[ ees'' e'' aes'' b'' c''' e''' g''' aes''']
+               c''''[ aes''' g''' e''' c''' b'' aes'' e'' ees'']
+                           
+  \clef bass  
+               c''[ aes' g' e' c' b aes e ees]
+               c1   
+
+ }
+>>
+
+% 675. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees f aes b cis' e' g' a']
+  
+  \clef treble
+               c''[ ees'' f'' aes'' b'' cis''' e''' g''' a''']
+               c''''[ a''' g''' e''' cis''' b'' aes'' f'' ees'']
+                           
+  \clef bass  
+               c''[ a' g' e' cis' b aes f ees]
+               c1   
+
+ }
+>>
+
+% 676. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees ges aes b d' e' g' bes']
+  
+  \clef treble
+               c''[ ees'' ges'' aes'' b'' d''' e''' g''' bes''']
+               c''''[ bes''' g''' e''' d''' b'' aes'' ges'' ees'']
+                           
+  \clef bass  
+               c''[ bes' g' e' d' b aes ges ees]
+               c1   
+
+ }
+>>
+
+% 677. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees g aes b dis' e' g' b']
+  
+  \clef treble
+               c''[ ees'' g'' aes'' b'' dis''' e''' g''' b''']
+               c''''[ b''' g''' e''' dis''' b'' aes'' g'' ees'']
+                           
+  \clef bass  
+               c''[ b' g' e' dis' b aes g ees]
+               c1   
+
+ }
+>>
+
+% 678. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ e f aes c' des' e' gis' a']
+  
+  \clef treble
+               c''[ e'' f'' aes'' c''' des''' e''' gis''' a''']
+               c''''[ a''' gis''' e''' des''' c''' aes'' f'' e'']
+                           
+  \clef bass  
+               c''[ a' gis' e' des' c' aes f e]
+               c1   
+
+ }
+>>
+
+% 679. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ e fis aes c' d' e' gis' bes']
+  
+  \clef treble
+               c''[ e'' fis'' aes'' c''' d''' e''' gis''' bes''']
+               c''''[ bes''' gis''' e''' d''' c''' aes'' fis'' e'']
+                           
+  \clef bass  
+               c''[ bes' gis' e' d' c' aes fis e]
+               c1   
+
+ }
+>>
+
+% 680. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ e g aes c' ees' e' gis' b']
+  
+  \clef treble
+               c''[ e'' g'' aes'' c''' ees''' e''' gis''' b''']
+               c''''[ b''' gis''' e''' ees''' c''' aes'' g'' e'']
+                           
+  \clef bass  
+               c''[ b' gis' e' ees' c' aes g e]
+               c1   
+
+ }
+>>
+
+% 681. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f ges aes des' d' e' a' bes']
+  
+  \clef treble
+               c''[ f'' ges'' aes'' des''' d''' e''' a''' bes''']
+               c''''[ bes''' a''' e''' d''' des''' aes'' ges'' f'']
+                           
+  \clef bass  
+               c''[ bes' a' e' d' des' aes ges f]
+               c1   
+
+ }
+>>
+
+% 682. QUADRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f g aes des' ees' e' a' b']
+  
+  \clef treble
+               c''[ f'' g'' aes'' des''' ees''' e''' a''' b''']
+               c''''[ b''' a''' e''' ees''' des''' aes'' g'' f'']
+                           
+  \clef bass  
+               c''[ b' a' e' ees' des' aes g f]
+               c1   
+
+ }
+>>
+
+%%% INTERPOLATION OF THREE NOTES %%%
+
+% --- falta --- %
+
+
+%%% INTERPOLATION OF FOUR NOTES %%%
+
+% --- falta --- %
+
+%%% ULTRAPOLATION OF ONE NOTE %%%
+
+% --- falta --- %
+
+%%% INFRAPOLATION OF ONE NOTE %%%
+
+% ---falta --- %
+
+%%% INTER-INFRAPOLATION %%%
+
+% 724. QUADRITONE: INTER-INFRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ e b, aes c' g e' gis' dis']
+  
+  \clef treble
+               c''[ e'' b' aes'' c''' g'' e''' gis''' dis''']
+               c''''[ dis''' gis''' e''' g'' c''' aes'' b' e'']
+                           
+  \clef bass  
+               c''[ dis' gis' e' g c' aes b, e]
+               c1   
+
+ }
+>>
+
+% 725. QUADRITONE: INTER-INFRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees bes, aes b' fis e' g' d']
+  
+  \clef treble
+               c''[ ees'' bes' aes'' b''' fis'' e''' g''' d''']
+               c''''[ d''' g''' e''' fis'' b''' aes'' bes' ees'']
+                           
+  \clef bass  
+               c''[ d' g' e' fis b' aes bes, ees]
+               c1   
+
+ }
+>>
+
+% 726. QUADRITONE: INTER-INFRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ e a, aes c' f e' gis' cis']
+  
+  \clef treble
+               c''[ e'' a' aes'' c''' f'' e''' gis''' cis''']
+               c''''[ cis''' gis''' e''' f'' c''' aes'' a' e'']
+                           
+  \clef bass  
+               c''[ cis' gis' e' f c' aes a, e]
+               c1   
+
+ }
+>>
+
+% 727. QUADRITONE: INTER-INFRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ f a, aes des' f e' a' cis']
+  
+  \clef treble
+               c''[ f'' a' aes'' des''' f'' e''' a''' cis''']
+               c''''[ cis''' a''' e''' f'' des''' aes'' a' f'']
+                           
+  \clef bass  
+               c''[ cis' a' e' f des' aes a, f]
+               c1   
+
+ }
+>>
+
+%%% ULTRA-INTERPOLATION %%%
+
+% --- falta --- %
