@@ -1,148 +1,120 @@
 
-%partitura0
+%scale0
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ fis ]
-    c' [ fis' ]
-    c'' [ fis'' ]
-    c''' [ fis'' ]
-    c'' [ fis' ]
-    c' [ fis ]
+    c16 [ b g fis f' des' ]
+    c' [ b' g' fis' f'' des'' ]
+    c'' [ b'' g'' fis'' f''' des''' ]
+    c''' [ des''' f''' fis'' g'' b'' ]
+    c'' [ des'' f'' fis' g' b' ]
+    c' [ des' f' fis g b ]
     c
 }
 >>
 
-%partitura1
+%scale1
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 c' [ a e' ]
-    c'' [ a' ]
-    c''' [ a' ]
-    c'' [ a ]
-    c' c
-}
->>
-
-%partitura2
-\new PianoStaff <<
-\cadenzaOn
-\new Staff = "right" {
-\clef treble
-    c16 [ a, ]
-    c' [ a e' ]
-    c'' [ a' ]
-    c''' [ a' ]
-    c'' [ e' a ]
-    c' [ a, ]
+    c16 [ b e fis f' des' ]
+    c' [ b' e' fis' f'' des'' ]
+    c'' [ b'' e'' fis'' f''' des''' ]
+    c''' [ des''' f''' fis'' e'' b'' ]
+    c'' [ des'' f'' fis' e' b' ]
+    c' [ des' f' fis e b ]
     c
 }
 >>
 
-%partitura3
+%scale2
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ a, e gis ]
-    c' [ a e' ]
-    c'' [ a' e'' gis'' ]
-    c''' [ gis'' e'' a' ]
-    c'' [ e' a ]
-    c' [ gis e a, ]
+    c16 [ b e fis f' bes ]
+    c' [ b' e' fis' f'' bes' ]
+    c'' [ b'' e'' fis'' f''' bes'' ]
+    c''' [ bes'' f''' fis'' e'' b'' ]
+    c'' [ bes' f'' fis' e' b' ]
+    c' [ bes f' fis e b ]
     c
 }
 >>
 
-%partitura4
+%scale3
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ a, e gis ]
-    c' [ a e' gis' ]
-    c'' [ a' e'' gis'' f'' ]
-    c''' [ f'' gis'' e'' a' ]
-    c'' [ gis' e' a ]
-    c' [ gis e a, ]
+    c16 [ d e fis gis bes ]
+    c' [ d' e' fis' gis' bes' ]
+    c'' [ d'' e'' fis'' gis'' bes'' ]
+    c''' [ bes'' gis'' fis'' e'' d'' ]
+    c'' [ bes' gis' fis' e' d' ]
+    c' [ bes gis fis e d ]
     c
 }
 >>
 
-%partitura5
+%scale4
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ e gis ]
-    c' [ a e' gis' ]
-    c'' [ a' e'' gis'' f'' ]
-    c''' [ f'' gis'' e'' a' ]
-    c'' [ gis' e' a ]
-    c' [ gis e ]
+    c16 [ d e fis gis bes ]
+    c' [ d' e' fis' a' bes' ]
+    c'' [ d'' e'' fis'' gis'' bes'' ]
+    c''' [ bes'' gis'' fis'' e'' d'' ]
+    c'' [ bes' gis' fis' e' d' ]
+    c' [ bes gis fis e d ]
     c
 }
 >>
 
-%partitura6
+%scale5
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ e gis ]
-    c' [ gis' ]
-    c'' [ e'' gis'' ]
-    c''' [ gis'' e'' ]
-    c'' [ gis' e' ]
-    c' [ gis e ]
+    c16 [ d e fis a bes ]
+    c' [ d' e' fis' a' bes' ]
+    c'' [ d'' e'' fis'' a'' bes'' ]
+    c''' [ bes'' a'' fis'' e'' d'' ]
+    c'' [ bes' a' fis' e' d' ]
+    c' [ bes a fis e d ]
     c
 }
 >>
 
-%partitura7
+%scale6
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ b, e ]
-    c' [ b gis' ]
-    c'' [ e'' ]
-    c''' [ e'' b' ]
-    c'' [ b ]
-    c' [ gis e b, ]
+    c16 [ d ees fis a bes ]
+    c' [ d' ees' fis' a' bes' ]
+    c'' [ d'' ees'' fis'' a'' bes'' ]
+    c''' [ bes'' a'' fis'' ees'' d'' ]
+    c'' [ bes' a' fis' ees' d' ]
+    c' [ bes a fis ees d ]
     c
 }
 >>
 
-%partitura8
+%scale7
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ b, fis f ]
-    c' [ b fis' f' ]
-    c'' [ b' fis'' f'' ]
-    c''' [ f'' fis'' b' ]
-    c'' [ f' fis' b ]
-    c' [ f fis b, ]
-    c
-}
->>
-
-%partitura9
-\new PianoStaff <<
-\cadenzaOn
-\new Staff = "right" {
-\clef treble
-    c16 [ b, fis f ]
-    c' [ b fis' f' ]
-    c'' [ b' fis'' f'' ]
-    c''' [ f'' fis'' b' ]
-    c'' [ f' fis' b ]
-    c' [ f fis b, ]
+    c16 [ d ees fis a e' ]
+    c' [ d' ees' fis' a' e'' ]
+    c'' [ d'' ees'' fis'' a'' e''' ]
+    c''' [ e''' a'' fis'' ees'' d'' ]
+    c'' [ e'' a' fis' ees' d' ]
+    c' [ e' a fis ees d ]
     c
 }
 >>

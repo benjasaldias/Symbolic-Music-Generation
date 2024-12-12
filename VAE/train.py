@@ -24,10 +24,10 @@ BATCH_SIZE = u.BATCH_SIZE
 LR_RATE = u.LR_RATE # Karpathy constant = 3e-4
 
 # Peso reconstruction loss
-ALPHA = 1
+ALPHA = u.ALPHA
 
 # Peso kl_div
-BETA = 0.5
+BETA = u.BETA
 
 # Dataset Loading
 input_data = atxt.torch_data

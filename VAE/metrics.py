@@ -20,15 +20,39 @@ model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
 model.load_state_dict(torch.load('vae.pth'))
 model.eval()
 
+# Métrica de simetría respecto a la fila central
+def calculate_symmetry(matrix):
+    # Convertir a numpy para facilitar el cálculo
+    matrix = matrix.cpu().numpy()
+
+    # Definir la fila central
+    central_row = matrix[18]
+
+    # Calcular la distancia promedio entre filas simétricas
+    num_rows = matrix.shape[0]
+    symmetry_score = 0
+
+    for i in range(18):  # Comparar filas simétricas respecto a la fila central
+        top_row = matrix[18 - i - 1]
+        bottom_row = matrix[18 + i + 1]
+        
+        # Distancia absoluta promedio entre las filas opuestas
+        symmetry_score += np.abs(top_row - bottom_row).mean()
+
+    # Promediar la distancia y tomar el inverso (simetría ideal = 1)
+    symmetry_score = 1 - (symmetry_score / 18)
+    return symmetry_score
+
+
 # Función para calcular métricas
-def calculate_metrics(original, generated, mu, logvar):
+def calculate_metrics(original, generated, mu, logvar, dataset):
     metrics = {}
 
     # Reconstrucción (MSE) - mide qué tan cerca está la salida generada del input
     metrics['MSE'] = ((original - generated) ** 2).mean().item()
 
     # Divergencia KL
-    kl_divergence = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+    kl_divergence = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp()) 
     metrics['KL Divergence'] = kl_divergence.item()
 
     # Sparseness (porcentaje de notas activas en la generación)
@@ -42,6 +66,18 @@ def calculate_metrics(original, generated, mu, logvar):
     # Rhythmic Diversity (diversidad rítmica)
     rhythmic_diversity = entropy(generated.sum(axis=0).cpu().numpy())
     metrics['Rhythmic Diversity'] = rhythmic_diversity
+
+    # Simetría respecto a la fila central
+    symmetry_score = calculate_symmetry(generated)
+    metrics['Symmetry'] = symmetry_score
+
+    # Diff (0 si pertenece al dataset, 1 si no)
+    diff = 1  # Por defecto, asumimos que no pertenece
+    for data in dataset:
+        if torch.equal(data.view(37, 106), generated):
+            diff = 0
+            break
+    metrics['Diff'] = diff
 
     return metrics
 
@@ -74,7 +110,7 @@ def evaluate_model(dataset, model, num_samples=100):
 
         # Calcular métricas para esta muestra
         for matrix in binary_generated_list:
-            metrics = calculate_metrics(original.view(37, 106), matrix, mu, logvar)
+            metrics = calculate_metrics(original.view(37, 106), matrix, mu, logvar, dataset)
             all_metrics.append(metrics)
             
         # Visualizar la generación
@@ -90,7 +126,6 @@ def evaluate_model(dataset, model, num_samples=100):
     return avg_metrics
 
 # Evaluar el modelo en un conjunto de datos
-
 input_data = atxt.torch_data  # Carga datos originales
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
 average_metrics = evaluate_model(dataset, model, num_samples=100)
