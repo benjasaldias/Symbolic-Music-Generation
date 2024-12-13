@@ -9,6 +9,7 @@ The project revolves around two main ideas:
 <h2>Generation</h2>
 Create new scales through random inputs for the decoder.
 <h3>Testing</h3>
+
 **Some of our results:**
 
 z vector: [-0.0139, -1.2205, -1.4549,  1.5790, -0.5443, -0.4356,  0.9062,  1.4763, 0.9497,  0.1883, -0.4990, -0.5803]
