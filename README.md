@@ -1,7 +1,9 @@
 # Symbolic-Music-Generation
 Generating symbolic music with a Variational AutoEncoder (VAE). The model is trained with a set of scales and melodic patterns presented by Nicolas Slonimsky in his "Thesaurus of Scales and Melodic Patterns".
 
-The project revolves around to main ideas:
+The project revolves around two main ideas:
+* Generation of new scales and melodies.
+* Interpolating between two scales through the latent space.
 
 # Papers:
 
