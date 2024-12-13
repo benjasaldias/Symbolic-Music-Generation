@@ -1,17 +1,13 @@
 import torch # type: ignore
 import sys
-
-import torchvision.datasets as datasets # Standard Datasets
 from tqdm import tqdm
 from torch import nn
-import VAE.Model.model as m
-from torchvision import transforms
 import numpy as np
-import utils as u
-from torchvision.utils import save_image
-
 sys.path.append('../')
-from partituras import atxt as atxt
+import utils as u
+import Model.model as m
+sys.path.append('../../')
+from dataset import lilypond2matrix
 from torch.utils.data import Dataset, DataLoader
 
 # Configuration
@@ -30,7 +26,7 @@ ALPHA = u.ALPHA
 BETA = u.BETA
 
 # Dataset Loading
-input_data = atxt.torch_data
+input_data = lilypond2matrix.torch_data
 
 class CustomDataset(Dataset):
     def __init__(self, data):

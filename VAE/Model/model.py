@@ -1,6 +1,8 @@
 import os
+import sys
 import torch
 from torch import nn
+sys.path.append('../')
 import utils as u
 
 class VariationalAutoEncoder(nn.Module):

@@ -3,16 +3,15 @@ import sys
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
-
 sys.path.append('../')
 import utils as u
-from partituras import atxt as atxt
+import Model.model as m
+sys.path.append('../../')
+from dataset import matrix2lilypond, lilypond2matrix
 from torch.utils.data import Dataset
-from partituras import ash as ash
-import VAE.Model.model as m
 
 # Data Loading
-input_data = atxt.torch_data
+input_data = lilypond2matrix.torch_data
 
 # Configuration
 CANTIDAD_TESTS = 10
@@ -63,7 +62,7 @@ for i in range(CANTIDAD_TESTS):
     output_matrix = binary_output.cpu().numpy()
 
     # Convertir la matriz binaria a formato LilyPond
-    lilypond_output = ash.matrix_to_lilypond(output_matrix)
+    lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
 
     # Guardar el archivo en el directorio especificado
     file_path = os.path.join(output_dir, f'partitura_{i}.ly')

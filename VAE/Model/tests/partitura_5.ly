@@ -1,16 +1,14 @@
-% z vector: tensor([[-0.9797,  1.0917,  2.1665, -0.9722, -0.2567, -0.8221, -0.3959,  1.0454, 4.1052,  0.0347, -0.0330,  2.0722]])
+% z vector: tensor([[ 0.5195,  0.7596, -0.1509, -2.4049, -0.8339, -1.2404, -1.6157,  0.6191, 0.1919,  0.8238, -0.5616, -3.3509]])
 \new PianoStaff <<
 \cadenzaOn
 \new Staff = "right" {
 \clef treble
-    c16 [ g, gis e fis ]
-    c' [ gis bes e' ]
-    c' [ d' gis' e' fis' ]
-    c'' [ gis' bes' e'' ]
-    c'' [ e'' bes' gis' ]
-    c'' [ fis' e' gis' d' ]
-    c' [ e' bes gis ]
-    c' [ fis e gis d ]
+    c16 [ e f fis f' d' ]
+    c' [ ees' gis' fis' a' d'' ]
+    c'' [ ees'' gis'' fis'' a'' d''' ]
+    c''' [ d''' a'' fis'' gis'' ees'' ]
+    c'' [ d'' a' fis' gis' ees' ]
+    c' [ d' a fis f e ]
     c
 }
 >>

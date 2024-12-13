@@ -1,13 +1,13 @@
 import torch # type: ignore
 import sys
 import numpy as np
-import VAE.Model.model as m
-import utils as u
 sys.path.append('../')
-from partituras import atxt as atxt
-from partituras import ash as ash
-import matplotlib.pyplot as plt
+import utils as u
+import Model.model as m
+sys.path.append('../../')
+from dataset import lilypond2matrix
 from scipy.stats import entropy
+from skimage.metrics import structural_similarity as ssim
 
 # Configuración
 DEVICE = "cpu"
@@ -83,11 +83,11 @@ def calculate_metrics(original, generated, mu, logvar, dataset):
 
 # Generar muestras y calcular métricas
 def evaluate_model(dataset, model, num_samples=200):
+    print('This may take a few minutes...')
     all_metrics = []
     for i in range(BATCH_SIZE):
         # Seleccionar muestra aleatoria del dataset
         original = dataset[i].to(DEVICE).unsqueeze(0)
-        print(original[0])
 
         # Codificar y decodificar la muestra
         reconstructed_matrixes = []
@@ -103,8 +103,6 @@ def evaluate_model(dataset, model, num_samples=200):
             binary_generated = (reconstructed > 0.5).float()
             binary_generated = torch.tensor(binary_generated.reshape(-1), dtype=torch.float32)
             binary_generated = binary_generated.view(37, 106)
-            print(binary_generated)
-            # print(ash.matrix_to_lilypond(binary_generated))
             binary_generated_list.append(binary_generated)
 
 
@@ -126,10 +124,9 @@ def evaluate_model(dataset, model, num_samples=200):
     return avg_metrics
 
 # Evaluar el modelo en un conjunto de datos
-input_data = atxt.torch_data  # Carga datos originales
+input_data = lilypond2matrix.torch_data  # Carga datos originales
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
-# average_metrics = evaluate_model(dataset, model, num_samples=100)
-print(len(dataset))
+average_metrics = evaluate_model(dataset, model, num_samples=100)
 
 # print(len(atxt.torch_data[189][0]))
 

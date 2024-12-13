@@ -3,13 +3,13 @@ import os
 import torch
 import plotly.express as px
 import numpy as np
-import VAE.Model.model as m
 import pandas as pd
-import utils as u
 from sklearn.decomposition import PCA  # Para reducir la dimensionalidad a 2D
 sys.path.append('../')
-from partituras import atxt as atxt
-from partituras import ash as ash
+import utils as u
+import Model.model as m
+sys.path.append('../../')
+from dataset import matrix2lilypond
 
 # Configuration
 CANTIDAD_TESTS = 500  # Cambia a la cantidad de muestras deseadas
@@ -39,7 +39,7 @@ for i in range(CANTIDAD_TESTS):
     binary_output = (reconstructed_matrix > 0.5).float()
     output_matrix = binary_output.view(37, 106).cpu().numpy()
 
-    lilypond_output = ash.matrix_to_lilypond(output_matrix)
+    lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
     print(lilypond_output)
 
     with open('partituras.ly', 'a') as f:

@@ -134,6 +134,7 @@ def torcher(file:str):
 
     # Verifica el tamaño del tensor resultante
     print(torch_data.shape)  # (10, 1, 37, 106)
+    return torch_data
 
 if __name__ == '__main__':
     torcher('thesaurus_data.ly')
@@ -142,4 +143,4 @@ else:
     current_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(current_dir, "thesaurus_data.ly")
 
-    torcher(data_path)
+    torch_data = torcher(data_path)
