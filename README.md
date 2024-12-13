@@ -21,5 +21,11 @@ z vector: [-0.5950,  0.3573,  1.1748, -0.3191, -0.0793, -0.6383, -3.7409, -1.895
 z vector: [ 2.8456, -0.7268, -1.5758, -0.7938,  1.1789, -0.2523,  1.5746,  0.3569, 0.2824,  0.0894,  0.4205, -1.2200]
 ![scale_example_2](assets/test_example_2.png)
 <h3>Metrics</h3>
+To evaluate our results, we implemented the following metrics:
+1. KL Divergence
+2. Sparseness
+3. Coverage
+4. Difference
+
 <h2>Interpolation</h2>
 <h3>Testing</h3>
