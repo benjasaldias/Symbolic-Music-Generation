@@ -1,3 +1,4 @@
+import os
 import sys
 import torch
 import plotly.express as px
@@ -17,9 +18,11 @@ Z_DIM = u.Z_DIM
 
 DEVICE = "cpu"
 
-vaepth_path = '/home/benjasaldias/IPRE/SMG/VAE/Model/vae.pth'
+# Get vae.pth path to load the trained model
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+vae_path = os.path.join(root_dir, "Model", "vae.pth")
 
-# Limpiar el archivo de salida
+# Empty the output lilypond file
 with open('interpolation.ly', 'w') as f: 
     f.write('')
 
@@ -95,7 +98,7 @@ def linear_interpolation(z1, z2, steps):
 
 # Load model
 model = m.VariationalAutoEncoder(input_dim=3922)
-model.load_state_dict(torch.load(vaepth_path))
+model.load_state_dict(torch.load(vae_path))
 model.eval()
 
 def interpolate(model, visualize=False, interpolation_type='slerp'):

@@ -30,3 +30,4 @@ To evaluate our results, we implemented the following metrics:
 
 <h2>Interpolation</h2>
 <h3>Testing</h3>
+interoplate -> to_midi -> play using frescobaldi or Visual Studio Code's VSLilypond extension.
