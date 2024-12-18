@@ -37,10 +37,10 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         # Asegúrate de que el formato sea adecuado para el modelo
-        matrix = self.data[idx].reshape(-1)  # Aplanar a un vector de 2109 elementos
+        matrix = self.data[idx].reshape(-1)  # Aplanar a un vector de rows*cols elementos
         return torch.tensor(matrix, dtype=torch.float32)
 
-# Lista de matirces 37x106
+# Lista de matirces 
 data_list = input_data
 
 # Convertir a un array de NumPy
@@ -64,7 +64,7 @@ for epoch in range(NUM_EPOCHS):
     total_loss = 0
     for i, x in loop:
         # Forward pass
-        x = x.to(DEVICE).view(x.shape[0], INPUT_DIM) # try replace view with reshape
+        x = x.to(DEVICE).view(x.shape[0], INPUT_DIM)
         x_reconstructed, mu, sigma = model(x)
 
         # Compute loss

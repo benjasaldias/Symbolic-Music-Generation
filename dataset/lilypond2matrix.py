@@ -1,5 +1,6 @@
 import re
 import os
+import sys
 import numpy as np
 import torch
 
@@ -70,7 +71,7 @@ def get_notes(content):
     return notes
 
 # Converts the processed data into a binary matrix (Piano Roll).
-def sheet_to_matrix(notes):
+def sheet_to_matrix(notes, max_length):
     # Define range of notes
     note_range = [
         'c,', 'cis,', 'des,', 'd,', 'dis,', 'ees,', 'e,', 'eis,',
@@ -90,8 +91,7 @@ def sheet_to_matrix(notes):
         "ais'''", "bes'''", "b'''", "bis'''", "ces'''", "c''''"
         ]
     
-    # Define 0s matrix of set length
-    max_length = 37  # Max length
+    # Initialize a zero matrix with dynamic length
     note_amount = len(note_range)
     matrix = np.zeros((max_length, note_amount))
     
@@ -106,19 +106,24 @@ def sheet_to_matrix(notes):
         # Search note index in note_range
         if symbol in note_range:
             note_index = note_range.index(symbol)
-            matrix[int(current_tick), note_index] = 1 # 1 in matrix for note found
+            if current_tick < max_length:
+                matrix[current_tick, note_index] = 1  # Set 1 in matrix for note found
             
         current_tick += 1
 
     return matrix
 
 def thesaurus_to_matrix(notes):
+    # Find the maximum length of all scales
+    max_length = max(len(scale) for scale in notes)
+    
+    # Convert each scale to a binary matrix
     matrixes = []
     for scale in notes:
-        matrixes.append(sheet_to_matrix(scale))
+        matrixes.append(sheet_to_matrix(scale, max_length))
     return matrixes
 
-def torcher(file:str):
+def torcher(file: str):
     if file[-3:] != '.ly':
         raise SyntaxError("El archivo debe terminar con .ly (archivo lilypond).") 
     file_name = file  # Nombre de tu archivo LilyPond
@@ -133,11 +138,14 @@ def torcher(file:str):
     torch_data = torch_data.float()
 
     # Verifica el tamaño del tensor resultante
-    print(torch_data.shape)  # (10, 1, 37, 106)
+    print(torch_data.shape)  # (batch_size, 1, max_length, note_range_length)
     return torch_data
 
 if __name__ == '__main__':
-    torcher('thesaurus_data.ly')
+    if len(sys.argv) > 1:    
+        torcher(sys.argv[1])
+    else: 
+        torcher('thesaurus_data.ly')
 else:
     # Obtener la ruta absoluta del directorio actual
     current_dir = os.path.dirname(os.path.abspath(__file__))

@@ -23,7 +23,7 @@ class VariationalAutoEncoder(nn.Module):
     def encode(self, x):
         # q_phi(z|x)
         h = self.relu(self.sh_2hid(x))
-        mu, sigma = self.hid_2mu(h), self.hid_2sigma(h) # duda: RELU establece valores entre 0 y 1. Quizás sea mejor vs Linear.
+        mu, sigma = self.hid_2mu(h), self.hid_2sigma(h) 
         return mu, sigma
 
     def decode(self, z):

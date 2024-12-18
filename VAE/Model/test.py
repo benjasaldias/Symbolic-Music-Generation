@@ -38,42 +38,48 @@ class CustomDataset(Dataset):
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
 model.load_state_dict(torch.load('vae.pth'))
 model.eval()
+# Threshold for significant activation
+THRESHOLD = 0
+
+# Base C index in your note range
+BASE_C_INDEX = u.NOTE_RANGE_LIST.index("c") 
 
 for i in range(CANTIDAD_TESTS):
-    z = 0 + 1.5*torch.randn(1, Z_DIM).to(DEVICE)
+    z = 0 + 1.5 * torch.randn(1, Z_DIM).to(DEVICE)
     print('vector z:', z)
 
     with torch.no_grad():
-        reconstructed_matrix = model.decode(z)  # `reconstructed_matrix` tiene tamaño (1, 3922)
+        reconstructed_matrix = model.decode(z)
 
-    # Cambiar la forma a (37, 106)
-    reconstructed_matrix = reconstructed_matrix.view(37, 106)
+    # Reshape to (u.NUM_ROWS, u.NOTE_RANGE)
+    reconstructed_matrix = reconstructed_matrix.view(u.NUM_ROWS, u.NOTE_RANGE)
 
-    # Crear una matriz de ceros del mismo tamaño
+    # Create a zero matrix of the same size
     binary_output = torch.zeros_like(reconstructed_matrix)
 
-    # Obtener el índice del valor máximo en cada fila
-    max_indices = torch.argmax(reconstructed_matrix, dim=1)
+    # Find the maximum value in each row and its index
+    max_values, max_indices = torch.max(reconstructed_matrix, dim=1)
 
-    # Usar los índices para colocar 1 en el valor máximo de cada fila
-    binary_output[torch.arange(reconstructed_matrix.size(0)), max_indices] = 1
+    # Apply thresholding
+    valid_indices = max_values > THRESHOLD
+    binary_output[torch.arange(reconstructed_matrix.size(0))[valid_indices], max_indices[valid_indices]] = 1
 
-    # Convertir a formato numpy si es necesario
+    # Convert to numpy for further processing
     output_matrix = binary_output.cpu().numpy()
 
-    # Convertir la matriz binaria a formato LilyPond
+    # Convert the binary matrix to LilyPond format
     lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
 
-    # Guardar el archivo en el directorio especificado
-    file_path = os.path.join(output_dir, f'partitura_{i}.ly')
+    # Save the file
+    file_path = os.path.join(output_dir, f'scale_{i}.ly')
     with open(file_path, 'w') as f:
         comment = f'% z vector: {z}'
         index = comment.find('\n')
-        comment = comment[:index] + comment[index+10:]
+        comment = comment[:index] + comment[index + 10:]
         f.write(f'{comment}')
         f.write(lilypond_output)
 
-    # Mostrar la matriz como imagen
+    # Visualize the output matrix
     plt.imshow(output_matrix, cmap='gray')
     plt.title(f"Output del Decoder (Partitura {i})")
     plt.show()
