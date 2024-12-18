@@ -22,244 +22,6 @@
 %%%% TRITONE PROGRESSION %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 1. TRITONE: 1 NOTE INTERPOLATION
-\new PianoStaff <<
-\cadenzaOn
-  \new Staff = "right" {
-  \clef treble
-              r4
-  \relative c'{
-               c16[ cis fis g] 
-               c![ cis fis g] 
-               c![ g fis cis] 
-               c![ g fis cis]
-              }
-              r4
-              
-  }
-
-  \new Staff = "left" {
-    \clef bass
-  \relative c{
-            <<{c16[ cis fis g]} \\ {c,,[ cis fis g]}>>
-            c![ cis fis g]
-             }
-
-    \clef treble
-  \relative c'{
-            c![ cis fis g]
-            c![ g fis cis]
-              }
-    
-    \clef bass
-  \relative c'{
-            c![ g fis d]
-            <<{c'[ gis fis cis]} \\ {c[ gis fis cis]}>>
-            c1
-             }
-
-  }
->>
-
-% 2. TRITONE: 1 NOTE INTERPOLATION
-\new PianoStaff <<
-\cadenzaOn
-  \new Staff = "right" {
-  \clef treble
-              r4
-  \relative c'{
-               c16[ d fis gis] 
-               c![ d fis gis] 
-               c![ gis fis d] 
-               c![ gis fis d]
-              }
-              r4
-              
-  }
-
-  \new Staff = "left" {
-    \clef bass
-  \relative c{
-            <<{c16[ d fis gis]} \\ {c,,[ d fis gis]}>>
-            c![ d fis gis]
-             }
-
-    \clef treble
-  \relative c'{
-            c![ d fis gis]
-            c![ gis fis d]
-              }
-    
-    \clef bass
-  \relative c'{
-            c![ gis fis d]
-            <<{c'[ gis fis d]} \\ {c[ gis fis d]}>>
-            c1
-             }
-
-  }
->>
-
-% 3. TRITONE: 1 NOTE INTERPOLATION
-\new PianoStaff <<
-\cadenzaOn
-  \new Staff = "right" {
-  \clef treble
-              r4
-  \relative c'{
-               c16[ e fis bes] 
-               c![ e fis bes] 
-               c![ bes fis e] 
-               c![ bes fis e]
-              }
-              r4
-              
-  }
-
-  \new Staff = "left" {
-    \clef bass
-  \relative c{
-            <<{c16[ e fis bes]} \\ {c,,[ e fis bes]}>>
-            c![ e fis bes]
-             }
-
-    \clef treble
-  \relative c'{
-            c![ e fis bes]
-            c![ bes fis e]
-              }
-    
-    \clef bass
-  \relative c'{
-            c![ bes fis d]
-            <<{c'[ bes fis e]} \\ {c[ bes fis e]}>>
-            c1
-             }
-
-  }
->>
-
-% 1. TRITONE: 1 NOTE INTERPOLATION
-\new PianoStaff <<
-\cadenzaOn
-  \new Staff = "right" {
-  \clef treble
-              r4
-  \relative c'{
-               c16[ f fis b] 
-               c![ f fis b] 
-               c![ b fis f] 
-               c![ b fis f]
-              }
-              r4
-              
-  }
-
-  \new Staff = "left" {
-    \clef bass
-  \relative c{
-            <<{c16[ f fis b]} \\ {c,,[ f fis b]}>>
-            c![ f fis b]
-             }
-
-    \clef treble
-  \relative c'{
-            c![ f fis b]
-            c![ b fis f]
-              }
-    
-    \clef bass
-  \relative c'{
-            c![ b fis f]
-            <<{c'[ b fis f]} \\ {c[ b fis f]}>>
-            c1
-             }
-
-  }
->>
-
-% 5. TRITONE: 2 NOTE INTERPOLATION
-\new PianoStaff <<
-\cadenzaOn
-  \new Staff = "right" {
-  \clef treble
-              r4
-              r8
-  \relative c'{
-               c16[ cis d fis g aes] 
-               c![ cis d fis g aes] 
-               c![ aes g fis d cis]
-               c![ aes g fis d cis]
-              }
-              r4
-              r8
-              
-  }
-
-  \new Staff = "left" {
-    \clef bass
-  \relative c{
-            <<{c16[ cis d fis g aes]} \\ {c,,[ cis d fis g  aes]}>>
-            c![ cis d fis g aes]
-             }
-
-    \clef treble
-  \relative c'{
-            c![ cis d fis g aes]
-            c![ aes g fis d cis]
-              }
-    
-    \clef bass
-  \relative c'{
-            c![ aes g fis d cis]
-            <<{c'[ aes g fis d cis]} \\ {c[ aes g fis d cis]}>>
-            c1
-             }
-
-  }
->>
-
-% 6. TRITONE: 2 NOTE INTERPOLATION
-\new PianoStaff <<
-\cadenzaOn
-  \new Staff = "right" {
-  \clef treble
-              r4
-              r8
-  \relative c'{
-               c16[ des ees fis g a] 
-               c![ des ees fis g a] 
-               c![ a g fis ees des]
-               c![ a g fis ees des]
-              }
-              r4
-              r8
-              
-  }
-
-  \new Staff = "left" {
-    \clef bass
-  \relative c{
-            <<{c16[ des ees fis g a]} \\ {c,,[ des ees fis g a]}>>
-            c![ des ees fis g a]
-             }
-
-    \clef treble
-  \relative c'{
-            c![ cis d fis g aes]
-            c![ aes g fis d cis]
-              }
-    
-    \clef bass
-  \relative c'{
-            c![ aes g fis d cis]
-            <<{c'[ aes g fis d cis]} \\ {c[ aes g fis d cis]}>>
-            c1
-             }
-
-  }
->>
-
 % 27. TRITONE: SYMMETRIC INTERPOLATION OF ONE NOTE
 \new PianoStaff <<
 \cadenzaOn
@@ -1000,11 +762,258 @@
 
 %%% ULTRAPOLATION OF THREE NOTES %%%
 
-% --- falta --- %
+% 72. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes a g]
+  
+  \clef treble
+               fis[ e' ees' des']
+               c'[ bes' a' g']
+               fis'[ e'' ees'' des'']
+               c''[ des'' ees'' e'']
+               fis'[ g' a' bes']
+               c'[ des' ees' e']
+  \clef bass
+               fis[ g a bes]
+               c1
+ }
+>>
+
+% 73. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b a g]
+  
+  \clef treble
+               fis[ f' ees' des']
+               c'[ b' a' g']
+               fis'[ f'' ees'' des'']
+               c''[ des'' ees'' f'']
+               fis'[ g' a' b']
+               c'[ des' ees' f']
+  \clef bass
+               fis[ g a b]
+               c1
+ }
+>>
+
+% 74. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b ais g]
+  
+  \clef treble
+               fis[ f' e' des']
+               c'[ b' ais' g']
+               fis'[ f'' e'' des'']
+               c''[ des'' e'' f'']
+               fis'[ g' ais' b']
+               c'[ des' e' f']
+  \clef bass
+               fis[ g ais b]
+               c1
+ }
+>>
+
+% 75. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b ais gis]
+  
+  \clef treble
+               fis[ f' e' d']
+               c'[ b' ais' gis']
+               fis'[ f'' e'' d'']
+               c''[ d'' e'' f'']
+               fis'[ gis' ais' b']
+               c'[ d' e' f']
+  \clef bass
+               fis[ gis ais b]
+               c1
+ }
+>>
+
+% 76. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis' gis g]
+  
+  \clef treble
+               fis[ g' d' cis']
+               c'[ cis'' gis' g']
+               fis'[ g'' d'' cis'']
+               c''[ cis'' d'' g'']
+               fis'[ g' gis' cis'']
+               c'[ cis' d' g']
+  \clef bass
+               fis[ g gis cis']
+               c1
+ }
+>>
+
+% 77. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis' a g]
+  
+  \clef treble
+               fis[ g' ees' des']
+               c'[ cis'' a' g']
+               fis'[ g'' ees'' des'']
+               c''[ des'' ees'' g'']
+               fis'[ g' a' cis'']
+               c'[ des' ees' g']
+  \clef bass
+               fis[ g a cis']
+               c1
+ }
+>>
+
+% 78. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis' ais g]
+  
+  \clef treble
+               fis[ g' e' des']
+               c'[ cis'' ais' g']
+               fis'[ g'' e'' des'']
+               c''[ des'' e'' g'']
+               fis'[ g' ais' cis'']
+               c'[ des' e' g']
+  \clef bass
+               fis[ g ais cis']
+               c1
+ }
+>>
+
+% 79. TRITONE: ULTRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis' ais gis]
+  
+  \clef treble
+               fis[ g' e' d']
+               c'[ cis'' ais' gis']
+               fis'[ g'' e'' d'']
+               c''[ d'' e'' g'']
+               fis'[ gis' ais' cis'']
+               c'[ d' e' g']
+  \clef bass
+               fis[ gis ais cis']
+               c1
+ }
+>>
+
 
 %%% INFRAPOLATION OF ONE NOTE %%%
 
-% --- falta --- %
+% 80. TRITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, fis f]
+  
+  \clef treble
+               c'[ b fis' d']
+               c''[ b' fis'' d'']
+               c'''[ d'' fis'' b']
+               c''[ d' fis' b]
+  \clef bass
+               c'[ f fis b,]
+               c1
+ }
+>>
+
+% 81. TRITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, fis e]
+  
+  \clef treble
+               c'[ bes fis' e']
+               c''[ bes' fis'' e'']
+               c'''[ e'' fis'' bes']
+               c''[ e' fis' bes]
+  \clef bass
+               c'[ e fis bes,]
+               c1
+ }
+>>
+
+% 82. TRITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, fis ees]
+  
+  \clef treble
+               c'[ a fis' ees']
+               c''[ a' fis'' ees'']
+               c'''[ ees'' fis'' a']
+               c''[ ees' fis' a]
+  \clef bass
+               c'[ ees fis a,]
+               c1
+ }
+>>
+
+% 83. TRITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ aes, fis d]
+  
+  \clef treble
+               c'[ aes fis' d']
+               c''[ aes' fis'' d'']
+               c'''[ d'' fis'' aes']
+               c''[ d' fis' aes]
+  \clef bass
+               c'[ d fis aes,]
+               c1
+ }
+>>
+
+% 84. TRITONE: INFRAPOLATION OF ONE NOTE
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g, fis cis]
+  
+  \clef treble
+               c'[ g fis' cis']
+               c''[ g' fis'' cis'']
+               c'''[ cis'' fis'' g']
+               c''[ cis' fis' g]
+  \clef bass
+               c'[ cis fis g,]
+               c1
+ }
+>>
 
 %%% INFRAPOLATION OF TWO NOTES %%%
 
@@ -1172,7 +1181,105 @@
 
 %%% INFRAPOLATION OF THREE NOTES %%%
 
-% --- falta --- %
+% 94. TRITONE: INFRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, b, f,]
+               fis[ dis f b,]
+  
+  \clef treble
+               c'[ a b f]
+               fis'[ dis' f' b]
+               c''[ b f' dis']
+               fis'[ f b a]
+  \clef bass
+               c'[ b, f dis]
+               fis[ f, b, a,]
+               c1
+ }
+>>
+
+% 95. TRITONE: INFRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g, bes, e,]
+               fis[ cis e ais,]
+  
+  \clef treble
+               c'[ g bes e]
+               fis'[ cis' e' ais]
+               c''[ ais e' cis']
+               fis'[ e bes g]
+  \clef bass
+               c'[ ais, e cis]
+               fis[ e, bes, g,]
+               c1
+ }
+>>
+
+% 96. TRITONE: INFRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ges, aes, e,]
+               fis[ c d a,]
+  
+  \clef treble
+               c'[ ges aes e]
+               fis'[ c' d' a]
+               c''[ a d' c']
+               fis'[ e aes ges]
+  \clef bass
+               c'[ a, d c]
+               fis[ e, aes, ges,]
+               c1
+ }
+>>
+
+% 97. TRITONE: INFRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ gis, b, e,]
+               fis[ d f bes,]
+  
+  \clef treble
+               c'[ gis b e]
+               fis'[ d' f' bes]
+               c''[ bes f' d']
+               fis'[ e b gis]
+  \clef bass
+               c'[ bes, f d]
+               fis[ e, b, gis,]
+               c1
+ }
+>>
+
+% 98. TRITONE: INFRAPOLATION OF THREE NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ g, bes, ees,]
+               fis[ cis e a,]
+  
+  \clef treble
+               c'[ g bes ees]
+               fis'[ cis' e' a]
+               c''[ a e' cis']
+               fis'[ ees bes g]
+  \clef bass
+               c'[ a, e cis]
+               fis[ ees, bes, g,]
+               c1
+ }
+>>
 
 %%% INFRA-INTERPOLATION %%%
 
@@ -1938,9 +2045,805 @@
 
 %%% INFRA.INTER-ULTRAPOLATION %%%
 
-% --- falta --- %
+% 141. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, d g]
+  
+  \clef treble
+               fis[ f aes des']
+               c'[ b d' g']
+               fis'[ f' aes' des'']
+               c''[ des'' aes' f']
+               fis'[ g' d' b]
+               c'[ des' aes f]
+  \clef bass
+               fis[ g d b,]
+               c1
+ }
+>>
 
+% 142. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, d gis]
+  
+  \clef treble
+               fis[ f aes d']
+               c'[ b d' gis']
+               fis'[ f' aes' d'']
+               c''[ d'' aes' f']
+               fis'[ gis' d' b]
+               c'[ d' aes f]
+  \clef bass
+               fis[ gis d b,]
+               c1
+ }
+>>
 
+% 143. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, d a]
+  
+  \clef treble
+               fis[ f aes ees']
+               c'[ b d' a']
+               fis'[ f' aes' ees'']
+               c''[ ees'' aes' f']
+               fis'[ a' d' b]
+               c'[ ees' aes f]
+  \clef bass
+               fis[ a d b,]
+               c1
+ }
+>>
+
+% 144. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, d ais]
+  
+  \clef treble
+               fis[ f aes e']
+               c'[ b d' ais']
+               fis'[ f' aes' e'']
+               c''[ e'' aes' f']
+               fis'[ ais' d' b]
+               c'[ e' aes f]
+  \clef bass
+               fis[ ais d b,]
+               c1
+ }
+>>
+
+% 145. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, dis g]
+  
+  \clef treble
+               fis[ f a des']
+               c'[ b dis' g']
+               fis'[ f' a' des'']
+               c''[ des'' a' f']
+               fis'[ g' dis' b]
+               c'[ des' a f]
+  \clef bass
+               fis[ g dis b,]
+               c1
+ }
+>>
+
+% 146. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, dis gis]
+  
+  \clef treble
+               fis[ f a d']
+               c'[ b dis' gis']
+               fis'[ f' a' d'']
+               c''[ d'' a' f']
+               fis'[ gis' dis' b]
+               c'[ d' a f]
+  \clef bass
+               fis[ gis dis b,]
+               c1
+ }
+>>
+
+% 147. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, dis a]
+  
+  \clef treble
+               fis[ f a ees']
+               c'[ b dis' a']
+               fis'[ f' a' ees'']
+               c''[ ees'' a' f']
+               fis'[ a' dis' b]
+               c'[ ees' a f]
+  \clef bass
+               fis[ a dis b,]
+               c1
+ }
+>>
+
+% 148. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, dis ais]
+  
+  \clef treble
+               fis[ f a e']
+               c'[ b dis' ais']
+               fis'[ f' a' e'']
+               c''[ e'' a' f']
+               fis'[ ais' dis' b]
+               c'[ e' a f]
+  \clef bass
+               fis[ ais dis b,]
+               c1
+ }
+>>
+
+% 149. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, e g]
+  
+  \clef treble
+               fis[ f bes des']
+               c'[ b e' g']
+               fis'[ f' bes' des'']
+               c''[ des'' bes' f']
+               fis'[ g' e' b]
+               c'[ des' bes f]
+  \clef bass
+               fis[ g e b,]
+               c1
+ }
+>>
+
+% 150. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, e gis]
+  
+  \clef treble
+               fis[ f bes d']
+               c'[ b e' gis']
+               fis'[ f' bes' d'']
+               c''[ d'' bes' f']
+               fis'[ gis' e' b]
+               c'[ d' bes f]
+  \clef bass
+               fis[ gis e b,]
+               c1
+ }
+>>
+
+% 151. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, e a]
+  
+  \clef treble
+               fis[ f bes ees']
+               c'[ b e' a']
+               fis'[ f' bes' ees'']
+               c''[ ees'' bes' f']
+               fis'[ a' e' b]
+               c'[ ees' bes f]
+  \clef bass
+               fis[ a e b,]
+               c1
+ }
+>>
+
+% 152. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, e ais]
+  
+  \clef treble
+               fis[ f bes e']
+               c'[ b e' ais']
+               fis'[ f' bes' e'']
+               c''[ e'' bes' f']
+               fis'[ ais' e' b]
+               c'[ e' bes f]
+  \clef bass
+               fis[ ais e b,]
+               c1
+ }
+>>
+
+% 153. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, f g]
+  
+  \clef treble
+               fis[ f b cis']
+               c'[ b f' g']
+               fis'[ f' b' cis'']
+               c''[ cis'' b' f']
+               fis'[ g' f' b]
+               c'[ cis' b f]
+  \clef bass
+               fis[ g f b,]
+               c1
+ }
+>>
+
+% 154. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, f aes]
+  
+  \clef treble
+               fis[ f b d']
+               c'[ b f' aes']
+               fis'[ f' b' d'']
+               c''[ d'' b' f']
+               fis'[ aes' f' b]
+               c'[ d' b f]
+  \clef bass
+               fis[ aes f b,]
+               c1
+ }
+>>
+
+% 155. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, f a]
+  
+  \clef treble
+               fis[ f b ees']
+               c'[ b f' a']
+               fis'[ f' b' ees'']
+               c''[ ees'' b' f']
+               fis'[ a' f' b]
+               c'[ ees' b f]
+  \clef bass
+               fis[ a f b,]
+               c1
+ }
+>>
+
+% 156. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b, f ais]
+  
+  \clef treble
+               fis[ f b e']
+               c'[ b f' ais']
+               fis'[ f' b' e'']
+               c''[ e'' b' f']
+               fis'[ ais' f' b]
+               c'[ e' b f]
+  \clef bass
+               fis[ ais f b,]
+               c1
+ }
+>>
+
+% 157. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, des g]
+  
+  \clef treble
+               fis[ e g des']
+               c'[ bes des' g']
+               fis'[ e' g' des'']
+               c''[ des'' g' e']
+               fis'[ g' des' bes]
+               c'[ des' g e]
+  \clef bass
+               fis[ g des bes,]
+               c1
+ }
+>>
+
+% 158. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, des aes]
+  
+  \clef treble
+               fis[ e g d']
+               c'[ bes des' aes']
+               fis'[ e' g' d'']
+               c''[ d'' g' e']
+               fis'[ aes' des' bes]
+               c'[ d' g e]
+  \clef bass
+               fis[ aes des bes,]
+               c1
+ }
+>>
+
+% 159. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, des a]
+  
+  \clef treble
+               fis[ e g ees']
+               c'[ bes des' a']
+               fis'[ e' g' ees'']
+               c''[ ees'' g' e']
+               fis'[ a' des' bes]
+               c'[ ees' g e]
+  \clef bass
+               fis[ a des bes,]
+               c1
+ }
+>>
+
+% 160. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, d g]
+  
+  \clef treble
+               fis[ e gis cis']
+               c'[ bes d' g']
+               fis'[ e' gis' cis'']
+               c''[ cis'' gis' e']
+               fis'[ g' d' bes]
+               c'[ cis' gis e]
+  \clef bass
+               fis[ g d bes,]
+               c1
+ }
+>>
+
+% 161. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, d gis]
+  
+  \clef treble
+               fis[ e gis d']
+               c'[ bes d' gis']
+               fis'[ e' gis' d'']
+               c''[ d'' gis' e']
+               fis'[ gis' d' bes]
+               c'[ d' gis e]
+  \clef bass
+               fis[ gis d bes,]
+               c1
+ }
+>>
+
+% 162. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, d a]
+  
+  \clef treble
+               fis[ e gis dis']
+               c'[ bes d' a']
+               fis'[ e' gis' dis'']
+               c''[ dis'' gis' e']
+               fis'[ a' d' bes]
+               c'[ dis' gis e]
+  \clef bass
+               fis[ a d bes,]
+               c1
+ }
+>>
+
+% 163. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, ees g]
+  
+  \clef treble
+               fis[ e a cis']
+               c'[ bes ees' g']
+               fis'[ e' a' cis'']
+               c''[ cis'' a' e']
+               fis'[ g' ees' bes]
+               c'[ cis' a e]
+  \clef bass
+               fis[ g ees bes,]
+               c1
+ }
+>>
+
+% 164. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, ees aes]
+  
+  \clef treble
+               fis[ e a d']
+               c'[ bes ees' aes']
+               fis'[ e' a' d'']
+               c''[ d'' a' e']
+               fis'[ aes' ees' bes]
+               c'[ d' a e]
+  \clef bass
+               fis[ aes ees bes,]
+               c1
+ }
+>>
+
+% 165. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, ees a]
+  
+  \clef treble
+               fis[ e a ees']
+               c'[ bes ees' a']
+               fis'[ e' a' ees'']
+               c''[ ees'' a' e']
+               fis'[ a' ees' bes]
+               c'[ ees' a e]
+  \clef bass
+               fis[ a ees bes,]
+               c1
+ }
+>>
+
+% 166. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, e g]
+  
+  \clef treble
+               fis[ e bes des']
+               c'[ bes e' g']
+               fis'[ e' bes' des'']
+               c''[ des'' bes' e']
+               fis'[ g' e' bes]
+               c'[ des' bes e]
+  \clef bass
+               fis[ g e bes,]
+               c1
+ }
+>>
+
+% 167. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, e gis]
+  
+  \clef treble
+               fis[ e bes d']
+               c'[ bes e' gis']
+               fis'[ e' bes' d'']
+               c''[ d'' bes' e']
+               fis'[ gis' e' bes]
+               c'[ d' bes e]
+  \clef bass
+               fis[ gis e bes,]
+               c1
+ }
+>>
+
+% 168. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, e a]
+  
+  \clef treble
+               fis[ e bes ees']
+               c'[ bes e' a']
+               fis'[ e' bes' ees'']
+               c''[ ees'' bes' e']
+               fis'[ a' e' bes]
+               c'[ ees' bes e]
+  \clef bass
+               fis[ a e bes,]
+               c1
+ }
+>>
+
+% 169. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, f g]
+  
+  \clef treble
+               fis[ e b cis']
+               c'[ bes f' g']
+               fis'[ e' b' cis'']
+               c''[ cis'' b' e']
+               fis'[ g' f' bes]
+               c'[ cis' b e]
+  \clef bass
+               fis[ g f bes,]
+               c1
+ }
+>>
+
+% 170. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, f aes]
+  
+  \clef treble
+               fis[ e b d']
+               c'[ bes f' aes']
+               fis'[ e' b' d'']
+               c''[ d'' b' e']
+               fis'[ aes' f' bes]
+               c'[ d' b e]
+  \clef bass
+               fis[ aes f bes,]
+               c1
+ }
+>>
+
+% 171. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes, f a]
+  
+  \clef treble
+               fis[ e b dis']
+               c'[ bes f' a']
+               fis'[ e' b' dis'']
+               c''[ dis'' b' e']
+               fis'[ a' f' bes]
+               c'[ dis' b e]
+  \clef bass
+               fis[ a f bes,]
+               c1
+ }
+>>
+
+% 172. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, cis g]
+  
+  \clef treble
+               fis[ ees g des']
+               c'[ a cis' g']
+               fis'[ ees' g' des'']
+               c''[ des'' g' ees']
+               fis'[ g' cis' a]
+               c'[ des' g ees]
+  \clef bass
+               fis[ g cis a,]
+               c1
+ }
+>>
+
+% 173. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, cis gis]
+  
+  \clef treble
+               fis[ ees g d']
+               c'[ a cis' gis']
+               fis'[ ees' g' d'']
+               c''[ d'' g' ees']
+               fis'[ gis' cis' a]
+               c'[ d' g ees]
+  \clef bass
+               fis[ gis cis a,]
+               c1
+ }
+>>
+
+% 174. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, d g]
+  
+  \clef treble
+               fis[ ees aes des']
+               c'[ a d' g']
+               fis'[ ees' aes' des'']
+               c''[ des'' aes' ees']
+               fis'[ g' d' a]
+               c'[ des' aes ees]
+  \clef bass
+               fis[ g d a,]
+               c1
+ }
+>>
+
+% 175. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, d gis]
+  
+  \clef treble
+               fis[ ees aes d']
+               c'[ a d' gis']
+               fis'[ ees' aes' d'']
+               c''[ d'' aes' ees']
+               fis'[ gis' d' a]
+               c'[ d' aes ees]
+  \clef bass
+               fis[ gis d a,]
+               c1
+ }
+>>
+
+% 176. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, ees g]
+  
+  \clef treble
+               fis[ ees a des']
+               c'[ a ees' g']
+               fis'[ ees' a' des'']
+               c''[ des'' a' ees']
+               fis'[ g' ees' a]
+               c'[ des' a ees]
+  \clef bass
+               fis[ g ees a,]
+               c1
+ }
+>>
+
+% 177. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, ees aes]
+  
+  \clef treble
+               fis[ ees a d']
+               c'[ a ees' aes']
+               fis'[ ees' a' d'']
+               c''[ d'' a' ees']
+               fis'[ aes' ees' a]
+               c'[ d' a ees]
+  \clef bass
+               fis[ aes ees a,]
+               c1
+ }
+>>
+
+% 178. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, e g]
+  
+  \clef treble
+               fis[ ees bes des']
+               c'[ a e' g']
+               fis'[ ees' bes' des'']
+               c''[ des'' bes' ees']
+               fis'[ g' e' a]
+               c'[ des' bes ees]
+  \clef bass
+               fis[ g e a,]
+               c1
+ }
+>>
+
+% 179. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, e gis]
+  
+  \clef treble
+               fis[ ees bes d']
+               c'[ a e' gis']
+               fis'[ ees' bes' d'']
+               c''[ d'' bes' ees']
+               fis'[ gis' e' a]
+               c'[ d' bes ees]
+  \clef bass
+               fis[ gis e a,]
+               c1
+ }
+>>
+
+% 180. TRITONE: INFRA-INTER-ULTRAPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a, f aes]
+  
+  \clef treble
+               fis[ dis b d']
+               c'[ a f' aes']
+               fis'[ dis' b' d'']
+               c''[ d'' b' dis']
+               fis'[ aes' f' a]
+               c'[ d' b dis]
+  \clef bass
+               fis[ aes f a,]
+               c1
+ }
+>>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% DITONE PROGRESSION %%%%%
@@ -4071,7 +4974,7 @@
 
 %%% INTERPOLATION OF TWO NOTES %%%
 
-% 664. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 664. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4089,7 +4992,7 @@
  }
 >>
 
-% 665. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 665. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4107,7 +5010,7 @@
  }
 >>
 
-% 666. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 666. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4125,7 +5028,7 @@
  }
 >>
 
-% 667. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 667. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4143,7 +5046,7 @@
  }
 >>
 
-% 668. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 668. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4162,7 +5065,7 @@
 >>
 
 
-% 669. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 669. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4180,7 +5083,7 @@
  }
 >>
 
-% 670. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 670. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4198,7 +5101,7 @@
  }
 >>
 
-% 671. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 671. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4216,7 +5119,7 @@
  }
 >>
 
-% 672. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 672. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4235,7 +5138,7 @@
 >>
 
 
-% 673. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 673. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4253,7 +5156,7 @@
  }
 >>
 
-% 674. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 674. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4271,7 +5174,7 @@
  }
 >>
 
-% 675. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 675. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4289,7 +5192,7 @@
  }
 >>
 
-% 676. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 676. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4307,7 +5210,7 @@
  }
 >>
 
-% 677. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 677. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4325,7 +5228,7 @@
  }
 >>
 
-% 678. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 678. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4343,7 +5246,7 @@
  }
 >>
 
-% 679. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 679. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4361,7 +5264,7 @@
  }
 >>
 
-% 680. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 680. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4379,7 +5282,7 @@
  }
 >>
 
-% 681. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 681. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4397,7 +5300,7 @@
  }
 >>
 
-% 682. QUADRITONE: INTERPOLATION OF TWO NOTES
+% 682. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4434,7 +5337,7 @@
 
 %%% INTER-INFRAPOLATION %%%
 
-% 724. QUADRITONE: INTER-INFRAPOLATION
+% 724. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4452,7 +5355,7 @@
  }
 >>
 
-% 725. QUADRITONE: INTER-INFRAPOLATION
+% 725. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4470,7 +5373,7 @@
  }
 >>
 
-% 726. QUADRITONE: INTER-INFRAPOLATION
+% 726. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {
@@ -4488,7 +5391,7 @@
  }
 >>
 
-% 727. QUADRITONE: INTER-INFRAPOLATION
+% 727. DITONE: INTERPOLATION OF TWO NOTES
 \new PianoStaff <<
 \cadenzaOn
   \new Staff = "right" {

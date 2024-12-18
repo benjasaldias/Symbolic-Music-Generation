@@ -24,17 +24,17 @@ model.eval()
 def calculate_symmetry(matrix):
     # Convertir a numpy para facilitar el cálculo
     matrix = matrix.cpu().numpy()
-
-    # Definir la fila central
-    central_row = matrix[18]
-
-    # Calcular la distancia promedio entre filas simétricas
-    num_rows = matrix.shape[0]
     symmetry_score = 0
 
     for i in range(18):  # Comparar filas simétricas respecto a la fila central
-        top_row = matrix[18 - i - 1]
-        bottom_row = matrix[18 + i + 1]
+        last_row = len(matrix)
+        print(last_row)
+        for row in range(len(matrix)):
+            if np.all(np.max(matrix, axis=1) < 1):
+                last_row = row - 1
+        scale_half = (last_row - 1) // 2
+        top_row = matrix[scale_half - i - 1]
+        bottom_row = matrix[scale_half + i + 1]
         
         # Distancia absoluta promedio entre las filas opuestas
         symmetry_score += np.abs(top_row - bottom_row).mean()
@@ -74,7 +74,7 @@ def calculate_metrics(original, generated, mu, logvar, dataset):
     # Diff (0 si pertenece al dataset, 1 si no)
     diff = 1  # Por defecto, asumimos que no pertenece
     for data in dataset:
-        if torch.equal(data.view(37, 106), generated):
+        if torch.equal(data.view(u.NUM_ROWS, u.NOTE_RANGE), generated):
             diff = 0
             break
     metrics['Diff'] = diff
@@ -82,33 +82,34 @@ def calculate_metrics(original, generated, mu, logvar, dataset):
     return metrics
 
 # Generar muestras y calcular métricas
-def evaluate_model(dataset, model, num_samples=200):
+def evaluate_model(dataset, model, num_samples=1000):
     print('This may take a few minutes...')
     all_metrics = []
     for i in range(BATCH_SIZE):
         # Seleccionar muestra aleatoria del dataset
         original = dataset[i].to(DEVICE).unsqueeze(0)
+        mu, logvar = model.encode(original)
 
         # Codificar y decodificar la muestra
         reconstructed_matrixes = []
         binary_generated_list = []
         for _ in range(num_samples):
-            with torch.no_grad():
-                mu, logvar = model.encode(original)
+            with torch.no_grad(): 
                 z_reparametrized = torch.randn(1, Z_DIM).to(DEVICE)
-                reconstructed = model.decode(z_reparametrized).view(37, 106)
+                reconstructed = model.decode(z_reparametrized).view(u.NUM_ROWS, u.NOTE_RANGE)
                 reconstructed_matrixes.append(reconstructed)
 
+            binary_generated = u.get_binary(reconstructed)
+
             # Convertir a binario para formato piano roll
-            binary_generated = (reconstructed > 0.5).float()
             binary_generated = torch.tensor(binary_generated.reshape(-1), dtype=torch.float32)
-            binary_generated = binary_generated.view(37, 106)
+            binary_generated = binary_generated.view(u.NUM_ROWS, u.NOTE_RANGE)
             binary_generated_list.append(binary_generated)
 
 
         # Calcular métricas para esta muestra
         for matrix in binary_generated_list:
-            metrics = calculate_metrics(original.view(37, 106), matrix, mu, logvar, dataset)
+            metrics = calculate_metrics(original.view(u.NUM_ROWS, u.NOTE_RANGE), matrix, mu, logvar, dataset)
             all_metrics.append(metrics)
             
         # Visualizar la generación
