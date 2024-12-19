@@ -2,6 +2,8 @@ import torch
 import numpy
 
 ### DATA ###
+
+# training
 INPUT_DIM = 3922
 NUM_ROWS = 37
 NOTE_RANGE = 106
@@ -27,10 +29,15 @@ Z_DIM = 16
 BATCH_SIZE = 32
 NUM_EPOCHS = 2000
 LR_RATE = 3e-4
-
-# training
 ALPHA = 1
 BETA = 0.5
+
+# interpolation
+
+# 2d interpolation
+GRID_SIZE = 5
+
+
 
 def get_binary(reconstructed):
     # Crear una matriz de ceros del mismo tamaño

@@ -13,7 +13,7 @@ import Model.model as m
 sys.path.append('../../')
 from dataset import matrix2lilypond
 
-GRID_SIZE = 5  # Tamaño de la cuadrícula
+GRID_SIZE = u.GRID_SIZE  # Tamaño de la cuadrícula
 Z_DIM = u.Z_DIM  # Dimensión del espacio latente
 
 DEVICE = "cpu"

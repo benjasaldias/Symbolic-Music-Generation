@@ -173,7 +173,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
 
         output_matrix = binary_output.view(37, 106).cpu().numpy()
 
-        lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
+        lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, i)
 
         with open('interpolation.ly', 'a') as f:  
             if lilypond_output not in written:
@@ -308,97 +308,3 @@ def run_multiple(visualize, interpolation_type):
 
 interpolate(model, visualize=True, interpolation_type='slerp')
 # run_multiple(visualize=True, interpolation_type='slerp')
-
-
-
-
-
-
-
-# def visualize_latent_space_with_interpolation(latent_points, z_dim):
-#     """
-#     Visualiza el espacio latente en 2D y permite seleccionar puntos para interpolación.
-
-#     Args:
-#         latent_points: array (N x Z_DIM) de puntos latentes
-#         z_dim: Dimensión del espacio latente
-#     """
-#     assert z_dim >= 2, "El espacio latente debe tener al menos dos dimensiones para visualizarlo en 2D."
-
-#     # Reducir a 2D si es necesario
-#     if z_dim > 2:
-#         from sklearn.decomposition import PCA
-#         pca = PCA(n_components=2)
-#         reduced_points = pca.fit_transform(latent_points)
-#     else:
-#         reduced_points = latent_points[:, :2]
-
-#     # Configurar la figura
-#     fig, ax = plt.subplots()
-#     ax.scatter(reduced_points[:, 0], reduced_points[:, 1], color='blue', label="Dataset Points")
-#     ax.set_title("Latent Space Visualization")
-#     ax.set_xlabel("Dimension 1")
-#     ax.set_ylabel("Dimension 2")
-#     ax.legend()
-
-#     # Lista para almacenar los puntos seleccionados
-#     selected_points = []
-
-#     def on_click(event):
-#         nonlocal selected_points
-
-#         if event.inaxes != ax:
-#             return
-
-#         # Coordenadas del clic
-#         x_click, y_click = event.xdata, event.ydata
-#         closest_idx = np.argmin(np.linalg.norm(reduced_points - np.array([x_click, y_click]), axis=1))
-#         selected_point = latent_points[closest_idx]
-
-#         # Agregar el punto seleccionado
-#         selected_points.append(selected_point)
-
-#         # Mostrar el punto seleccionado en el gráfico
-#         ax.scatter(reduced_points[closest_idx, 0], reduced_points[closest_idx, 1], color='red', label="Selected Point")
-#         fig.canvas.draw()
-
-#         if len(selected_points) == 2:
-#             # Realizar interpolación
-#             z1, z2 = selected_points
-#             interpolated_points = np.linspace(z1, z2, num=10)
-
-#             # Proyectar los puntos interpolados en 2D
-#             if z_dim > 2:
-#                 interpolated_points_2d = pca.transform(interpolated_points)
-#             else:
-#                 interpolated_points_2d = interpolated_points[:, :2]
-
-#             # Dibujar los puntos interpolados
-#             ax.scatter(interpolated_points_2d[:, 0], interpolated_points_2d[:, 1], color='green', label="Interpolated Points")
-#             fig.canvas.draw()
-
-#             # Reiniciar selección
-#             selected_points = []
-
-#     # Conectar el evento de clic
-#     cid = fig.canvas.mpl_connect('button_press_event', on_click)
-
-#     plt.show()
-
-# def run_visualization():
-#     # Generar y almacenar los puntos latentes de las partituras generadas
-#     input_data = atxt.torch_data  # Carga datos originales
-#     dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
-#     latent_points = []
-#     partituras_dataset = []
-#     for matrix in dataset:
-#         with torch.no_grad():
-#             # Asumimos que el primer valor de la tupla es el vector latente
-#             z, _ = model.encode(matrix.unsqueeze(0).to(DEVICE))  # Ahora desempaquetamos solo dos valores
-#         latent_points.append(z.cpu().numpy().flatten())
-#         partituras_dataset.append(f'Dataset {len(latent_points)}')
-
-#     # print(latent_points)
-#     visualize_latent_space_with_interpolation(latent_points=latent_points, z_dim=12)
-
-# run_visualization()
