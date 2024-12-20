@@ -13,8 +13,8 @@ import Model.model as m
 sys.path.append('../../')
 from dataset import matrix2lilypond
 
-GRID_SIZE = u.GRID_SIZE  # Grid size
-Z_DIM = u.Z_DIM  # Latent space dimension
+GRID_SIZE = u.GRID_SIZE
+Z_DIM = u.Z_DIM
 
 DEVICE = "cpu"
 
@@ -71,21 +71,8 @@ for i in range(GRID_SIZE):
             with torch.no_grad():
                 reconstructed_matrix = model.decode(vector)
 
-            # Reshape to (37, 106)
-            reconstructed_matrix = reconstructed_matrix.view(37, 106)
-
-            # Create a zero matrix of the same size
-            binary_output = torch.zeros_like(reconstructed_matrix)
-
-            # Get the index of the maximum value in each row
-            max_indices = torch.argmax(reconstructed_matrix, dim=1)
-
-            # Use the indices to place 1 at the maximum value in each row
-            binary_output[torch.arange(reconstructed_matrix.size(0)), max_indices] = 1
-
-            output_matrix = binary_output.view(37, 106).cpu().numpy()
-
-            lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
+            output_matrix = u.get_binary(reconstructed_matrix)
+            lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, [i, j])
             
             # Save score to file
             with open('results/interpolation_2d.ly', 'a') as f:

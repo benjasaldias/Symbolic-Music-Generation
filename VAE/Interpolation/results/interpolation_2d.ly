@@ -4,11 +4,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [0, 0]" }
     \clef treble
-        c16 [ cis b gis a dis' e' f' b' ]
-    c'' [ cis'' g'' gis'' a'' dis''' e''' f''' b''' ]
-    c'''' [ b''' f''' e''' dis''' a'' gis'' b' cis'' ]
-    c'' [ b' f' e' dis' a gis b cis ]
+    c16 [ d gis e cis ]
+    c' [ gis bes e' ]
+    c' [ ees'' gis' e' fis' ]
+    c'' [ gis' bes' e'' ]
+    c'' [ e'' bes' gis' ]
+    c'' [ fis' e' gis' ees'' ]
+    c' [ e' bes gis ]
+    c' [ cis e gis d ]
     c
     }
     >>
@@ -18,11 +23,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [0, 1]" }
     \clef treble
-        c16 [ cis b gis a dis' e' f' b' ]
-    c'' [ cis'' g'' gis'' a'' dis''' e''' f''' b''' ]
-    c'''' [ b''' f''' e''' dis''' a'' gis'' g'' cis'' ]
-    c'' [ b' f' e' dis' a gis b cis ]
+    c16 [ d gis e cis ]
+    c' [ gis bes e' ]
+    c' [ a gis' e' fis' ]
+    c'' [ gis' bes' e'' ]
+    c'' [ e'' bes' gis' ]
+    c'' [ fis' e' gis' a ]
+    c' [ e' bes gis ]
+    c' [ cis e gis d ]
     c
     }
     >>
@@ -32,11 +42,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [0, 2]" }
     \clef treble
-        c16 [ cis b gis a f' e' f' b' ]
-    c'' [ cis'' g'' gis'' a'' b'' e''' f''' b''' ]
-    c'''' [ b''' f''' e''' b'' a'' gis'' g'' cis'' ]
-    c'' [ b' f' e' f' a gis b cis ]
+    c16 [ cis gis e cis ]
+    c' [ gis bes e' ]
+    c' [ cis' gis' e' fis' ]
+    c'' [ gis' bes' e'' ]
+    c'' [ e'' bes' gis' ]
+    c'' [ fis' e' gis' cis' ]
+    c' [ e' bes gis ]
+    c' [ cis e gis cis ]
     c
     }
     >>
@@ -46,11 +61,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [0, 3]" }
     \clef treble
-        c16 [ cis b e a d' gis ees' b' ]
-    c'' [ g' a' e' ees'' b'' gis' g'' b''' ]
-    c'' [ b''' g'' gis' b'' ees'' e' a' g' ]
-    c'' [ b' ees' gis d' a e b cis ]
+    c16 [ cis gis e f ]
+    c' [ gis a e' ]
+    c' [ cis' gis' e' f' ]
+    c'' [ gis' a' e'' ]
+    c'' [ e'' a' gis' ]
+    c'' [ f' e' gis' cis' ]
+    c' [ e' a gis ]
+    c' [ f e gis cis ]
     c
     }
     >>
@@ -60,11 +80,14 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [0, 4]" }
     \clef treble
-        c16 [ f bes e a d' gis ees' b' ]
-    c' [ g' a' e' a' d'' gis' g'' b''' ]
-    c'' [ b''' g'' gis' d'' a' e' a' g' ]
-    c' [ b' ees' gis d' a e bes f ]
+    c16 [ cis gis e f bes gis a e' ]
+    c' [ cis' gis' e' f' ]
+    c'' [ gis' a' e'' ]
+    c'' [ d'' a' gis' ]
+    c'' [ f' e' gis' cis' ]
+    c' [ e' a gis bes f e gis cis ]
     c
     }
     >>
@@ -74,15 +97,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [1, 0]" }
     \clef treble
-        c16 [ ees b gis gis f' ]
-    c' [ ees' b' ]
-    c'' [ gis' f'' ]
-    c'' [ a'' b'' e''' gis'' f''' ]
-    c''' [ b''' gis'' e''' b'' a'' ]
-    c'' [ f'' gis' ]
-    c'' [ b' gis' ]
-    c' [ f' gis gis b ees ]
+    c16 [ a, gis e cis ]
+    c' [ gis bes e' ]
+    c' [ a gis' e' cis' ]
+    c'' [ gis' f' e'' ]
+    c'' [ e'' f' gis' ]
+    c'' [ cis' e' gis' a ]
+    c' [ e' bes gis ]
+    c' [ cis e gis a, ]
     c
     }
     >>
@@ -92,15 +116,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [1, 1]" }
     \clef treble
-        c16 [ ees b gis a f' ]
-    c' [ f' b' ]
-    c'' [ cis'' f'' ]
-    c'' [ a'' b'' e''' f''' b''' ]
-    c''' [ b''' f''' e''' b'' a'' ]
-    c'' [ f'' gis' ]
-    c'' [ b' f' ]
-    c' [ f' a gis b ees ]
+    c16 [ a, gis e cis ]
+    c' [ gis bes e' ]
+    c' [ a gis' e' cis' ]
+    c'' [ gis' f' e'' ]
+    c'' [ e'' f' gis' ]
+    c'' [ cis' e' gis' a ]
+    c' [ e' bes gis ]
+    c' [ cis e gis a, ]
     c
     }
     >>
@@ -110,11 +135,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [1, 2]" }
     \clef treble
-        c16 [ ees b e a f' e' ees' b' ]
-    c'' [ cis'' f'' gis'' a'' b'' e''' f''' b''' ]
-    c'''' [ b''' f''' e''' b'' a'' gis'' f'' cis'' ]
-    c'' [ b' ees' e' f' a gis b ees ]
+    c16 [ cis gis e f ]
+    c' [ gis bes e' ]
+    c' [ cis' gis' e' fis' ]
+    c'' [ gis' a' e'' ]
+    c'' [ e'' a' gis' ]
+    c'' [ fis' e' gis' cis' ]
+    c' [ e' bes gis ]
+    c' [ f e gis cis ]
     c
     }
     >>
@@ -124,11 +154,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [1, 3]" }
     \clef treble
-        c16 [ ees bes e a d' gis ees' b' ]
-    c' [ g' a' e' a'' cis'' gis' a' b''' ]
-    c'' [ b''' a' gis' cis'' a'' e' a' g' ]
-    c' [ b' ees' gis d' a e bes ees ]
+    c16 [ cis gis e f ]
+    c' [ gis a e' ]
+    c' [ cis' gis' e' f' ]
+    c'' [ gis' a' e'' ]
+    c'' [ e'' a' gis' ]
+    c'' [ f' e' gis' cis' ]
+    c' [ e' a gis ]
+    c' [ f e gis cis ]
     c
     }
     >>
@@ -138,11 +173,13 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [1, 4]" }
     \clef treble
-        c16 [ f bes e a d' gis a f' ]
-    c' [ g' bes' e' a' d'' gis' des'' f'' ]
-    c'' [ f'' des'' gis' d'' a' e' bes' g' ]
-    c' [ f' a gis d' a e bes f ]
+    c16 [ cis gis e f bes gis a e' ]
+    c' [ cis' gis' e' f' bes' gis' a' d'' ]
+    c'' [ d'' a' gis' ]
+    c'' [ f' e' gis' cis' ]
+    c' [ e' a gis bes f e gis cis ]
     c
     }
     >>
@@ -152,15 +189,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [2, 0]" }
     \clef treble
-        c16 [ ees e des' gis f' ]
-    c' [ ees' b' ]
-    c'' [ gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' ]
-    c'' [ b' ees' ]
-    c' [ f' gis des' e ees ]
+    c16 [ a, gis e cis ]
+    c' [ gis f e' ]
+    c' [ a gis' e' cis' ]
+    c'' [ gis' f' e'' ]
+    c'' [ e'' f' gis' ]
+    c'' [ cis' e' gis' a ]
+    c' [ e' f gis ]
+    c' [ cis e gis a, ]
     c
     }
     >>
@@ -170,15 +208,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [2, 1]" }
     \clef treble
-        c16 [ ees fis des' gis f' ]
-    c' [ ees' b' ]
-    c'' [ gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' ]
-    c'' [ b' ees' ]
-    c' [ f' gis des' fis ees ]
+    c16 [ cis gis e cis ]
+    c' [ gis f e' ]
+    c' [ a gis' e' cis' ]
+    c'' [ gis' f' e'' ]
+    c'' [ e'' f' gis' ]
+    c'' [ cis' e' gis' a ]
+    c' [ e' f gis ]
+    c' [ cis e gis cis ]
     c
     }
     >>
@@ -188,11 +227,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [2, 2]" }
     \clef treble
-        c16 [ ees fis e a f' gis ees' b' ]
-    c'' [ gis' f'' e' a'' b'' gis' gis'' f''' ]
-    c'' [ f''' gis'' gis' b'' a'' e' f'' gis' ]
-    c'' [ b' ees' gis f' a e fis ees ]
+    c16 [ cis gis e f ]
+    c' [ gis a e' ]
+    c' [ cis' gis' e' f' ]
+    c'' [ gis' a' e'' ]
+    c'' [ e'' a' gis' ]
+    c'' [ f' e' gis' cis' ]
+    c' [ e' a gis ]
+    c' [ f e gis cis ]
     c
     }
     >>
@@ -202,11 +246,14 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [2, 3]" }
     \clef treble
-        c16 [ des bes e a cis' gis a b' ]
-    c' [ gis' bes' e' a'' cis'' gis' a' f'' ]
-    c'' [ f'' a' gis' cis'' a'' e' bes' gis' ]
-    c' [ b' a gis cis' a e bes des ]
+    c16 [ cis gis e f des' gis a e' ]
+    c' [ cis' gis' e' f' ]
+    c'' [ gis' a' d'' ]
+    c'' [ d'' a' gis' ]
+    c'' [ f' e' gis' cis' ]
+    c' [ e' a gis des' f e gis cis ]
     c
     }
     >>
@@ -216,11 +263,12 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [2, 4]" }
     \clef treble
-        c16 [ des a e a cis' gis a f' ]
-    c' [ f' bes' e' f' cis'' gis' des'' f'' ]
-    c'' [ f'' des'' gis' cis'' f' e' bes' f' ]
-    c' [ f' a gis cis' a e a des ]
+    c16 [ cis a e f des' gis a f' ]
+    c' [ cis' a' e' f' des'' gis' a' f'' ]
+    c'' [ f'' a' gis' des'' f' e' a' cis' ]
+    c' [ f' a gis des' f e a cis ]
     c
     }
     >>
@@ -230,13 +278,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [3, 0]" }
     \clef treble
-        c16 [ ees e des' gis f' ]
-    c' [ ees' e' des'' gis' f'' ]
-    c'' [ ees'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' ees'' ]
-    c'' [ f'' gis' des'' e' ees' ]
-    c' [ f' gis des' e ees ]
+    c16 [ ees gis e g ]
+    c' [ gis b e' ]
+    c' [ ees' gis' e' g' ]
+    c'' [ gis' b' e'' ]
+    c'' [ e'' b' gis' ]
+    c'' [ g' e' gis' ees' ]
+    c' [ e' b gis ]
+    c' [ g e gis ees ]
     c
     }
     >>
@@ -246,13 +297,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [3, 1]" }
     \clef treble
-        c16 [ ees e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e ees ]
+    c16 [ ees gis e g ]
+    c' [ gis b e' ]
+    c' [ ees' a' e' g' ]
+    c'' [ gis' b' e'' ]
+    c'' [ e'' b' gis' ]
+    c'' [ g' e' gis' ees' ]
+    c' [ e' b gis ]
+    c' [ g e gis ees ]
     c
     }
     >>
@@ -262,11 +316,14 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [3, 2]" }
     \clef treble
-        c16 [ ees bes e gis f' gis a' b' ]
-    c' [ gis' f'' e' a'' e'' gis' gis'' f''' ]
-    c'' [ f''' gis'' gis' e'' a'' e' f'' gis' ]
-    c' [ b' a' gis f' gis e bes ees ]
+    c16 [ cis a e f des' gis e f' ]
+    c' [ cis' a' e' ]
+    c' [ g gis' e' f'' ]
+    c'' [ f'' e' gis' g ]
+    c' [ e' a' cis' ]
+    c' [ f' e gis g, f e a cis ]
     c
     }
     >>
@@ -276,11 +333,14 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [3, 3]" }
     \clef treble
-        c16 [ des bes e fis cis' gis bes fis' ]
-    c' [ gis' bes' e' fis' cis'' gis' bes' fis'' ]
-    c'' [ fis'' bes' gis' cis'' fis' e' bes' d' ]
-    c' [ fis' bes gis cis' fis e bes des ]
+    c16 [ cis a e f des' gis a f' ]
+    c' [ cis' a' e' ]
+    c' [ des'' gis' e' f'' ]
+    c'' [ f'' e' gis' des'' ]
+    c' [ e' a' cis' ]
+    c' [ f' a gis des' f e a cis ]
     c
     }
     >>
@@ -290,11 +350,12 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [3, 4]" }
     \clef treble
-        c16 [ des a e bes cis' gis bes fis' ]
-    c' [ d' bes' e' bes' cis'' gis' bes' fis'' ]
-    c'' [ fis'' bes' gis' cis'' bes' e' bes' fis' ]
-    c' [ fis' bes gis cis' bes e a des ]
+    c16 [ cis a e f des' gis a f' ]
+    c' [ cis' a' e' f' des'' gis' a' f'' ]
+    c'' [ f'' a' gis' des'' f' e' a' cis' ]
+    c' [ f' a gis des' f e a cis ]
     c
     }
     >>
@@ -304,13 +365,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [4, 0]" }
     \clef treble
-        c16 [ ees e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ ees'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' ees'' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e ees ]
+    c16 [ ees aes e g ]
+    c' [ gis b e' ]
+    c' [ ees' aes' e' g' ]
+    c'' [ gis' b' e'' ]
+    c'' [ e'' b' gis' ]
+    c'' [ g' e' aes' ees' ]
+    c' [ e' b gis ]
+    c' [ g e aes ees ]
     c
     }
     >>
@@ -320,13 +384,12 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [4, 1]" }
     \clef treble
-        c16 [ ees e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ fis' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' fis' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e ees ]
+    c16 [ ees a e g des' gis b f' ]
+    c' [ ees' a' e' g' des'' gis' b' f'' ]
+    c'' [ f'' b' gis' des'' g' e' a' ees' ]
+    c' [ f' b gis des' g e a ees ]
     c
     }
     >>
@@ -336,11 +399,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [4, 2]" }
     \clef treble
-        c16 [ d bes e gis cis' gis bes fis' ]
-    c' [ gis' bes' e' fis' e'' gis' gis'' fis'' ]
-    c'' [ fis'' gis'' gis' e'' fis' e' bes' gis' ]
-    c' [ fis' bes gis d' gis e bes d ]
+    c16 [ aes, a e ]
+    c [ g, gis e f' ]
+    c' [ aes a' e' ]
+    c' [ g gis' e' f'' ]
+    c'' [ f'' e' gis' g ]
+    c' [ e' a' aes ]
+    c' [ f' e gis g, ]
+    c [ e a b, ]
     c
     }
     >>
@@ -350,11 +418,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [4, 3]" }
     \clef treble
-        c16 [ d bes e fis cis' gis bes fis' ]
-    c' [ d' bes' e' fis' d'' gis' bes' fis'' ]
-    c'' [ fis'' bes' gis' d'' fis' e' bes' d' ]
-    c' [ fis' bes gis cis' fis e bes d ]
+    c16 [ aes, a e ]
+    c [ g, gis e f' ]
+    c' [ aes a' e' ]
+    c' [ g gis' e' f'' ]
+    c'' [ f'' e' gis' g ]
+    c' [ e' a' aes ]
+    c' [ f' e gis g, ]
+    c [ e ees, b, ]
     c
     }
     >>
@@ -364,11 +437,16 @@
     \new PianoStaff <<
     \cadenzaOn
     \new Staff = "right" {
+    \mark \markup \column{ "Scale [4, 4]" }
     \clef treble
-        c16 [ d a e fis cis' gis bes fis' ]
-    c' [ d' bes' e' fis' cis'' gis' bes' fis'' ]
-    c'' [ fis'' bes' gis' cis'' fis' e' bes' d' ]
-    c' [ fis' bes gis cis' fis e a d ]
+    c16 [ gis a e ]
+    c [ g, gis e f' ]
+    c' [ aes a' e' ]
+    c' [ g gis' e' f'' ]
+    c'' [ f'' e' gis' g ]
+    c' [ e' a' aes ]
+    c' [ f' e gis g, ]
+    c [ e a cis ]
     c
     }
     >>
