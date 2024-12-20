@@ -9,24 +9,24 @@ from dataset import lilypond2matrix
 from scipy.stats import entropy
 from skimage.metrics import structural_similarity as ssim
 
-# Configuración
+# Data
 DEVICE = "cpu"
 INPUT_DIM = u.INPUT_DIM
 Z_DIM = u.Z_DIM
 BATCH_SIZE = u.BATCH_SIZE
+NUM_SAMPLES = 1000
 
-# Cargar el modelo
+# Load model
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
 model.load_state_dict(torch.load('vae.pth'))
 model.eval()
 
-# Métrica de simetría respecto a la fila central
+# Symmetry metric
 def calculate_symmetry(matrix):
-    # Convertir a numpy para facilitar el cálculo
     matrix = matrix.cpu().numpy()
     symmetry_score = 0
 
-    for i in range(18):  # Comparar filas simétricas respecto a la fila central
+    for i in range(18):
         last_row = len(matrix)
         print(last_row)
         for row in range(len(matrix)):
@@ -36,43 +36,39 @@ def calculate_symmetry(matrix):
         top_row = matrix[scale_half - i - 1]
         bottom_row = matrix[scale_half + i + 1]
         
-        # Distancia absoluta promedio entre las filas opuestas
+        # Average absolute distance between opposite rows
         symmetry_score += np.abs(top_row - bottom_row).mean()
 
-    # Promediar la distancia y tomar el inverso (simetría ideal = 1)
     symmetry_score = 1 - (symmetry_score / 18)
     return symmetry_score
 
 
-# Función para calcular métricas
 def calculate_metrics(original, generated, mu, logvar, dataset):
+    generated = u.get_binary(generated, numpy=False)
     metrics = {}
 
-    # Reconstrucción (MSE) - mide qué tan cerca está la salida generada del input
-    metrics['MSE'] = ((original - generated) ** 2).mean().item()
-
-    # Divergencia KL
+    # KL Divergence
     kl_divergence = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp()) 
     metrics['KL Divergence'] = kl_divergence.item()
 
-    # Sparseness (porcentaje de notas activas en la generación)
+    # Sparseness
     sparseness = torch.mean((generated > 0.5).float()).item()
     metrics['Sparseness'] = sparseness
 
-    # Pitch Coverage (cobertura de notas activas)
+    # Pitch Coverage
     pitch_coverage = torch.sum(torch.any(generated > 0.5, axis=0)).item() / generated.size(1)
     metrics['Pitch Coverage'] = pitch_coverage
 
-    # Rhythmic Diversity (diversidad rítmica)
+    # Rhythmic Diversity
     rhythmic_diversity = entropy(generated.sum(axis=0).cpu().numpy())
     metrics['Rhythmic Diversity'] = rhythmic_diversity
 
-    # Simetría respecto a la fila central
+    # Symmetry
     symmetry_score = calculate_symmetry(generated)
     metrics['Symmetry'] = symmetry_score
 
-    # Diff (0 si pertenece al dataset, 1 si no)
-    diff = 1  # Por defecto, asumimos que no pertenece
+    # Difference (0 if generated \in dataset, else 1)
+    diff = 1  
     for data in dataset:
         if torch.equal(data.view(u.NUM_ROWS, u.NOTE_RANGE), generated):
             diff = 0
@@ -81,16 +77,16 @@ def calculate_metrics(original, generated, mu, logvar, dataset):
 
     return metrics
 
-# Generar muestras y calcular métricas
+# Generate samples and run evaluation
 def evaluate_model(dataset, model, num_samples=1000):
     print('This may take a few minutes...')
     all_metrics = []
     for i in range(BATCH_SIZE):
-        # Seleccionar muestra aleatoria del dataset
+        # Random z vector sampling
         original = dataset[i].to(DEVICE).unsqueeze(0)
         mu, logvar = model.encode(original)
 
-        # Codificar y decodificar la muestra
+        # Code and decode samples
         reconstructed_matrixes = []
         binary_generated_list = []
         for _ in range(num_samples):
@@ -101,39 +97,24 @@ def evaluate_model(dataset, model, num_samples=1000):
 
             binary_generated = u.get_binary(reconstructed)
 
-            # Convertir a binario para formato piano roll
+            # Get binary piano roll format
             binary_generated = torch.tensor(binary_generated.reshape(-1), dtype=torch.float32)
             binary_generated = binary_generated.view(u.NUM_ROWS, u.NOTE_RANGE)
             binary_generated_list.append(binary_generated)
 
 
-        # Calcular métricas para esta muestra
+        # Calculate metrics
         for matrix in binary_generated_list:
             metrics = calculate_metrics(original.view(u.NUM_ROWS, u.NOTE_RANGE), matrix, mu, logvar, dataset)
             all_metrics.append(metrics)
-            
-        # Visualizar la generación
-        # plt.imshow(binary_generated.cpu().numpy(), cmap="gray")
-        # plt.title(f"Generación {i+1}")
-        # plt.show()
 
-    # Promediar métricas para todas las muestras
+    # Average metrics for all samples
     avg_metrics = {k: np.mean([m[k] for m in all_metrics]) for k in all_metrics[0]}
     print("Promedio de métricas:")
     for k, v in avg_metrics.items():
         print(f"{k}: {v:.4f}")
     return avg_metrics
 
-# Evaluar el modelo en un conjunto de datos
-input_data = lilypond2matrix.torch_data  # Carga datos originales
+input_data = lilypond2matrix.torch_data  # Load dataset
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
-average_metrics = evaluate_model(dataset, model, num_samples=100)
-
-# print(len(atxt.torch_data[189][0]))
-
-# Promedio de métricas:
-# MSE: 0.0117
-# KL Divergence: 5.9092
-# Sparseness: 0.0065
-# Pitch Coverage: 0.1229
-# Rhythmic Diversity: 3.1519
+average_metrics = evaluate_model(dataset, model, num_samples=NUM_SAMPLES)

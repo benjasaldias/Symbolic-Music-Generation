@@ -18,11 +18,7 @@ Z_DIM = u.Z_DIM
 NUM_EPOCHS = u.NUM_EPOCHS
 BATCH_SIZE = u.BATCH_SIZE
 LR_RATE = u.LR_RATE # Karpathy constant = 3e-4
-
-# Peso reconstruction loss
 ALPHA = u.ALPHA
-
-# Peso kl_div
 BETA = u.BETA
 
 # Dataset Loading
@@ -36,25 +32,19 @@ class CustomDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        # Asegúrate de que el formato sea adecuado para el modelo
-        matrix = self.data[idx].reshape(-1)  # Aplanar a un vector de rows*cols elementos
+        matrix = self.data[idx].reshape(-1)
         return torch.tensor(matrix, dtype=torch.float32)
 
-# Lista de matirces 
+# Matrixes list
 data_list = input_data
-
-# Convertir a un array de NumPy
 input_data = np.array(data_list)
-
-# Crear el dataset
 dataset = CustomDataset(input_data)
 
-# Crear el DataLoader
+# Create DataLoader
 train_loader = DataLoader(dataset=dataset, batch_size=BATCH_SIZE, shuffle=True)
 model = m.VariationalAutoEncoder(INPUT_DIM, H_DIM, Z_DIM).to(DEVICE)
 optimizer = torch.optim.Adam(model.parameters(), lr=LR_RATE)
-loss_fn = nn.BCELoss(reduction="sum") # puede ser MSELoss o AbsoluteError Loss. Probar
-
+loss_fn = nn.BCELoss(reduction="sum")
 scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=3e-4, max_lr=5e-4, step_size_up=2000, mode='triangular')
 
 # Start Training

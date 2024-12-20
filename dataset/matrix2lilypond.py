@@ -12,7 +12,7 @@ Example:
   1   0   0
 ]
 """
-def matrix_to_lilypond(matrix):
+def matrix_to_lilypond(matrix, number=None):
     lilypond_lines = []
     
     # note_range
@@ -86,14 +86,27 @@ def matrix_to_lilypond(matrix):
                 line.append(f"[ {' '.join(temp_group)} ]")
 
     # Include Lilypond syntax.
-    lilypond_text = """
-\\new PianoStaff <<
-\\cadenzaOn
-\\new Staff = "right" {
-\\clef treble
-""" + '    ' + '\n    '.join(lilypond_lines) + """
-}
->>
-"""
-    return lilypond_text
+    if number == None:
+        lilypond_text = """
+    \\new PianoStaff <<
+    \\cadenzaOn
+    \\new Staff = "right" {
+    \\clef treble
+    """ + '    ' + '\n    '.join(lilypond_lines) + """
+    }
+    >>
+    """
+        return lilypond_text
+    else:
+        lilypond_text = """
+    \\new PianoStaff <<
+    \\cadenzaOn
+    \\new Staff = "right" {
+    """ + "\mark \markup \column" + "{" +  f""" "Scale {number}" """ + "}" """
+    \\clef treble
+    """ + '\n    '.join(lilypond_lines) + """
+    }
+    >>
+    """
+        return lilypond_text    
 

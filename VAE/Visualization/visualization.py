@@ -4,7 +4,7 @@ import torch
 import plotly.express as px
 import numpy as np
 import pandas as pd
-from sklearn.decomposition import PCA  # Para reducir la dimensionalidad a 2D
+from sklearn.decomposition import PCA
 sys.path.append('../')
 import utils as u
 import Model.model as m
@@ -12,56 +12,57 @@ sys.path.append('../../')
 from dataset import matrix2lilypond
 
 # Configuration
-CANTIDAD_TESTS = 500  # Cambia a la cantidad de muestras deseadas
-Z_DIM = u.Z_DIM  # Dimensionalidad del espacio latente
+TEST_ITERATIONS = 500
+Z_DIM = u.Z_DIM
 
 DEVICE = "cpu"
 
-with open('partituras.ly', 'w') as f:
+# Get vae.pth path to load the trained model
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+vae_path = os.path.join(root_dir, "Model", "vae.pth")
+
+with open('scales.ly', 'w') as f:
     f.write('')
 
-# Cargar el modelo
-model = m.VariationalAutoEncoder(input_dim=3922)
-model.load_state_dict(torch.load('vae.pth'))
+# Load model
+model = m.VariationalAutoEncoder(input_dim=u.INPUT_DIM)
+model.load_state_dict(torch.load(vae_path))
 model.eval()
 
 latent_points = []
-partituras = []
+scales = []
 
-# Generar y almacenar los puntos latentes
-for i in range(CANTIDAD_TESTS):
-    # Generar un vector aleatorio en el espacio latente
+# Generate latent points
+for i in range(TEST_ITERATIONS):
+    # random z vector sampling
     z = torch.randn(1, Z_DIM).to(DEVICE)
 
     with torch.no_grad():
         reconstructed_matrix = model.decode(z)
 
-    binary_output = (reconstructed_matrix > 0.5).float()
-    output_matrix = binary_output.view(37, 106).cpu().numpy()
+    output_matrix = u.get_binary(reconstructed_matrix)
 
     lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
     print(lilypond_output)
 
-    with open('partituras.ly', 'a') as f:
-        f.write(f'\n%partitura{i}')
+    with open('scales.ly', 'a') as f:
+        f.write(f'\n%scale {i}')
         f.write(lilypond_output)
 
     latent_points.append(z.cpu().numpy().flatten())
-    partituras.append(f'Partitura {i}')
+    scales.append(f'scale {i}')
 
-# Convertir a un array numpy para graficar
 latent_points = np.array(latent_points)
 
-# Reducir la dimensionalidad a 2D con PCA
+# Get 2D representation with PCA
 pca = PCA(n_components=2)
 latent_points_2d = pca.fit_transform(latent_points)
 
-# Crear un DataFrame para Plotly
+# Create DataFrame for Plotly
 df = pd.DataFrame(latent_points_2d, columns=['z1', 'z2'])
-df['partitura'] = partituras
+df['partitura'] = scales
 
-# Graficar los puntos latentes en el plano 2D usando Plotly
-fig = px.scatter(df, x='z1', y='z2', text='partitura', title='Espacio Latente (2D)', labels={'z1': 'z1', 'z2': 'z2'})
+fig = px.scatter(df, x='z1', y='z2', text='partitura', title='Latent Space (2D)', labels={'z1': 'z1', 'z2': 'z2'})
 fig.update_traces(textposition='top center')
 fig.update_layout(hovermode='closest')
 fig.show()

@@ -125,20 +125,20 @@ def thesaurus_to_matrix(notes):
 
 def torcher(file: str):
     if file[-3:] != '.ly':
-        raise SyntaxError("El archivo debe terminar con .ly (archivo lilypond).") 
-    file_name = file  # Nombre de tu archivo LilyPond
+        raise SyntaxError("File must end with .ly (archivo lilypond).") 
+    file_name = file
     content = read_lilypond_sheet(file_name)
     notes = get_notes(content)
     file_matrixes = thesaurus_to_matrix(notes)
 
     np.set_printoptions(threshold=np.inf)
 
-    # Convierte cada matriz NumPy a un tensor PyTorch y apílalas en el batch
+    # Convert NumPy matrixes to Torch tensors and stack them
     torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in file_matrixes]) 
     torch_data = torch_data.float()
 
-    # Verifica el tamaño del tensor resultante
-    print(torch_data.shape)  # (batch_size, 1, max_length, note_range_length)
+    # Print shape for debugging
+    print(torch_data.shape)  # format: (scale_amount, 1, max_length, note_range_length)
     return torch_data
 
 if __name__ == '__main__':
@@ -147,7 +147,7 @@ if __name__ == '__main__':
     else: 
         torcher('thesaurus_data.ly')
 else:
-    # Obtener la ruta absoluta del directorio actual
+    # Get data file route
     current_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(current_dir, "thesaurus_data.ly")
 

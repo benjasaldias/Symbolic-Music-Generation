@@ -13,7 +13,7 @@ sys.path.append('../../')
 from dataset import matrix2lilypond
 from skimage.metrics import structural_similarity as ssim
 
-CANTIDAD_VECTORES = 10
+INTERPOLATION_STEPS = u.INTERPOLATION_STEPS
 Z_DIM = u.Z_DIM
 
 DEVICE = "cpu"
@@ -26,22 +26,6 @@ vae_path = os.path.join(root_dir, "Model", "vae.pth")
 with open('interpolation.ly', 'w') as f: 
     f.write('')
 
-def process_matrix(matrix):
-    matrix = matrix.view(37, 106)
-
-    # Crear una matriz de ceros del mismo tamaño
-    binary_output = torch.zeros_like(matrix)
-
-    # Obtener el índice del valor máximo en cada fila
-    max_indices = torch.argmax(matrix, dim=1)
-
-    # Usar los índices para colocar 1 en el valor máximo de cada fila
-    binary_output[torch.arange(matrix.size(0)), max_indices] = 1
-
-    output_matrix = binary_output.view(37, 106).cpu().numpy()
-
-    return output_matrix
-
 def calculate_lbp_similarity(matrix1, matrix2, radius=6, points=6):
     # Calculates LBP for matrix 1 and 2
     lbp1 = mahotas.features.lbp(matrix1, radius, points)
@@ -51,178 +35,112 @@ def calculate_lbp_similarity(matrix1, matrix2, radius=6, points=6):
     distance = euclidean(lbp1, lbp2)
     return distance
 
-# SLERP interpolation function
-def slerp(z1, z2, t):
-    # Check magnitude 0 
-    if z1.norm() == 0 or z2.norm() == 0:
-        raise ValueError("Cannot SLERP over vectors of magnitude 0.")
-    
-    # Normalize
-    z1 = z1 / z1.norm()
-    z2 = z2 / z2.norm()
-    
-    # Calculate cosine of angle between z1 and z2
-    dot_product = torch.sum(z1 * z2)
-    dot_product = torch.clamp(dot_product, -1.0, 1.0)
-    
-    # Calculate angle
-    theta = torch.acos(dot_product)
-    
-    # Calculate sine of angle
-    sin_theta = torch.sin(theta)
-    
-    # If sine close to 0, use linear interpolation
-    if torch.isclose(sin_theta, torch.tensor(0.0)):
-        return (1 - t) * z1 + t * z2
-    
-    # Calculate weights for SLERP interpolation
-    a = torch.sin((1 - t) * theta) / sin_theta
-    b = torch.sin(t * theta) / sin_theta
-    
-    # Return interpolated vector
-    return a * z1 + b * z2
-
-# Linear interpolation function
-def linear_interpolation(z1, z2, steps):
-    if steps < 2:
-        raise ValueError("Number of steps must be at least 2.")
-
-    # Generate interpolation weights
-    t_values = torch.linspace(0, 1, steps).to(z1.device)
-    
-    # Calculate interpolated vectors
-    interpolated_vectors = [(1 - t) * z1 + t * z2 for t in t_values]
-    
-    # Stack into a single tensor
-    return torch.stack(interpolated_vectors)
-
 # Load model
-model = m.VariationalAutoEncoder(input_dim=3922)
+model = m.VariationalAutoEncoder(input_dim=u.INPUT_DIM)
 model.load_state_dict(torch.load(vae_path))
 model.eval()
 
 def interpolate(model, visualize=False, interpolation_type='slerp'):
     latent_points = []
-    partituras = []
-    partituras_generated = []
-    partituras_original = []
+    scales = []
+    generated_scales = []
+    original_scales = []
     latent_points_interpolated = []
     latent_points_original_interp = []
-    # Obtener entrada de vectores z de Z_DIM dimensiones
-    # inp_z1 = input(f"Ingresa un vector de {Z_DIM} dimensiones (separado por espacios): ")
-    # inp_z2 = input(f"Ingresa otro vector de {Z_DIM} dimensiones (separado por espacios): ")
+    
+    # Get Z vectors input
+    inp_z1 = input(f"Ingresa un vector de {Z_DIM} dimensiones (separado por espacios): ")
+    inp_z2 = input(f"Ingresa otro vector de {Z_DIM} dimensiones (separado por espacios): ")
 
-    inp_z1 = 'random'
-    inp_z2 = 'random'
-
-    if inp_z1 == 'random':
+    if inp_z1 == 'random' or inp_z1 == '':
         z1 = torch.randn(1, Z_DIM).to(DEVICE) # Normal Distribution
     else:
         inp_z1 = inp_z1.split(' ')
         z1 = torch.tensor([float(x) for x in inp_z1]).to(DEVICE)
 
-    if inp_z2 == 'random':
+    if inp_z2 == 'random' or inp_z2 == '':
         z2 = torch.randn(1, Z_DIM).to(DEVICE) # Normal Distribution
     else:
         inp_z2 = inp_z2.split(' ')
         z2 = torch.tensor([float(x) for x in inp_z2]).to(DEVICE)
 
-    # Asegurarse de que el tamaño de los vectores coincida con Z_DIM
+    # Check if input vectors are in Z_DIM dimensions
     if z1.shape[1] != Z_DIM or z2.shape[1] != Z_DIM:
         raise ValueError(f"Ambos vectores deben tener exactamente {Z_DIM} dimensiones.")
 
-    # Generar puntos Slerp en todas las dimensiones
+    # Generate interpolation steps
     transition_vectors = []
-    for i in range(CANTIDAD_VECTORES):
-        t = i / (CANTIDAD_VECTORES - 1)  # Proporción entre 0 y 1
+    for i in range(INTERPOLATION_STEPS):
+        t = i / (INTERPOLATION_STEPS - 1)
         if interpolation_type == 'slerp':
-            z_point = slerp(z1, z2, t)
+            z_point = u.slerp(z1, z2, t)
             transition_vectors.append(z_point)
             
         elif interpolation_type == 'linear':
-            z_point = linear_interpolation(z1, z2, 10)
+            z_point = u.linear_interpolation(z1, z2, 10)
             transition_vectors = z_point
     if interpolation_type == 'slerp':
-        transition_vectors = torch.stack(transition_vectors)  # Apilar los vectores
+        transition_vectors = torch.stack(transition_vectors) # stack vectors
     original_transition_vectors = transition_vectors
     
 
-    print("Vectores de transición:")
+    print("Transition vectors:")
     print(transition_vectors)
     
     written = []
     counter = 0
     scale_number = 0
-    # Decodificar cada punto latente a matrices binarias
-    for i in range(CANTIDAD_VECTORES):
+    # Decode each latent point into a matrix
+    for i in range(INTERPOLATION_STEPS):
         z = transition_vectors[i]
         with torch.no_grad():
             reconstructed_matrix = model.decode(z) 
 
-        # Cambiar la forma a (37, 106)
-        reconstructed_matrix = reconstructed_matrix.view(37, 106)
-
-        # Crear una matriz de ceros del mismo tamaño
-        binary_output = torch.zeros_like(reconstructed_matrix)
-
-        # Obtener el índice del valor máximo en cada fila
-        max_indices = torch.argmax(reconstructed_matrix, dim=1)
-
-        # Usar los índices para colocar 1 en el valor máximo de cada fila
-        binary_output[torch.arange(reconstructed_matrix.size(0)), max_indices] = 1
-
-        output_matrix = binary_output.view(37, 106).cpu().numpy()
-
-        lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
+        output_matrix = u.get_binary(reconstructed_matrix)
+        lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, i)
 
         with open('interpolation.ly', 'a') as f:  
             if lilypond_output not in written:
                 f.write(f'\n%scale{scale_number}')
                 scale_number += 1
                 f.write(lilypond_output)
-                partituras_generated.append(lilypond_output)
-                partituras_original.append(lilypond_output)
+                generated_scales.append(lilypond_output)
+                original_scales.append(lilypond_output)
                 written.append(lilypond_output)
                 latent_points_interpolated.append(transition_vectors[i].cpu().numpy().flatten())
             else:
-                partituras_original.append(lilypond_output)
+                original_scales.append(lilypond_output)
                 latent_points_original_interp.append(original_transition_vectors[i].cpu().numpy().flatten())
-                # transition_vectors_list.pop(counter)
-                # transition_vectors = torch.stack(transition_vectors_list)
-                # skipped += 1
                 continue
             counter += 1
 
-        # Almacenar el punto latente y la partitura
+        # Store latent point and its score
         latent_points.append(z.cpu().numpy().flatten()) 
-        partituras.append(f'partitura {i}') 
+        scales.append(f'scale {i}') 
 
     if visualize == True:
-        # Convertir a un array numpy para graficar
         latent_points = np.array(latent_points)
 
-        # Crear un DataFrame para Plotly
+        # Create DataFrame for Plotly
         df = pd.DataFrame(latent_points, columns=[f'z{i+1}' for i in range(Z_DIM)])
 
-        # Extraer el número de cada partitura y cambiarlo a "score i"
-        df['partitura'] = [f'score {int(p.split()[-1])}' if 'partitura' in p else f'score {p}' for p in partituras]
+        # Extract each scale number as "i" and store it as "score {i}"
+        df['partitura'] = [f'score {int(p.split()[-1])}' if 'partitura' in p else f'score {p}' for p in scales]
 
-        # Graficar los puntos latentes en el plano 2D usando Plotly
         fig = px.scatter(
             df, x='z1', y='z2', text='partitura',
-            title='Espacio Latente (Slerp)', labels={'z1': 'z1', 'z2': 'z2'}
+            title='Latent Space (Slerp)', labels={'z1': 'z1', 'z2': 'z2'}
         )
         fig.update_traces(textposition='top center')
         fig.update_layout(hovermode='closest')
         fig.show()
 
 
-    # Calcular las métricas de evaluación
+    ### CALCULATE METRICS ###
     l2_regularities = []
     ssim_scores = []
     lbp_scores = []
 
-    # Evaluar similitudes y regularidad entre vectores consecutivos
     z_start = transition_vectors[0]
     z_finish = transition_vectors[len(transition_vectors) - 1]
     
@@ -240,8 +158,8 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         l2_regularities.append(l2_distance)
 
         # Process matrixes
-        output_matrix1 = process_matrix(matrix1)
-        output_matrix2 = process_matrix(matrix2)
+        output_matrix1 = u.get_binary(matrix1)
+        output_matrix2 = u.get_binary(matrix2)
 
         # Calculate SSIM and LBP per step
         ssim_score = ssim(output_matrix1, output_matrix2, data_range=1.0)
@@ -259,16 +177,16 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         l2_total_distance = torch.norm(matrix_start - matrix_finish).item()
 
     # SSIM and LBP start-finish
-    output_matrix_start = process_matrix(matrix_start)
-    output_matrix_finish = process_matrix(matrix_finish)
+    output_matrix_start = u.get_binary(matrix_start)
+    output_matrix_finish = u.get_binary(matrix_finish)
     ssim_score_s_f = ssim(output_matrix_start, output_matrix_finish, data_range=1.0)
     lbp_score_s_f = calculate_lbp_similarity(output_matrix_start, output_matrix_finish)
 
-    # Calcular promedios
+    # Get l2 regularity mean
     average_l2_regularity = np.mean(l2_regularities)
     average_l2_regularity = np.divide(average_l2_regularity, l2_total_distance)
 
-    # Imprimir métricas
+    # Print metrics
     print("\nInterpolation Metrics:")
     print("\n #### L2 Regularity ### \n")
     print(f"- Average L2 Regularity: {average_l2_regularity:.4f}")
@@ -288,18 +206,18 @@ def run_multiple(visualize, interpolation_type):
     s_f_total_ssim = 0
     total_lbp = 0
     s_f_total_lbp = 0
-    CANTIDAD = 10
-    for _ in range(CANTIDAD):
+    QUANTITY = 10
+    for _ in range(QUANTITY):
         result = interpolate(model, visualize=visualize, interpolation_type=interpolation_type)
         total_ssim += result[0]
         s_f_total_ssim += result[1]
         total_lbp += result[2]
         s_f_total_lbp += result[3]
 
-    total_average_ssim = total_ssim/CANTIDAD
-    s_f_average_ssim = s_f_total_ssim/CANTIDAD
-    total_average_lbp = total_lbp/CANTIDAD
-    s_f_average_lbp = s_f_total_lbp/CANTIDAD
+    total_average_ssim = total_ssim/QUANTITY
+    s_f_average_ssim = s_f_total_ssim/QUANTITY
+    total_average_lbp = total_lbp/QUANTITY
+    s_f_average_lbp = s_f_total_lbp/QUANTITY
 
     print(f'\n\nAverage SSIM per step: {total_average_ssim}')
     print(f'Average start-finish SSIM: {s_f_average_ssim}')
@@ -308,97 +226,3 @@ def run_multiple(visualize, interpolation_type):
 
 interpolate(model, visualize=True, interpolation_type='slerp')
 # run_multiple(visualize=True, interpolation_type='slerp')
-
-
-
-
-
-
-
-# def visualize_latent_space_with_interpolation(latent_points, z_dim):
-#     """
-#     Visualiza el espacio latente en 2D y permite seleccionar puntos para interpolación.
-
-#     Args:
-#         latent_points: array (N x Z_DIM) de puntos latentes
-#         z_dim: Dimensión del espacio latente
-#     """
-#     assert z_dim >= 2, "El espacio latente debe tener al menos dos dimensiones para visualizarlo en 2D."
-
-#     # Reducir a 2D si es necesario
-#     if z_dim > 2:
-#         from sklearn.decomposition import PCA
-#         pca = PCA(n_components=2)
-#         reduced_points = pca.fit_transform(latent_points)
-#     else:
-#         reduced_points = latent_points[:, :2]
-
-#     # Configurar la figura
-#     fig, ax = plt.subplots()
-#     ax.scatter(reduced_points[:, 0], reduced_points[:, 1], color='blue', label="Dataset Points")
-#     ax.set_title("Latent Space Visualization")
-#     ax.set_xlabel("Dimension 1")
-#     ax.set_ylabel("Dimension 2")
-#     ax.legend()
-
-#     # Lista para almacenar los puntos seleccionados
-#     selected_points = []
-
-#     def on_click(event):
-#         nonlocal selected_points
-
-#         if event.inaxes != ax:
-#             return
-
-#         # Coordenadas del clic
-#         x_click, y_click = event.xdata, event.ydata
-#         closest_idx = np.argmin(np.linalg.norm(reduced_points - np.array([x_click, y_click]), axis=1))
-#         selected_point = latent_points[closest_idx]
-
-#         # Agregar el punto seleccionado
-#         selected_points.append(selected_point)
-
-#         # Mostrar el punto seleccionado en el gráfico
-#         ax.scatter(reduced_points[closest_idx, 0], reduced_points[closest_idx, 1], color='red', label="Selected Point")
-#         fig.canvas.draw()
-
-#         if len(selected_points) == 2:
-#             # Realizar interpolación
-#             z1, z2 = selected_points
-#             interpolated_points = np.linspace(z1, z2, num=10)
-
-#             # Proyectar los puntos interpolados en 2D
-#             if z_dim > 2:
-#                 interpolated_points_2d = pca.transform(interpolated_points)
-#             else:
-#                 interpolated_points_2d = interpolated_points[:, :2]
-
-#             # Dibujar los puntos interpolados
-#             ax.scatter(interpolated_points_2d[:, 0], interpolated_points_2d[:, 1], color='green', label="Interpolated Points")
-#             fig.canvas.draw()
-
-#             # Reiniciar selección
-#             selected_points = []
-
-#     # Conectar el evento de clic
-#     cid = fig.canvas.mpl_connect('button_press_event', on_click)
-
-#     plt.show()
-
-# def run_visualization():
-#     # Generar y almacenar los puntos latentes de las partituras generadas
-#     input_data = atxt.torch_data  # Carga datos originales
-#     dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
-#     latent_points = []
-#     partituras_dataset = []
-#     for matrix in dataset:
-#         with torch.no_grad():
-#             # Asumimos que el primer valor de la tupla es el vector latente
-#             z, _ = model.encode(matrix.unsqueeze(0).to(DEVICE))  # Ahora desempaquetamos solo dos valores
-#         latent_points.append(z.cpu().numpy().flatten())
-#         partituras_dataset.append(f'Dataset {len(latent_points)}')
-
-#     # print(latent_points)
-#     visualize_latent_space_with_interpolation(latent_points=latent_points, z_dim=12)
-
-# run_visualization()
