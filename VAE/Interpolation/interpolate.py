@@ -23,7 +23,7 @@ root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 vae_path = os.path.join(root_dir, "Model", "vae.pth")
 
 # Empty the output lilypond file
-with open('interpolation.ly', 'w') as f: 
+with open('results/interpolation.ly', 'w') as f: 
     f.write('')
 
 def calculate_lbp_similarity(matrix1, matrix2, radius=6, points=6):
@@ -49,8 +49,8 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
     latent_points_original_interp = []
     
     # Get Z vectors input
-    inp_z1 = input(f"Ingresa un vector de {Z_DIM} dimensiones (separado por espacios): ")
-    inp_z2 = input(f"Ingresa otro vector de {Z_DIM} dimensiones (separado por espacios): ")
+    inp_z1 = input(f"Input your first vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
+    inp_z2 = input(f"Input your second vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
 
     if inp_z1 == 'random' or inp_z1 == '':
         z1 = torch.randn(1, Z_DIM).to(DEVICE) # Normal Distribution
@@ -66,7 +66,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
 
     # Check if input vectors are in Z_DIM dimensions
     if z1.shape[1] != Z_DIM or z2.shape[1] != Z_DIM:
-        raise ValueError(f"Ambos vectores deben tener exactamente {Z_DIM} dimensiones.")
+        raise ValueError(f"Both vectors must be of {Z_DIM} dimensions.")
 
     # Generate interpolation steps
     transition_vectors = []
@@ -84,8 +84,8 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
     original_transition_vectors = transition_vectors
     
 
-    print("Transition vectors:")
-    print(transition_vectors)
+    # print("Transition vectors:")
+    # print(transition_vectors)
     
     written = []
     counter = 0
@@ -99,7 +99,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         output_matrix = u.get_binary(reconstructed_matrix)
         lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, i)
 
-        with open('interpolation.ly', 'a') as f:  
+        with open('results/interpolation.ly', 'a') as f:  
             if lilypond_output not in written:
                 f.write(f'\n%scale{scale_number}')
                 scale_number += 1
@@ -117,7 +117,8 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         # Store latent point and its score
         latent_points.append(z.cpu().numpy().flatten()) 
         scales.append(f'scale {i}') 
-
+    print('LilyPond file saved in the Interpolation/results folder.')
+    
     if visualize == True:
         latent_points = np.array(latent_points)
 

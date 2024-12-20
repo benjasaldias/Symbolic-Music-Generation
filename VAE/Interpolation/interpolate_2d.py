@@ -18,7 +18,7 @@ Z_DIM = u.Z_DIM  # Latent space dimension
 
 DEVICE = "cpu"
 
-with open('interpolation_2d.ly', 'w') as f:
+with open('results/interpolation_2d.ly', 'w') as f:
     f.write(f'')
 
 # Get vae.pth path to load the trained model
@@ -35,7 +35,7 @@ def interpolate_2d(z1, z2, z3, z4, grid_size=GRID_SIZE):
         z_point = u.linear_interpolation(z_top[i], z_bottom[i], GRID_SIZE)  # Interpolate between results
         row.append(z_point)
     grid.append(torch.stack(row))
-    print(grid[0].shape)
+    # print(grid[0].shape)
     return torch.stack(grid)
 
 # Load the model
@@ -63,7 +63,7 @@ transition_vectors = interpolate_2d(z1, z2, z3, z4, grid_size=GRID_SIZE)
 latent_points = []
 scales = []
 
-print(f'transition vectors shape: {transition_vectors.shape}')
+# print(f'transition vectors shape: {transition_vectors.shape}')
 for i in range(GRID_SIZE):
     for j in range(GRID_SIZE):
         z = transition_vectors[0, i, j]
@@ -88,7 +88,7 @@ for i in range(GRID_SIZE):
             lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)
             
             # Save score to file
-            with open('interpolation_2d.ly', 'a') as f:
+            with open('results/interpolation_2d.ly', 'a') as f:
                 f.write(f'\n% Score {i}_{j}\n')
                 f.write(lilypond_output)
 
@@ -104,7 +104,7 @@ if not latent_points:
 latent_points = np.array(latent_points)
 
 # Debugging: Check shape of latent points
-print(f"Latent points shape: {latent_points.shape}")
+# print(f"Latent points shape: {latent_points.shape}")
 
 # Perform dimensionality reduction
 def reduce_dimensions(data, method="tsne"):
@@ -123,6 +123,8 @@ reduced_latent_points = reduce_dimensions(latent_points, method="pca")
 df = pd.DataFrame(reduced_latent_points, columns=['Dim1', 'Dim2'])
 df['score'] = scales
 
+print('LilyPond file saved in the Interpolation/results folder.')
+
 # Visualize using Plotly
 fig = px.scatter(
     df,
@@ -135,3 +137,4 @@ fig = px.scatter(
 fig.update_traces(textposition='top center')
 fig.update_layout(hovermode='closest')
 fig.show()
+

@@ -5,7 +5,7 @@ import utils as u
 
 # Load and read original LilyPond file
 content = ''
-with open(f"{sys.argv[1]}.ly", "r") as file:
+with open(f"results/{sys.argv[1]}.ly", "r") as file:
     lines = file.readlines()
     for line in lines:
         print(line)
@@ -31,7 +31,7 @@ for i, match in enumerate(matches):
     # Add comments that indicate the scale number
     if sys.argv[1].endswith('2d'):
         combined_content += f"\n%scale {scale_numbers[i][0]}_{scale_numbers[i][1]}"
-        combined_content += match[20:-1].strip() + "\n"         
+        combined_content += match[20:-1].strip() + "\n"    
     else:
         combined_content += f"\n%scale {i}"
         combined_content += match[20:-1].strip() + "\n" 
@@ -52,7 +52,7 @@ combined_content = combined_content[:index1+6] + '{' + combined_content[index1+6
 combined_content = combined_content[:index2+6] + '{' + combined_content[index2+6:]
 
 # Save the new file as midi_FILENAME.ly
-with open(f"midi_{sys.argv[1]}.ly", "w") as file:
+with open(f"results/midi_format/midi_{sys.argv[1]}.ly", "w") as file:
     file.write(combined_content)
 
-print("Partitura unificada en el formato requerido y archivo MIDI añadido correctamente.")
+print("Saved score as MIDI file correctly in the Interpolation/results/midi_format folder.")
