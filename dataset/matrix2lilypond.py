@@ -88,27 +88,13 @@ def matrix_to_lilypond(matrix, number=None):
     # Include Lilypond syntax.
     if number == None:
         lilypond_text = """
-    \\version "2.22.2"
-    \\header {
-    title = "Interpolation 10"
-    composer = "Benjamín Saldías"
-    }
-
-    \score {
-    <<
-        \cadenzaOn
-        \override Beam.breakable = ##t
-    {
+    \\new PianoStaff <<
+    \\cadenzaOn
+    \\new Staff = "right" {
+    \\clef treble
     """ + '    ' + '\n    '.join(lilypond_lines) + """
     }
     >>
-    \layout {
-        indent = 0\mm
-        line-width = 190\mm
-    }
-    \midi {{{ }
-    
-    }
     """
         return lilypond_text
     else:

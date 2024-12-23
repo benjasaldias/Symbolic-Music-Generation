@@ -82,6 +82,7 @@ for i in range(GRID_SIZE):
             # Store latent points for visualization
             latent_points.append(z.cpu().numpy().flatten())
             scales.append(f'Score {i}_{j}')
+u.to_midi("interpolation_2d")
 
 # Debugging: Check if latent points are collected
 if not latent_points:

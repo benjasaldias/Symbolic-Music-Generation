@@ -1,9 +1,16 @@
-\version "2.24.2"
+
+\version "2.22.2"
+\header {
+title = "Interpolation"
+composer = "Benjamín Saldías"
+}
+
 \score {
-\new PianoStaff <<
-\cadenzaOn
-\new Staff = "right" {
-\clef treble
+  <<
+    \cadenzaOn
+    \override Beam.breakable = ##t
+
+{
 
 %partitura0
 
@@ -14,6 +21,10 @@
     c''' [ des''' gis'' fis'' b'' f'' ]
     c'' [ des'' gis' fis' g' fis' ]
     c' [ b b fis g f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura1
 
@@ -24,6 +35,10 @@
     c''' [ ees'' gis'' fis'' b'' bes'' ]
     c'' [ des'' gis' fis' g' fis' ]
     c' [ b gis fis g f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura2
 
@@ -36,6 +51,10 @@
     c'' [ g' gis' fis' ees' fis' ]
     c' [ b ]
     c [ fis g f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura3
 
@@ -48,6 +67,10 @@
     c' c'' [ g' gis' fis' ees' e ]
     c' [ b ]
     c [ fis g aes, ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura4
 
@@ -61,6 +84,10 @@
     c' [ ees' e ]
     c' [ b ]
     c [ e g aes, ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura5
 
@@ -75,6 +102,10 @@
     c' [ cis' e ]
     c' [ b ]
     c [ e g aes, ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura6
 
@@ -89,6 +120,10 @@
     c' [ cis' e ]
     c' [ b ]
     c [ e g aes, ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura7
 
@@ -101,6 +136,10 @@
     c' [ e' f' aes ]
     c' [ cis' e gis fis ]
     c [ e f aes, ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura8
 
@@ -113,6 +152,10 @@
     c' [ e' f' aes ]
     c' [ cis' e gis a ]
     c [ e f aes, ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura9
 
@@ -126,7 +169,16 @@
     c' [ cis' e gis a ]
     c [ e cis g, ]
     c
+    r8
+    \bar ""
+    \break
+    
 }
->>
-\midi{}
+  >>
+  \layout {
+    indent = 0\mm
+    line-width = 190\mm
+  }
+  \midi{ }
+  
 }

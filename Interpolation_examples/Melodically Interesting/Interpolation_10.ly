@@ -1,9 +1,15 @@
-\version "2.24.2"
+\version "2.22.2"
+\header {
+title = "Interpolation"
+composer = "Benjamín Saldías"
+}
+
 \score {
-\new PianoStaff <<
-\cadenzaOn
-\new Staff = "right" {
-\clef treble
+  <<
+    \cadenzaOn
+    \override Beam.breakable = ##t
+
+{
 
 %scale 0
 \clef treble
@@ -13,6 +19,10 @@
     c''' [ d''' ais'' fis'' b'' e'' ]
     c'' [ d'' ais' fis' g' e' ]
     c' [ d' ais fis b e ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 1
 \clef treble
@@ -22,7 +32,11 @@
     c''' [ d''' f''' fis'' b'' e'' ]
     c'' [ d'' ais' fis' b' e' ]
     c' [ d' a fis b e ]
-
+    c
+    r8
+    \bar ""
+    \break
+    
 %scale 2
 \clef treble
     c16 [ e b fis a d' ]
@@ -31,6 +45,10 @@
     c''' [ d''' a'' fis'' b'' e'' ]
     c'' [ d'' a' fis' b' e' ]
     c' [ d' a fis b e ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 3
 \clef treble
@@ -40,6 +58,10 @@
     c''' [ d''' a'' fis'' b'' e'' ]
     c'' [ b' a' fis' b' e' ]
     c' [ b a fis b e ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 4
 \clef treble
@@ -49,6 +71,10 @@
     c''' [ d''' a'' fis'' b'' cis'' ]
     c'' [ b' a' fis' b' cis' ]
     c' [ b a fis b cis ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 5
 \clef treble
@@ -58,6 +84,10 @@
     c''' [ b'' a'' fis'' b'' cis'' ]
     c'' [ b' a' fis' b' cis' ]
     c' [ b gis fis b cis ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 6
 \clef treble
@@ -67,6 +97,10 @@
     c''' [ b'' a'' fis'' e'' cis'' ]
     c'' [ b' a' fis' b' cis' ]
     c' [ b gis fis e cis ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 7
 \clef treble
@@ -76,6 +110,10 @@
     c''' [ b'' gis'' fis'' e'' cis'' ]
     c'' [ b' a' fis' d' cis' ]
     c' [ b gis fis e cis ]
+    c
+    r8
+    \bar ""
+    \break
 
 %scale 8
 \clef treble
@@ -87,6 +125,11 @@
     c' [ b gis fis e cis ]
     c
 }
->>
-\midi{}
+  >>
+  \layout {
+    indent = 0\mm
+    line-width = 190\mm
+  }
+  \midi{ }
+  
 }

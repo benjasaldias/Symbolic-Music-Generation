@@ -117,6 +117,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         # Store latent point and its score
         latent_points.append(z.cpu().numpy().flatten()) 
         scales.append(f'scale {i}') 
+    u.to_midi("interpolation")
     print('LilyPond file saved in the Interpolation/results folder.')
     
     if visualize == True:
@@ -225,5 +226,5 @@ def run_multiple(visualize, interpolation_type):
     print(f'Average LBP per step: {total_average_lbp}')
     print(f'Average start-finish LBP: {s_f_average_lbp}')
 
-interpolate(model, visualize=True, interpolation_type='slerp')
+interpolate(model, visualize=False, interpolation_type='slerp')
 # run_multiple(visualize=True, interpolation_type='slerp')

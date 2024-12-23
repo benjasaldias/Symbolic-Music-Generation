@@ -1,9 +1,16 @@
-\version "2.24.2"
+
+\version "2.22.2"
+\header {
+title = "Interpolation"
+composer = "Benjamín Saldías"
+}
+
 \score {
-\new PianoStaff <<
-\cadenzaOn
-\new Staff = "right" {
-\clef treble
+  <<
+    \cadenzaOn
+    \override Beam.breakable = ##t
+
+{
 
 %partitura0
 
@@ -18,6 +25,10 @@
     c'' [ e' f' ]
     c' [ d' gis ]
     c' [ e f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura1
 
@@ -30,6 +41,10 @@
     c'' [ e'' gis' ]
     c'' [ e' f' ]
     c' [ d' gis a e f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura2
 
@@ -40,6 +55,10 @@
     c'''' [ e''' gis'' e''' e'' f'' ]
     c'' [ e'' gis' ]
     c'' [ e' f' e' d' gis a bes f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura3
 
@@ -48,6 +67,10 @@
     c'' [ gis' ges'' e' f'' d''' e''' f'' e''' ]
     c'''' [ e''' f'' e''' d''' f'' e' ges'' gis' ]
     c'' [ bes' f' e' d' b e bes f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura4
 
@@ -56,6 +79,10 @@
     c'' [ gis' ges'' e' f'' bes e''' f'' d' ]
     c'''' [ d' f'' e''' bes f'' e' ges'' gis' ]
     c'' [ bes' f' e' d' b e bes f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura5
 
@@ -64,6 +91,10 @@
     c'' [ g' ges'' e' b' bes gis' ees'' d' ]
     c'' [ d' ees'' gis' bes b' e' ges'' g' ]
     c'' [ bes' f' gis d' b e bes f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura6
 
@@ -72,6 +103,10 @@
     c' [ g' ges'' e' b' bes gis' ees'' des''' ]
     c'' [ d' ees'' gis' bes b' e' ges'' g' ]
     c' [ bes' f' gis d' b e g f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura7
 
@@ -80,6 +115,10 @@
     c' [ g' b' e' b' g'' gis' ees'' des''' ]
     c'' [ des''' ees'' gis' g'' b' e' b' g' ]
     c' [ g' f' gis d' b e g f ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura8
 
@@ -88,6 +127,10 @@
     c' [ g' b' e' b' g'' gis' ees'' des''' ]
     c'' [ des''' ees'' gis' g'' b' e' b' g' ]
     c' [ g' ees' gis d' b e g g ]
+    c
+    r8
+    \bar ""
+    \break
 
 %partitura9
 
@@ -97,7 +140,16 @@
     c'' [ g'' ees'' gis' g'' b' e' b' g' ]
     c' [ g' ees' gis d' b e g g ]
     c
+    r8
+    \bar ""
+    \break
+    
 }
->>
-\midi{}
+  >>
+  \layout {
+    indent = 0\mm
+    line-width = 190\mm
+  }
+  \midi{ }
+  
 }

@@ -1,5 +1,7 @@
 import torch
 import numpy
+import re
+import sys
 
 ### DATA ###
 
@@ -111,3 +113,117 @@ def linear_interpolation(z1, z2, steps):
 def lerp(z1, z2, t):
     """Linear interpolation between two vectors."""
     return (1 - t) * z1 + t * z2
+
+def to_midi(filename):
+    # Load and read original LilyPond file
+    content = ''
+    with open(f"results/{filename}.ly", "r") as file:
+        lines = file.readlines()
+        for line in lines:
+            print(line)
+            # Skip labeling (unnecesary for midi and causes RegEx errors)
+            if "mark" not in line:
+                content += line
+
+    # Find all sections wanted in the file's content
+    matches = re.findall(r'\\new Staff = "right" \{.*?\}', content, re.DOTALL)
+
+    # Write the base structure of the score
+    combined_content = """
+    \\version "2.22.2"
+    \\header {
+    title = "Interpolation"
+    composer = "Benjamín Saldías"
+    }
+
+    \\score {
+    <<
+        \\cadenzaOn
+        \\override Beam.breakable = ##t
+
+    {
+    """
+    diagonal_1 = combined_content
+    diagonal_2 = combined_content
+
+    scale_numbers = []
+    for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
+            scale_numbers.append([i, j])
+
+    for i, match in enumerate(matches):
+        initial_length = len(combined_content)
+        if filename.endswith('2d'):
+            combined_content += f"\n%scale {scale_numbers[i][0]}_{scale_numbers[i][1]}"
+            if i != 0:
+                combined_content += """
+    \\mark \\markup \\bold """  + "{" f""" "Scale {scale_numbers[i][0]}_{scale_numbers[i][1]}" """ + "}"
+            combined_content += (match[20:-1].strip())[1:]
+        else:
+            combined_content += f"\n%scale {i}"
+            if i != 0:
+                combined_content += """
+    \\mark \\markup \\bold """  + "{" f""" "Scale {scale_numbers[i]}" """ + "}"
+            combined_content += (match[20:-1].strip())[1:]
+        combined_content += f"""    r8
+    \\bar ""
+    \\break
+        """
+        if i%6 == 0:
+            diagonal_1 += combined_content[initial_length:]
+        elif i%4 == 0 and i != 0:
+            diagonal_2 += combined_content[initial_length:]
+
+    # Close the Staff and Score, adding the "midi{} line"
+    combined_content += """
+    }
+    >>
+    \layout {
+        indent = 0\mm
+        line-width = 190\mm
+    }
+    \midi{ }
+    
+    }
+    """
+    diagonal_1 += """
+    }
+    >>
+    \layout {
+        indent = 0\mm
+        line-width = 190\mm
+    }
+    \midi{ }
+    
+    }
+    """
+    diagonal_2 += """
+    }
+    >>
+    \layout {
+        indent = 0\mm
+        line-width = 190\mm
+    }
+    \midi{ }
+    
+    }
+    """
+
+    # Save the new file as FILENAME.ly
+    if filename.endswith('2d'):
+        # Save the diagonals for 2d interpolation
+        with open(f"results/2d/diagonal_1.ly", "w") as file:
+            file.write(diagonal_1)
+
+        with open(f"results/2d/diagonal_2.ly", "w") as file:
+            file.write(diagonal_2)
+        folder = '2d'
+    else:
+        folder = '1d'
+
+    with open(f"results/{folder}/{filename}.ly", "w") as file:
+        file.write(combined_content)
+
+
+
+    print("Saved score as MIDI file correctly in the Interpolation/results folder.")
