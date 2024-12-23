@@ -17,7 +17,20 @@ with open(f"results/{sys.argv[1]}.ly", "r") as file:
 matches = re.findall(r'\\new Staff = "right" \{.*?\}', content, re.DOTALL)
 
 # Write the base structure of the score
-combined_content = "\\version \"2.22.2\"\n\\score {\n\\new PianoStaff <<\n\\cadenzaOn\n\\new Staff = \"right\" {\n\\clef treble\n"
+combined_content = """
+\\version "2.22.2"
+\\header {
+title = "Interpolation 10"
+composer = "Benjamín Saldías"
+}
+
+\\score {
+  <<
+    \\cadenzaOn
+    \\override Beam.breakable = ##t
+
+{
+"""
 
 scale_numbers = []
 for i in range(u.GRID_SIZE):
@@ -38,19 +51,17 @@ for i, match in enumerate(matches):
 
 
 # Close the Staff and Score, adding the "midi{} line"
-combined_content += "}\n>>\n\\midi{}\n}\n"
-
-# Insert all the eliminated brackets {}
-combined_content = re.sub('{', '', combined_content)
-index = combined_content.find('"right"')
-index1 = combined_content.find('score')
-index2 = combined_content.find('midi')
-
-print('indexes: ', index, index1, index2)
-combined_content = combined_content[:index+8] + '{' + combined_content[index+8:]
-combined_content = combined_content[:index1+6] + '{' + combined_content[index1+6:]
-combined_content = combined_content[:index2+6] + '{' + combined_content[index2+6:]
-
+combined_content += """
+}
+  >>
+  \layout {
+    indent = 0\mm
+    line-width = 190\mm
+  }
+  \midi{ }
+  
+}
+"""
 # Save the new file as midi_FILENAME.ly
 with open(f"results/midi_format/midi_{sys.argv[1]}.ly", "w") as file:
     file.write(combined_content)
