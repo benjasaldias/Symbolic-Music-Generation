@@ -13,7 +13,6 @@
     {
     
 %scale 0_4
-    \mark \markup \bold { "Scale 0_4" }
     \clef treble
     c16 [ f g aes a cis' e' f' b' ]
     c'' [ g' g'' aes'' a'' g'' e''' f''' b''' ]
