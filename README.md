@@ -10,9 +10,9 @@ Slonimsky's Thesaurus explores scales beyond their classical definition (Graue, 
 
 Based on the principal tones, the thesaurus introduces variations on each progression by adding one to four notes between the intervals, classifying them as interpolation, ultrapolation, or infrapolation, depending on their organization and function within the scale.
 
-* Interpolation: The added note must be located within the principal tone interval that contains it.
-* Ultrapolation: The added note must be placed above the second note of the principal tone interval that contains it.
-* Infrapolation: The added note must be placed below the first note of the principal tone interval that contains it.
+* Interpolation: The added note must be located within the principal tone interval that surrounds it.
+* Ultrapolation: The added note must be placed above the second note of the principal tone interval that surrounds it.
+* Infrapolation: The added note must be placed below the first note of the principal tone interval that surrounds it.
 
 ![scale_composition](assets/principal_tones.png)
 
