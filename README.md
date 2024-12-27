@@ -88,8 +88,8 @@ The results will be stored in the `VAE/Interpolation/results/2d` folder.
 **Some of our results:**
 | Header 1 | Header 2 | Header 3 | Header 2 | Header 3 |
 |----------|----------|----------|----------|----------|
-| ![image](https://github.com/user-attachments/assets/5ded3ee5-f8c5-4f39-ac74-9010b637814d) | ![image](https://github.com/user-attachments/assets/6b8124b6-8f55-48c6-883c-07707f809957)| ![image](https://github.com/user-attachments/assets/3569f2c6-dce7-41f7-8a47-8772b14b27eb) | ![image](https://github.com/user-attachments/assets/0aa1b0a2-6110-4feb-88aa-ead9d71b6a80) |![image](https://github.com/user-attachments/assets/d8d75f86-e904-4dd9-bf49-82eed3beac48) |
-| ![scale_example_0](assets/test_example_0.png)    | Data 3   | Data 4   | Data 1   | Data 2   |
-| ![scale_example_0](assets/test_example_0.png)    | Data 1   | Data 2   | Data 1   | Data 2   |
+| ![image](https://github.com/user-attachments/assets/0c4223a8-00b4-4897-8980-6a2c184ca9ec) | ![image](https://github.com/user-attachments/assets/4ae8755e-4a10-4794-ba6c-bef0c7f4183f) | ![image](https://github.com/user-attachments/assets/ec66fda7-76b3-4420-a50f-b2b7bf9be8b2) | ![image](https://github.com/user-attachments/assets/c6531148-67e8-45c7-8074-a1a9082bf883) | ![image](https://github.com/user-attachments/assets/f8ddba09-b866-49aa-9487-fb496709dd6e) | 
+| ![image](https://github.com/user-attachments/assets/82b0a10a-521d-464d-bfe8-48cb18379db7) | ![image](https://github.com/user-attachments/assets/b63daba3-04d0-4d9c-8950-68c67b50dbab) | ![image](https://github.com/user-attachments/assets/6cc090ca-26cf-441f-bef1-fc6b9877f8fb) | ![image](https://github.com/user-attachments/assets/2fb0e901-19de-4362-9258-0eab859bfc6f) | ![image](https://github.com/user-attachments/assets/1729f6bf-e3f0-469d-a046-12554debb6da) |
+| ![scale_example_0](assets/test_example_0.png)    | b |  | Data 1   | Data 2   |
 | ![scale_example_0](assets/test_example_0.png)   | Data 3   | Data 4   | Data 1   | Data 2   |
 | ![scale_example_0](assets/test_example_0.png)    | Data 1   | Data 2   | Data 1   | Data 2   |
