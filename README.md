@@ -6,6 +6,16 @@ The project revolves around two main ideas:
 * Interpolating between two scales through the latent space.
 
 <h2>Dataset</h2>
+Slonimsky's Thesaurus explores scales beyond their classical definition (Graue, 2024), including scales that span more than a single octave, also disregarding traditional concepts of harmony. These scales are created by dividing one or more octaves into equal parts, such as the tritonal progression, which divides the six tones of an octave into two intervals of three tones. These key notes are referred to as "principal tones".
+
+Based on the principal tones, the thesaurus introduces variations on each progression by adding one to four notes between the intervals, classifying them as interpolation, ultrapolation, or infrapolation, depending on their organization and function within the scale.
+
+
+
+Interpolation: The added note must be located within the principal tone interval that contains it.
+Ultrapolation: The added note must be placed above the second note of the principal tone interval that contains it.
+Infrapolation: The added note must be placed below the first note of the principal tone interval that contains it.
+
 <h2>Generation</h2>
 Create new scales through random inputs for the decoder.
 <h3>Testing</h3>
