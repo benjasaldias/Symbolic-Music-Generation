@@ -43,9 +43,9 @@ z vector: [ 2.8456, -0.7268, -1.5758, -0.7938,  1.1789, -0.2523,  1.5746,  0.356
 To evaluate our results, we implemented the following metrics:
 
 1.  **KL Divergence:** Measures how a probability distribution differs from another. In this case, it quantifies the difference between the approximate posterior distribution q(z|x) (learned by the encoder) and the prior distribution p(z).
-2.  **Sparseness:**
-3.  **Coverage:**
-4.  **Difference:**
+2.  **Sparseness:** Sparseness looks at how "empty" or "dense" something is. In music generation, it measures how many notes are being played versus how much silence or empty space there is.
+3.  **Coverage:** Coverage tells you how many unique notes are used in a musical piece. It checks if the generated music uses a wide variety of notes or sticks to only a small range.
+4.  **Difference:** Returns 1 or 0 depending or whether the analyzed scale is in the training dataset. 
 
 <br/><br/>
 <h2>Interpolation</h2>
