@@ -128,3 +128,17 @@ The  combination of these two metrics lets us analyze the smoothness in each int
 > Average start-finish LBP: 10.67526086140364
 
 Which proves an overall efficient and smooth transition on the interpolation results.
+
+<br/><br/>
+<h2>References</h2>
+
+colaboradores de Wikipedia. (2023, 26 diciembre). Nicolas Slonimsky. Wikipedia, la Enciclopedia Libre. https://es.wikipedia.org/wiki/Nicolas_Slonimsky
+
+Dhinakaran, A. (2024, 21 octubre). Understanding KL divergence | towards data science. Medium. https://towardsdatascience.com/understanding-kl-divergence-f3ddc8dff254
+
+Graue, J. C. (2024, 30 septiembre). Scale | Definition, Music Theory, & Types. Encyclopedia Britannica. https://www.britannica.com/art/scale-music
+
+P. Kingma, D. [Diederik P. Kingma], Welling, M. [Max Welling], Machine Learning Group [Machine Learning Group]. (2013). Auto-Encoding Variational Bayes [Investigation paper, Universiteit van Amsterdam]. https://doi.org/10.48550/1312.6114
+
+Weng, L. (2018, 12 agosto). From Autoencoder to Beta-VAE. Lil’Log. https://lilianweng.github.io/posts/2018-08-12-vae/
+
