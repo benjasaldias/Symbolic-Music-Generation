@@ -42,10 +42,30 @@ z vector: [ 2.8456, -0.7268, -1.5758, -0.7938,  1.1789, -0.2523,  1.5746,  0.356
 <h3>Metrics</h3>
 To evaluate our results, we implemented the following metrics:
 
+
 1.  **KL Divergence:** Measures how a probability distribution differs from another. In this case, it quantifies the difference between the approximate posterior distribution q(z|x) (learned by the encoder) and the prior distribution p(z).
+   
 2.  **Sparseness:** Sparseness looks at how "empty" or "dense" something is. In music generation, it measures how many notes are being played versus how much silence or empty space there is.
+   
 3.  **Coverage:** Coverage tells you how many unique notes are used in a musical piece. It checks if the generated music uses a wide variety of notes or sticks to only a small range.
-4.  **Difference:** Returns 1 or 0 depending or whether the analyzed scale is in the training dataset. 
+
+4. **Symmetry:** Measures the how symmetric each generated scale is. As all metrics in our training set are perfectly symmetrical, this metric will indicate how well this characteristic of a musical scale was learned by the model.
+   
+5.  **Difference:** Returns 1 or 0 depending or whether the analyzed scale is in the training dataset.
+
+After running these metrics over 500 generated data, these were the average results:
+
+> KL Divergence: 8.0339
+> 
+> Sparseness: 0.0094
+> 
+> Coverage: 0.1671
+> 
+> Symmetry: 0.9997
+> 
+> Diff: 0.8898
+
+The previous values prove the model to generate highly symmetrical and new scales. Knowing that the Thesaurus' Sparseness and Coverage values are 0.0094 and 0.1700, we can derive that the scales generated are as full and have lost almost no coverage compared to the training data. This assures that the generated data is significant and new.
 
 <br/><br/>
 <h2>Interpolation</h2>
@@ -54,8 +74,9 @@ We implemented linear interpolation as our main interpolation method, which has 
 
 The model's latent space has shown great interpolation results, that have been implemented and tested on two different ways:
 
-1.  over 2 scales: returning the transition scales between one and another.
-2.  over 4 scales: returning a grid of scales, having each of the four initial ones on each corner.
+1.  **over 2 scales:** returning the transition scales between one and another.
+   
+2.  **over 4 scales:** returning a grid of scales, having each of the four initial ones on each corner.
 
 <h3>Testing</h3>
 
