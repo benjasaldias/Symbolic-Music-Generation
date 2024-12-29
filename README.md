@@ -5,6 +5,7 @@ The project revolves around two main ideas:
 * Generation of new scales and melodies.
 * Interpolating between two scales through the latent space.
 
+<br/><br/>
 <h2>Dataset</h2>
 Slonimsky's Thesaurus explores scales beyond their classical definition (Graue, 2024), including scales that span more than a single octave, also disregarding traditional concepts of harmony. These scales are created by dividing one or more octaves into equal parts, such as the tritonal progression, which divides the six tones of an octave into two intervals of three tones. These key notes are referred to as "principal tones".
 
@@ -16,6 +17,7 @@ Based on the principal tones, the thesaurus introduces variations on each progre
 
 ![scale_composition](assets/principal_tones.png)
 
+<br/><br/>
 <h2>Generation</h2>
 Create new scales through random inputs for the decoder.
 <h3>Testing</h3>
@@ -36,6 +38,7 @@ z vector: [-0.5950,  0.3573,  1.1748, -0.3191, -0.0793, -0.6383, -3.7409, -1.895
 
 z vector: [ 2.8456, -0.7268, -1.5758, -0.7938,  1.1789, -0.2523,  1.5746,  0.3569, 0.2824,  0.0894,  0.4205, -1.2200]
 ![scale_example_2](assets/test_example_2.png)
+
 <h3>Metrics</h3>
 To evaluate our results, we implemented the following metrics:
 
@@ -44,6 +47,7 @@ To evaluate our results, we implemented the following metrics:
 3.  **Coverage:**
 4.  **Difference:**
 
+<br/><br/>
 <h2>Interpolation</h2>
 
 We implemented linear interpolation as our main interpolation method, which has shown high efficiency and accuracy, making a smooth transition between the two scales by interpolating between the two `z` vectors in the model's latent space and decoding the resulting transition vectors.
@@ -54,7 +58,6 @@ The model's latent space has shown great interpolation results, that have been i
 2.  over 4 scales: returning a grid of scales, having each of the four initial ones on each corner.
 
 <h3>Testing</h3>
-<h4>over 2 scales</h4>
 
 To run an interpolation between two `z` vectors, you must run the `interpolate.py` in `VAE/Interpolation`, which will ask to input the 2 vectors to interpolate over. If you wish for one (or both) of the vectors to be random, you must simply input "random" or "" (empty string).
 
@@ -67,9 +70,8 @@ To run an interpolation between two `z` vectors, you must run the `interpolate.p
 
 The results will be stored in the `VAE/Interpolation/results/1d` folder.
 
-<h4>4 scales</h4>
 
-Similar to the previous method, you must run `interpolate_2d.py` in the `VAE/Interpolation` folder. You will then be asked to input the 4 vectors to interpolate over. If you wish for any or all vectors to be random, you must simply input "random" or "" (empty string).
+For a four scale interpolation, similar to the previous method, you must run `interpolate_2d.py` in the `VAE/Interpolation` folder. You will then be asked to input the 4 vectors to interpolate over. If you wish for any or all vectors to be random, you must simply input "random" or "" (empty string).
 
 **EXAMPLE:**
 > python3 interpolate_2d.py
@@ -85,11 +87,23 @@ Similar to the previous method, you must run `interpolate_2d.py` in the `VAE/Int
 The results will be stored in the `VAE/Interpolation/results/2d` folder.
 
 <br/><br/>
-**Some of our results:**
-| Header 1 | Header 2 | Header 3 | Header 2 | Header 3 |
-|----------|----------|----------|----------|----------|
-| ![image](https://github.com/user-attachments/assets/0c4223a8-00b4-4897-8980-6a2c184ca9ec) | ![image](https://github.com/user-attachments/assets/4ae8755e-4a10-4794-ba6c-bef0c7f4183f) | ![image](https://github.com/user-attachments/assets/ec66fda7-76b3-4420-a50f-b2b7bf9be8b2) | ![image](https://github.com/user-attachments/assets/c6531148-67e8-45c7-8074-a1a9082bf883) | ![image](https://github.com/user-attachments/assets/f8ddba09-b866-49aa-9487-fb496709dd6e) | 
-| ![image](https://github.com/user-attachments/assets/82b0a10a-521d-464d-bfe8-48cb18379db7) | ![image](https://github.com/user-attachments/assets/b63daba3-04d0-4d9c-8950-68c67b50dbab) | ![image](https://github.com/user-attachments/assets/6cc090ca-26cf-441f-bef1-fc6b9877f8fb) | ![image](https://github.com/user-attachments/assets/2fb0e901-19de-4362-9258-0eab859bfc6f) | ![image](https://github.com/user-attachments/assets/1729f6bf-e3f0-469d-a046-12554debb6da) |
-| ![scale_example_0](assets/test_example_0.png)    | b |  | Data 1   | Data 2   |
-| ![scale_example_0](assets/test_example_0.png)   | Data 3   | Data 4   | Data 1   | Data 2   |
-| ![scale_example_0](assets/test_example_0.png)    | Data 1   | Data 2   | Data 1   | Data 2   |
+The `interpolation_examples` folder contains 1d and 2d interpolations, with their respective pdf, lilypond and midi files. For 2d (or four scale) interpolations, we have included the diagonals of the interpolation grid to show the accuracy and smoothness of each transition of scales derived from the interpolation process.
+
+<h3>Metrics</h3>
+To evaluate our results, we implemented the following metrics:
+
+1.  **Structural Similarity Index (SSIM):** Compares and returns the similarity between two images or matrices. It considers luminance, contrast, and structure, making it ideal for comparing visual or structured data. In this case, as the analyzed data is binary, the different values returned by this metric will be due to structural differences.
+   
+2.  **Local Binary Patterns (LBP):** LBP is a texture descriptor used to quantify patterns or structural differences in data. It’s often applied to assess variations in local features, making it suitable for capturing changes in scale matrices.
+
+The  combination of these two metrics lets us analyze the smoothness in each interpolation result, calculating the SSIM and LBP of the two interpolated scales, and comparing it to the average metrics of each interpolation step. After running 200 random interpolations, we get the following average results:
+
+> Average SSIM per step: 0.9268792917078141
+> 
+> Average start-finish SSIM: 0.6533462534381523
+> 
+> Average LBP per step: 4.2965221671182015
+> 
+> Average start-finish LBP: 10.67526086140364
+
+Which proves an overall efficient and smooth transition on the interpolation results.
