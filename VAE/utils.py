@@ -151,20 +151,26 @@ def to_midi(filename):
         for j in range(GRID_SIZE):
             scale_numbers.append([i, j])
 
+    # Add each section to the score
+    scale_num_1d = 0
     for i, match in enumerate(matches):
         initial_length = len(combined_content)
+        
         if filename.endswith('2d'):
             combined_content += f"\n%scale {scale_numbers[i][0]}_{scale_numbers[i][1]}"
             if i != 0:
                 combined_content += """
     \\mark \\markup \\bold """  + "{" f""" "Scale {scale_numbers[i][0]}_{scale_numbers[i][1]}" """ + "}"
             combined_content += (match[20:-1].strip())[1:]
+        
         else:
-            combined_content += f"\n%scale {i}"
+            combined_content += f"\n%scale {scale_num_1d}"
             if i != 0:
                 combined_content += """
-    \\mark \\markup \\bold """  + "{" f""" "Scale {scale_numbers[i]}" """ + "}"
+    \\mark \\markup \\bold """  + "{" f""" "Scale {scale_num_1d}" """ + "}"
             combined_content += (match[20:-1].strip())[1:]
+            scale_num_1d += 1
+
         combined_content += f"""    r8
     \\bar ""
     \\break
