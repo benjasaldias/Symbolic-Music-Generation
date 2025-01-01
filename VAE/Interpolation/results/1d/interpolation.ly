@@ -9,114 +9,116 @@
     <<
         \cadenzaOn
         \override Beam.breakable = ##t
-
+        \accidentalStyle Score.forget
     {
     
-%scale 0
-    \clef treble
-    c16 [ b, bes e ees d' gis g e' ]
-    c' [ b bes' e' ees' d'' gis' g' e'' ]
-    c'' [ e'' g' gis' d'' ees' e' bes' b ]
-    c' [ fis' g gis d' ees e bes b, ]
-    c    r8
-    \bar ""
-    \break
-        
 %scale 1
-    \mark \markup \bold { "Scale [0, 1]" }
     \clef treble
-    c16 [ b, bes e ees d' gis g fis' ]
-    c' [ b bes' e' ees' d'' gis' g' e'' ]
-    c'' [ e'' g' gis' d'' ees' e' bes' b ]
-    c' [ fis' g gis d' ees e bes b, ]
+    c16 [ d g e fis b gis bes ees' ]
+    c' [ d' g' e' fis' b' gis' bes' d'' ]
+    c'' [ d'' bes' gis' b' fis' e' g' d' ]
+    c' [ ees' bes gis b fis e g d ]
     c    r8
     \bar ""
     \break
         
 %scale 2
-    \mark \markup \bold { "Scale [0, 2]" }
+    \mark \markup \bold { "Scale 2" }
     \clef treble
-    c16 [ b, bes e ees d' gis g fis' ]
-    c' [ b bes' e' ees' d'' gis' g' fis'' ]
-    c'' [ fis'' g' gis' d'' ees' e' bes' b ]
-    c' [ fis' g gis d' ees e bes b, ]
+    c16 [ d fis e fis b gis fis d' ]
+    c' [ d' fis' e' fis' b' gis' bes' d'' ]
+    c'' [ d'' bes' gis' b' fis' e' fis' d' ]
+    c' [ d' fis gis b fis e fis d ]
     c    r8
     \bar ""
     \break
         
 %scale 3
-    \mark \markup \bold { "Scale [0, 3]" }
+    \mark \markup \bold { "Scale 3" }
     \clef treble
-    c16 [ b, bes e ees d' gis g fis' ]
-    c' [ b bes' e' ees' d'' gis' g' fis'' ]
-    c'' [ fis'' g' gis' d'' ees' e' bes' b ]
-    c' [ fis' g gis d' ees e bes b, ]
+    c16 [ d fis e bes des' gis fis d' ]
+    c' [ d' fis' e' fis' b' gis' bes' d'' ]
+    c'' [ d'' bes' gis' b' fis' e' fis' d' ]
+    c' [ d' fis gis des' bes e fis d ]
     c    r8
     \bar ""
     \break
         
 %scale 4
-    \mark \markup \bold { "Scale [0, 4]" }
+    \mark \markup \bold { "Scale 4" }
     \clef treble
-    c16 [ b, bes e b, d' gis g fis' ]
-    c' [ b bes' e' b d'' gis' g' fis'' ]
-    c'' [ fis'' g' gis' d'' b e' bes' b ]
-    c' [ fis' g gis d' b, e bes b, ]
+    c16 [ d fis e bes des' gis fis d' ]
+    c' [ d'' fis' e' bes'' des''' gis' fis''' d'' ]
+    c'' [ d'' fis''' gis' des''' bes'' e' fis' d'' ]
+    c' [ d' fis gis des' bes e fis d ]
     c    r8
     \bar ""
     \break
         
 %scale 5
-    \mark \markup \bold { "Scale [1, 0]" }
+    \mark \markup \bold { "Scale 5" }
     \clef treble
-    c16 [ g, bes e b, d' gis ees fis' ]
-    c' [ b bes' e' b d'' gis' ees' fis'' ]
-    c'' [ fis'' ees' gis' d'' b e' bes' b ]
-    c' [ fis' ees gis d' b, e bes g, ]
+    c16 [ d f aes bes des' e' fis a' ]
+    c'' [ d'' f'' aes'' bes'' des''' e''' fis''' a''' ]
+    c'''' [ a''' fis''' e''' des''' bes'' aes'' f'' d'' ]
+    c'' [ a' fis e' des' bes aes g d ]
     c    r8
     \bar ""
     \break
         
 %scale 6
-    \mark \markup \bold { "Scale [1, 1]" }
+    \mark \markup \bold { "Scale 6" }
     \clef treble
-    c16 [ g, bes e b, d' gis ees fis' ]
-    c' [ g bes' e' b d'' gis' ees' fis'' ]
-    c'' [ fis'' ees' gis' d'' b e' bes' g ]
-    c' [ fis' ees gis d' b, e bes g, ]
+    c16 [ d f aes b des' e' fis' a' ]
+    c'' [ d'' f'' aes'' b'' des''' e''' fis''' a''' ]
+    c'''' [ a''' fis''' e''' des''' b'' aes'' f'' d'' ]
+    c'' [ a' fis' e' des' b aes g d ]
     c    r8
     \bar ""
     \break
         
 %scale 7
-    \mark \markup \bold { "Scale [1, 2]" }
+    \mark \markup \bold { "Scale 7" }
     \clef treble
-    c16 [ g, bes e b, d' gis ees fis' ]
-    c' [ g bes' e' b d'' gis' ees' fis'' ]
-    c'' [ fis'' ees' gis' d'' b e' bes' g ]
-    c' [ fis' ees gis d' b, e bes g, ]
+    c16 [ ees g aes b des' e' g' a' ]
+    c'' [ ees'' f'' aes'' b'' dis''' e''' g''' a''' ]
+    c'''' [ a''' g''' e''' dis''' b'' aes'' f'' ees'' ]
+    c'' [ a' g' e' des' b aes g ees ]
     c    r8
     \bar ""
     \break
         
 %scale 8
-    \mark \markup \bold { "Scale [1, 3]" }
+    \mark \markup \bold { "Scale 8" }
     \clef treble
-    c16 [ g, e, e b, gis, gis ees ]
-    c c' [ g bes' e' b gis gis' ees' ]
-    c' c'' c' [ ees' gis' gis b e' bes' g ]
-    c' c [ ees gis d' b, e e, g, ]
+    c16 [ ees g aes b des' e' g' a' ]
+    c'' [ ees'' f'' aes'' b'' dis''' e''' g''' a''' ]
+    c'''' [ a''' g''' e''' dis''' b'' aes'' f'' ees'' ]
+    c'' [ a' g' e' des' b aes g ees ]
     c    r8
     \bar ""
     \break
         
 %scale 9
-    \mark \markup \bold { "Scale [1, 4]" }
+    \mark \markup \bold { "Scale 9" }
     \clef treble
-    c16 [ g, e, e b, gis, gis ees ]
-    c c' [ g bes' e' b gis gis' ees' ]
-    c' c'' c' [ ees' gis' gis b e' bes' g ]
-    c' c [ ees gis gis, b, e e, ees ]
+    c16 [ ees g aes b des' e' g' a' ]
+    c'' [ ees'' f'' aes'' b'' dis''' e''' g''' b''' ]
+    c'''' [ b''' g''' e''' dis''' b'' aes'' f'' ees'' ]
+    c'' [ a' g' e' des' b aes g ees ]
+    c    r8
+    \bar ""
+    \break
+        
+%scale 10
+    \mark \markup \bold { "Scale 10" }
+    \clef treble
+    c16 [ ees f fis b dis' ]
+    c' [ cis' b' fis' g' f'' ]
+    c'' [ b'' g'' fis'' g'' e''' ]
+    c''' [ e''' g'' fis'' g'' b'' ]
+    c'' [ f'' g' fis' b' cis' ]
+    c' [ dis' b fis g cis ]
     c    r8
     \bar ""
     \break

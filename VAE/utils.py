@@ -63,7 +63,6 @@ def get_binary(reconstructed, numpy=True):
 
     return binary_generated
 
-
 ### INTERPOLATION FUNCTIONS ###
 # SLERP interpolation function
 def slerp(z1, z2, t):
@@ -140,7 +139,7 @@ def to_midi(filename):
     <<
         \\cadenzaOn
         \\override Beam.breakable = ##t
-
+        \\accidentalStyle Score.forget
     {
     """
     diagonal_1 = combined_content
@@ -155,7 +154,7 @@ def to_midi(filename):
     scale_num_1d = 0
     for i, match in enumerate(matches):
         initial_length = len(combined_content)
-        
+
         if filename.endswith('2d'):
             combined_content += f"\n%scale {scale_numbers[i][0]}_{scale_numbers[i][1]}"
             if i != 0:
