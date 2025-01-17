@@ -8,6 +8,193 @@
 %%%% TRITONE PROGRESSION %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%% INTERPOLATION OF TWO NOTES %%%
+
+% 5. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis d fis g aes]
+         
+  \clef treble
+               c'[ cis' d' fis' g' aes']
+               c''[ cis'' d'' fis'' g'' aes'']
+               c'''[ aes'' g'' fis'' d'' cis'']
+               c''[ aes' g' fis' d' cis']
+
+  \clef bass
+               c'[ aes g fis d cis]
+               c1
+
+  }
+>>
+
+% 6. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des ees fis g a]
+         
+  \clef treble
+               c'[ des' ees' fis' g' a']
+               c''[ des'' ees'' fis'' g'' a'']
+               c'''[ a'' g'' fis'' ees'' des'']
+               c''[ a' g' fis' ees' des']
+
+  \clef bass
+               c'[ a g fis ees des]
+               c1
+
+  }
+>>
+
+
+% 7. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ cis e fis g bes]
+         
+  \clef treble
+               c'[ cis' e' fis' g' bes']
+               c''[ cis'' e'' fis'' g'' bes'']
+               c'''[ bes'' g'' fis'' e'' cis'']
+               c''[ bes' g' fis' e' cis']
+
+  \clef bass
+               c'[ bes g fis e cis]
+               c1
+
+  }
+>>
+
+% 8. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des f fis g b]
+         
+  \clef treble
+               c'[ des' f' fis' g' b']
+               c''[ des'' f'' fis'' g'' b'']
+               c'''[ b'' g'' fis'' f'' des'']
+               c''[ b' g' fis' f' des']
+
+  \clef bass
+               c'[ b g fis f des]
+               c1
+
+  }
+>>
+
+% 9. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d ees fis gis a]
+         
+  \clef treble
+               c'[ d' ees' fis' gis' a']
+               c''[ d'' ees'' fis'' gis'' a'']
+               c'''[ a'' gis'' fis'' ees'' d'']
+               c''[ a' gis' fis' ees' d']
+
+  \clef bass
+               c'[ a gis fis ees d]
+               c1
+
+  }
+>>
+
+% 10. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ d f fis gis b]
+         
+  \clef treble
+               c'[ d' f' fis' gis' b']
+               c''[ d'' f'' fis'' gis'' b'']
+               c'''[ b'' gis'' fis'' f'' d'']
+               c''[ b' gis' fis' f' d']
+
+  \clef bass
+               c'[ b gis fis f d]
+               c1
+
+  }
+>>
+
+% 11. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees e fis a bes]
+         
+  \clef treble
+               c'[ ees' e' fis' a' bes']
+               c''[ ees'' e'' fis'' a'' bes'']
+               c'''[ bes'' a'' fis'' e'' ees'']
+               c''[ bes' a' fis' e' ees']
+
+  \clef bass
+               c'[ bes a fis e ees]
+               c1
+
+  }
+>>
+
+% 12. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ ees f fis a b]
+         
+  \clef treble
+               c'[ ees' f' fis' a' b']
+               c''[ ees'' f'' fis'' a'' b'']
+               c'''[ b'' a'' fis'' f'' ees'']
+               c''[ b' a' fis' f' ees']
+
+  \clef bass
+               c'[ b a fis f ees]
+               c1
+
+  }
+>>
+
+% 13. TRITONE: INTERPOLATION OF TWO NOTES
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ e f fis ais b]
+         
+  \clef treble
+               c'[ e' f' fis' ais' b']
+               c''[ e'' f'' fis'' ais'' b'']
+               c'''[ b'' ais'' fis'' f'' e'']
+               c''[ b' ais' fis' f' e']
+
+  \clef bass
+               c'[ b ais fis f e]
+               c1
+
+  }
+>>
+
+%% INTERPOLATION OF THREE NOTES %%%
+
+% --- Falta --- %
+
 %%% SYMMETRIC INTERPOLATION OF TWO NOTES %%%
 
 % 32. TRITONE: SYMMETRIC INTERPOLATION OF TWO NOTES
@@ -3972,4 +4159,92 @@
 
 %%% ULTRA-INTERPOLATION %%%
 
-% --- falta --- %
+% 728. QUADRITONE: ULTRA-INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a e aes f' c' e' cis'' g']
+  
+  \clef treble
+               c''[ a'' e'' aes'' f''' c''' e''' cis'''' g''']
+               c''''[ g''' cis''' e''' c''' f''' aes'' e'' a'']
+                           
+  \clef bass  
+               c''[ g' cis' e' c' f' aes e a]
+               c1   
+
+ }
+>>
+
+% 729. QUADRITONE: ULTRA-INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ a f aes f' des' e' cis'' a']
+  
+  \clef treble
+               c''[ a'' f'' aes'' f''' des''' e''' cis'''' a''']
+               c''''[ a''' cis''' e''' des''' f''' aes'' f'' a'']
+                           
+  \clef bass  
+               c''[ a' cis' e' des' f' aes f a]
+               c1   
+
+ }
+>>
+
+% 730. QUADRITONE: ULTRA-INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ bes f aes ges' des' e' d'' a']
+  
+  \clef treble
+               c''[ bes'' f'' aes'' ges''' des''' e''' d'''' a''']
+               c''''[ a''' d''' e''' des''' ges''' aes'' f'' bes'']
+                           
+  \clef bass  
+               c''[ a' d' e' des' ges' aes f bes]
+               c1   
+
+ }
+>>
+
+% 731. QUADRITONE: ULTRA-INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ b f aes g' des' e' ees'' a']
+  
+  \clef treble
+               c''[ b'' f'' aes'' g''' des''' e''' ees'''' a''']
+               c''''[ a''' ees''' e''' des''' g''' aes'' f'' b'']
+                           
+  \clef bass  
+               c''[ a' ees' e' des' g' aes f b]
+               c1   
+
+ }
+>>
+
+% 732. QUADRITONE: ULTRA-INTERPOLATION
+\new PianoStaff <<
+\cadenzaOn
+  \new Staff = "right" {
+  \clef bass
+               c16[ des' f aes a' des' e' f'' a']
+  
+  \clef treble
+               c''[ des''' f'' aes'' a''' des''' e''' f'''' a''']
+               c''''[ a''' f'''' e''' des''' a''' aes'' f'' des''']
+                           
+  \clef bass  
+               c''[ a' f'' e' des' a' aes f des']
+               c1   
+
+ }
+>>

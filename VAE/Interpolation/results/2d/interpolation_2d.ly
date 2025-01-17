@@ -9,309 +9,330 @@
     <<
         \cadenzaOn
         \override Beam.breakable = ##t
-
+        \accidentalStyle Score.forget
+        \override Score.TextScript.padding = #2
+        \override Stem.transparent = ##t
     {
     
-%scale 0_0
+%Scale 0_0
     \clef treble
-    c16 [ a e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e a ]
+        ^\markup \bold { "step 0_0" }
+    c16 [ f b fis b cis' gis ees' g' fis' b' b' e' f'' cis'' fis'' b'' g'' ]
+    c'' [ g'' b'' fis'' cis'' f'' ]
+    c'' [ b' b' fis' g' ees' ]
+    c' [ cis' b fis b f ]
     c    r8
     \bar ""
     \break
         
-%scale 0_1
-    \mark \markup \bold { "Scale 0_1" }
+%Scale 0_1
+        ^\markup \bold { "step 0_1" }
     \clef treble
-    c16 [ a e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e a ]
+    c16 [ f b fis b dis' ]
+    c' [ f' g' fis' b' b' ]
+    c'' [ f'' cis'' fis'' b'' b'' ]
+    c''' [ b'' b'' fis'' cis'' f'' ]
+    c'' [ b' b' fis' g' f' ]
+    c' [ dis' b fis b f ]
     c    r8
     \bar ""
     \break
         
-%scale 0_2
-    \mark \markup \bold { "Scale 0_2" }
+%Scale 0_2
+        ^\markup \bold { "step 0_2" }
     \clef treble
-    c16 [ d g aes ]
-    c' [ ees' e' gis' b' ]
-    c'' [ e'' g'' aes'' ]
-    c''' [ ees''' e''' gis''' b''' ]
-    c'''' [ b''' gis''' e''' ees''' ]
-    c''' [ aes'' g'' e'' ]
-    c'' [ b' gis' e' ees' ]
-    c' [ aes g d ]
+    c16 [ f bes fis b e' ]
+    c' [ f' bes' fis' b' e'' ]
+    c'' [ f'' bes'' fis'' b'' e''' ]
+    c''' [ e''' b'' fis'' bes'' f'' ]
+    c'' [ e'' b' fis' bes' f' ]
+    c' [ e' b fis bes f ]
     c    r8
     \bar ""
     \break
         
-%scale 0_3
-    \mark \markup \bold { "Scale 0_3" }
+%Scale 0_3
+        ^\markup \bold { "step 0_3" }
     \clef treble
-    c16 [ g, f aes b, des' e' gis' b' ]
-    c'' [ e'' g'' aes'' b ees''' e''' gis''' b''' ]
-    c'''' [ b''' gis''' e''' ees''' b aes'' g'' e'' ]
-    c'' [ b' gis' e' des' b, aes f e ]
+    c16 [ e bes fis ais e' ]
+    c' [ f' bes' fis' ais' e'' ]
+    c'' [ e'' bes'' fis'' ais'' e''' ]
+    c''' [ e''' ais'' fis'' bes'' e'' ]
+    c'' [ e'' ais' fis' bes' e' ]
+    c' [ e' ais fis bes e ]
     c    r8
     \bar ""
     \break
         
-%scale 0_4
-    \mark \markup \bold { "Scale 0_4" }
+%Scale 0_4
+        ^\markup \bold { "step 0_4" }
     \clef treble
-    c16 [ g, f e b, a gis ees a ]
-    c' [ g f' e' b a' gis' ees' des'' ]
-    c'' [ des'' ees' gis' a' b e' f' g ]
-    c' [ a ees gis a b, e f g, ]
+    c16 [ e bes fis ais e' ]
+    c' [ e' bes' fis' ais' e'' ]
+    c'' [ e'' bes'' fis'' ais'' e''' ]
+    c''' [ e''' ais'' fis'' bes'' e'' ]
+    c'' [ e'' ais' fis' bes' e' ]
+    c' [ e' ais fis bes e ]
     c    r8
     \bar ""
     \break
         
-%scale 1_0
-    \mark \markup \bold { "Scale 1_0" }
+%Scale 1_0
+        ^\markup \bold { "step 1_0" }
     \clef treble
-    c16 [ a e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e a ]
+    c16 [ f b fis b cis' ]
+    c' [ f' g' fis' b' b' ]
+    c'' [ f'' cis'' fis'' b'' b'' ]
+    c''' [ b'' b'' fis'' cis'' f'' ]
+    c'' [ b' b' fis' g' f' ]
+    c' [ cis' b fis b f ]
     c    r8
     \bar ""
     \break
         
-%scale 1_1
-    \mark \markup \bold { "Scale 1_1" }
+%Scale 1_1
+        ^\markup \bold { "step 1_1" }
     \clef treble
-    c16 [ a g des' gis f' e' a' b' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c'''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' b' a' e' f' gis des' g a ]
+    c16 [ f b fis b cis' ]
+    c' [ f' g' fis' b' b' ]
+    c'' [ f'' cis'' fis'' b'' b'' ]
+    c''' [ b'' b'' fis'' cis'' f'' ]
+    c'' [ b' b' fis' g' f' ]
+    c' [ e' b fis b f ]
     c    r8
     \bar ""
     \break
         
-%scale 1_2
-    \mark \markup \bold { "Scale 1_2" }
+%Scale 1_2
+        ^\markup \bold { "step 1_2" }
     \clef treble
-    c16 [ d g aes ]
-    c' [ ees' e' gis' b' ]
-    c'' [ e'' g'' aes'' ]
-    c''' [ ees''' e''' gis''' b''' ]
-    c'''' [ b''' gis''' e''' ees''' ]
-    c''' [ aes'' g'' e'' ]
-    c'' [ b' gis' e' ees' ]
-    c' [ aes g d ]
+    c16 [ f bes fis b e' ]
+    c' [ f' bes' fis' b' e'' ]
+    c'' [ f'' bes'' fis'' b'' e''' ]
+    c''' [ e''' b'' fis'' bes'' f'' ]
+    c'' [ e'' b' fis' bes' f' ]
+    c' [ e' b fis bes f ]
     c    r8
     \bar ""
     \break
         
-%scale 1_3
-    \mark \markup \bold { "Scale 1_3" }
+%Scale 1_3
+        ^\markup \bold { "step 1_3" }
     \clef treble
-    c16 [ e g aes ]
-    c' [ ees' e' gis' b' ]
-    c'' [ e'' g'' aes'' ]
-    c''' [ ees''' e''' gis''' b''' ]
-    c'''' [ b''' gis''' e''' ees''' ]
-    c''' [ aes'' g'' e'' ]
-    c'' [ b' gis' e' ees' ]
-    c' [ aes g e ]
+    c16 [ cis' bes fis g' e' ]
+    c' [ cis'' bes' fis' g'' e'' ]
+    c'' [ cis''' bes'' fis'' g''' e''' ]
+    c''' [ e''' g''' fis'' bes'' cis''' ]
+    c'' [ e'' g'' fis' bes' cis'' ]
+    c' [ e' g' fis bes cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 1_4
-    \mark \markup \bold { "Scale 1_4" }
+%Scale 1_4
+        ^\markup \bold { "step 1_4" }
     \clef treble
-    c16 [ e f aes des' ees' e' a' a' ]
-    c'' [ e'' g'' aes'' des''' ees''' e''' a''' bes''' ]
-    c'''' [ bes''' a''' e''' ees''' des''' aes'' g'' e'' ]
-    c'' [ a' a' e' ees' des' aes f f ]
+    c16 [ b gis fis gis e' ]
+    c' [ b' e' fis' gis' e'' ]
+    c'' [ b'' a'' fis'' gis'' e''' ]
+    c''' [ e''' gis'' fis'' a'' b'' ]
+    c'' [ e'' gis' fis' e' b' ]
+    c' [ e' gis fis gis b ]
     c    r8
     \bar ""
     \break
         
-%scale 2_0
-    \mark \markup \bold { "Scale 2_0" }
+%Scale 2_0
+        ^\markup \bold { "step 2_0" }
     \clef treble
-    c16 [ a b des' gis dis' gis f' b' des'' gis' g'' e' a'' dis''' des''' gis'' b''' ]
-    c'' [ b''' gis'' des''' dis''' a'' e' g'' gis' des'' b' f' gis dis' gis des' b a ]
+    c16 [ f g fis b cis' ]
+    c' [ f' g' fis' b' cis'' ]
+    c'' [ f'' cis'' fis'' b'' cis''' ]
+    c''' [ cis''' b'' fis'' cis'' f'' ]
+    c'' [ cis'' b' fis' g' f' ]
+    c' [ cis' b fis g f ]
     c    r8
     \bar ""
     \break
         
-%scale 2_1
-    \mark \markup \bold { "Scale 2_1" }
+%Scale 2_1
+        ^\markup \bold { "step 2_1" }
     \clef treble
-    c16 [ a g aes gis f' e' f' b' ]
-    c'' [ gis' g'' aes'' a'' dis''' e''' gis'' b''' ]
-    c'''' [ b''' gis'' e''' dis''' a'' aes'' g'' gis' ]
-    c'' [ b' f' e' f' gis aes g a ]
+    c16 [ f a fis b d' ]
+    c' [ f' g' fis' b' d'' ]
+    c'' [ f'' a'' fis'' b'' d''' ]
+    c''' [ d''' b'' fis'' a'' f'' ]
+    c'' [ d'' b' fis' g' f' ]
+    c' [ d' b fis a f ]
     c    r8
     \bar ""
     \break
         
-%scale 2_2
-    \mark \markup \bold { "Scale 2_2" }
+%Scale 2_2
+        ^\markup \bold { "step 2_2" }
     \clef treble
-    c16 [ d g aes bes f' e' fis' b' ]
-    c'' [ d'' g'' aes'' b'' ees''' e''' fis''' b''' ]
-    c'''' [ b''' fis''' e''' ees''' b'' aes'' g'' d'' ]
-    c'' [ b' fis' e' f' bes aes g d ]
+    c16 [ cis' a fis g' d' ]
+    c' [ cis'' a' fis' g'' d'' ]
+    c'' [ cis''' a'' fis'' g''' d''' ]
+    c''' [ d''' g''' fis'' a'' cis''' ]
+    c'' [ d'' g'' fis' a' cis'' ]
+    c' [ d' g' fis a cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 2_3
-    \mark \markup \bold { "Scale 2_3" }
+%Scale 2_3
+        ^\markup \bold { "step 2_3" }
     \clef treble
-    c16 [ aes g aes bes ees' e' aes' b' ]
-    c'' [ d'' g'' aes'' aes'' ees''' e''' d''' b''' ]
-    c'''' [ b''' d''' e''' ees''' aes'' aes'' g'' d'' ]
-    c'' [ b' aes' e' ees' bes aes g aes ]
+    c16 [ b a fis gis d' ]
+    c' [ b' a' fis' gis' d'' ]
+    c'' [ b'' a'' fis'' gis'' d''' ]
+    c''' [ d''' gis'' fis'' a'' b'' ]
+    c'' [ d'' gis' fis' a' b' ]
+    c' [ d' gis fis a b ]
     c    r8
     \bar ""
     \break
         
-%scale 2_4
-    \mark \markup \bold { "Scale 2_4" }
+%Scale 2_4
+        ^\markup \bold { "step 2_4" }
     \clef treble
-    c16 [ cis' g fis g' ees' ]
-    c' [ cis'' a' fis' d'' f'' aes'' cis''' a'' fis'' g''' ees''' ]
-    c''' [ ees''' g''' fis'' a'' cis''' aes'' f'' d'' fis' a' cis'' ]
-    c' [ ees' g' fis g cis' ]
+    c16 [ b a fis f' d' ]
+    c' [ b' a' fis' f'' d'' ]
+    c'' [ b'' a'' fis'' f''' d''' ]
+    c''' [ d''' f''' fis'' a'' b'' ]
+    c'' [ d'' f'' fis' a' b' ]
+    c' [ d' f' fis a b ]
     c    r8
     \bar ""
     \break
         
-%scale 3_0
-    \mark \markup \bold { "Scale 3_0" }
+%Scale 3_0
+        ^\markup \bold { "step 3_0" }
     \clef treble
-    c16 [ cis g e a dis' e' f' b' ]
-    c'' [ ees'' g'' e' a'' dis''' e''' f''' b''' ]
-    c'''' [ b''' f''' e''' dis''' a'' e' g'' cis'' ]
-    c'' [ b' f' e' dis' a e g cis ]
+    c16 [ f g fis b d' ]
+    c' [ f g' fis' b' d'' ]
+    c'' [ f'' g'' fis'' b'' d''' ]
+    c''' [ d''' b'' fis'' g'' f'' ]
+    c'' [ d'' b' fis' g' f ]
+    c' [ d' b fis g f ]
     c    r8
     \bar ""
     \break
         
-%scale 3_1
-    \mark \markup \bold { "Scale 3_1" }
+%Scale 3_1
+        ^\markup \bold { "step 3_1" }
     \clef treble
-    c16 [ ees g aes b dis' e' fis' b' ]
-    c'' [ ees'' g'' aes'' a'' dis''' e''' fis''' b''' ]
-    c'''' [ b''' fis''' e''' dis''' a'' aes'' g'' ees'' ]
-    c'' [ b' fis' e' dis' b aes g ees ]
+    c16 [ cis' g fis g' d' ]
+    c' [ f' e' fis' g'' d'' ]
+    c'' [ cis''' a'' fis'' g''' d''' ]
+    c''' [ d''' g''' fis'' a'' cis''' ]
+    c'' [ d'' g'' fis' a' f' ]
+    c' [ d' g' fis g cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 3_2
-    \mark \markup \bold { "Scale 3_2" }
+%Scale 3_2
+        ^\markup \bold { "step 3_2" }
     \clef treble
-    c16 [ d g fis d' f' ]
-    c' [ aes' b' fis' d'' g'' ]
-    c'' [ aes'' b'' fis'' d''' b''' ]
-    c''' [ b''' d''' fis'' b'' aes'' ]
-    c'' [ g'' d'' fis' b' aes' ]
-    c' [ f' d' fis g d ]
+    c16 [ cis' a fis gis d' ]
+    c' [ cis'' a' fis' gis' d'' ]
+    c'' [ cis''' a'' fis'' gis'' d''' ]
+    c''' [ d''' gis'' fis'' a'' cis''' ]
+    c'' [ d'' gis' fis' a' cis'' ]
+    c' [ d' gis fis a cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 3_3
-    \mark \markup \bold { "Scale 3_3" }
+%Scale 3_3
+        ^\markup \bold { "step 3_3" }
     \clef treble
-    c16 [ aes g fis d' f' ]
-    c' [ aes' b' fis' d'' f'' ]
-    c'' [ aes'' g'' fis'' d''' f''' ]
-    c''' [ f''' d''' fis'' g'' aes'' ]
-    c'' [ f'' d'' fis' b' aes' ]
-    c' [ f' d' fis g aes ]
+    c16 [ b a fis f' d' ]
+    c' [ b' a' fis' f'' d'' ]
+    c'' [ b'' a'' fis'' f''' d''' ]
+    c''' [ d''' f''' fis'' a'' b'' ]
+    c'' [ d'' f'' fis' a' b' ]
+    c' [ d' f' fis a b ]
     c    r8
     \bar ""
     \break
         
-%scale 3_4
-    \mark \markup \bold { "Scale 3_4" }
+%Scale 3_4
+        ^\markup \bold { "step 3_4" }
     \clef treble
-    c16 [ aes g fis d' ees' ]
-    c' [ aes' a' fis' d'' des'' ]
-    c'' [ aes'' a'' fis'' d''' des''' ]
-    c''' [ des''' d''' fis'' a'' aes'' ]
-    c'' [ des'' d'' fis' a' aes' ]
-    c' [ ees' d' fis g aes ]
+    c16 [ b e fis f' ees' ]
+    c' [ b' a' fis' f'' ees'' ]
+    c'' [ b'' a'' fis'' f''' ees''' ]
+    c''' [ ees''' f''' fis'' a'' b'' ]
+    c'' [ ees'' f'' fis' a' b' ]
+    c' [ ees' f' fis e b ]
     c    r8
     \bar ""
     \break
         
-%scale 4_0
-    \mark \markup \bold { "Scale 4_0" }
+%Scale 4_0
+        ^\markup \bold { "step 4_0" }
     \clef treble
-    c16 [ cis g e ]
-    c [ dis' e' f' b' ]
-    c'' [ aes g'' e' a'' dis''' e''' e' b''' ]
-    c'''' [ b''' e' e''' dis''' a'' e' g'' ees'' ]
-    c'' [ b' f' e' dis' ]
-    c [ e g cis ]
+    c16 [ a, g fis b d' ]
+    c' [ f g' fis' a d'' ]
+    c'' [ cis' e'' fis'' f' d''' ]
+    c''' [ d''' f' fis'' e'' cis''' ]
+    c'' [ d'' a fis' g' f ]
+    c' [ d' gis fis g a, ]
     c    r8
     \bar ""
     \break
         
-%scale 4_1
-    \mark \markup \bold { "Scale 4_1" }
+%Scale 4_1
+        ^\markup \bold { "step 4_1" }
     \clef treble
-    c16 [ ees g aes b dis' e' fis' b' ]
-    c'' [ ees'' g'' aes'' a'' dis''' e''' g''' b''' ]
-    c'''' [ b''' g''' e''' dis''' a'' aes'' g'' ees'' ]
-    c'' [ b' fis' e' dis' b aes g ees ]
+    c16 [ a, gis fis gis d' ]
+    c' [ f e' fis' gis' d'' ]
+    c'' [ cis''' e'' fis'' gis'' d''' ]
+    c''' [ d''' gis'' fis'' gis'' cis''' ]
+    c'' [ d'' g'' fis' e' f ]
+    c' [ d' gis fis gis a, ]
     c    r8
     \bar ""
     \break
         
-%scale 4_2
-    \mark \markup \bold { "Scale 4_2" }
+%Scale 4_2
+        ^\markup \bold { "step 4_2" }
     \clef treble
-    c16 [ aes g fis d' f' ]
-    c' [ aes' b' fis' d'' f'' ]
-    c'' [ aes'' b'' fis'' d''' f''' ]
-    c''' [ f''' d''' fis'' b'' aes'' ]
-    c'' [ f'' d'' fis' b' aes' ]
-    c' [ f' d' fis g aes ]
+    c16 [ b gis fis gis d' ]
+    c' [ b' gis' fis' gis' d'' ]
+    c'' [ b'' a'' fis'' gis'' d''' ]
+    c''' [ d''' gis'' fis'' a'' b'' ]
+    c'' [ d'' gis' fis' gis' b' ]
+    c' [ d' gis fis gis b ]
     c    r8
     \bar ""
     \break
         
-%scale 4_3
-    \mark \markup \bold { "Scale 4_3" }
+%Scale 4_3
+        ^\markup \bold { "step 4_3" }
     \clef treble
-    c16 [ aes g fis d' f' ]
-    c' [ aes' b' fis' d'' f'' ]
-    c'' [ aes'' g'' fis'' d''' f''' ]
-    c''' [ f''' d''' fis'' g'' aes'' ]
-    c'' [ f'' d'' fis' b' aes' ]
-    c' [ f' d' fis g aes ]
+    c16 [ b e fis f' d' ]
+    c' [ b' a' fis' f'' d'' ]
+    c'' [ b'' a'' fis'' e'' d''' ]
+    c''' [ d''' e'' fis'' a'' b'' ]
+    c'' [ d'' f'' fis' a' b' ]
+    c' [ d' f' fis a b ]
     c    r8
     \bar ""
     \break
         
-%scale 4_4
-    \mark \markup \bold { "Scale 4_4" }
+%Scale 4_4
+        ^\markup \bold { "step 4_4" }
     \clef treble
-    c16 [ d g fis d' des' ]
-    c' [ e' a' fis' d'' f'' ]
-    c'' [ aes'' g'' fis'' d''' d''' ]
-    c''' [ d''' d''' fis'' g'' e'' ]
-    c'' [ f'' d'' fis' g' aes' ]
-    c' [ des' ais fis g d ]
+    c16 [ g, e fis cis ees' ]
+    c' [ g e' fis' cis' bes' ]
+    c'' [ g' e'' fis'' cis'' bes'' ]
+    c''' [ bes'' cis'' fis'' e'' g' ]
+    c'' [ bes' cis' fis' e' g ]
+    c' [ ees' cis fis e g, ]
     c    r8
     \bar ""
     \break
@@ -321,6 +342,7 @@
     \layout {
         indent = 0\mm
         line-width = 190\mm
+        \override Stem.transparent = ##t
     }
     \midi{ }
     

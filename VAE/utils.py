@@ -2,6 +2,8 @@ import torch
 import numpy
 import re
 import sys
+import mahotas
+from scipy.spatial.distance import euclidean
 
 ### DATA ###
 
@@ -26,13 +28,13 @@ NOTE_RANGE_LIST = [
         "fes'''", "f'''", "fis'''", "ges'''", "g'''", "gis'''", "aes'''", "a'''",
         "ais'''", "bes'''", "b'''", "bis'''", "ces'''", "c''''"
         ]
-H_DIM = 800
-Z_DIM = 16
+H_DIM = 800 # base: 800
+Z_DIM = 16 # base: 16
 BATCH_SIZE = 32
 NUM_EPOCHS = 2000
 LR_RATE = 3e-4
 ALPHA = 1
-BETA = 0.5
+BETA = 0.5 # base: 0.5
 
 
 # interpolation
@@ -114,9 +116,13 @@ def lerp(z1, z2, t):
     return (1 - t) * z1 + t * z2
 
 def to_midi(filename):
+    if filename.endswith('2d'):
+        folder = '2d'
+    else:
+        folder = '1d'
     # Load and read original LilyPond file
     content = ''
-    with open(f"results/{filename}.ly", "r") as file:
+    with open(f"results/{folder}/{filename}.ly", "r") as file:
         lines = file.readlines()
         for line in lines:
             print(line)
@@ -140,6 +146,8 @@ def to_midi(filename):
         \\cadenzaOn
         \\override Beam.breakable = ##t
         \\accidentalStyle Score.forget
+        \\override Score.TextScript.padding = #2
+        \\override Stem.transparent = ##t
     {
     """
     diagonal_1 = combined_content
@@ -156,18 +164,25 @@ def to_midi(filename):
         initial_length = len(combined_content)
 
         if filename.endswith('2d'):
-            combined_content += f"\n%scale {scale_numbers[i][0]}_{scale_numbers[i][1]}"
+            combined_content += f"\n%Scale {scale_numbers[i][0]}_{scale_numbers[i][1]}"
             if i != 0:
                 combined_content += """
-    \\mark \\markup \\bold """  + "{" f""" "Scale {scale_numbers[i][0]}_{scale_numbers[i][1]}" """ + "}"
+        ^\\markup \\bold """  + "{" f""" "step {scale_numbers[i][0]}_{scale_numbers[i][1]}" """ + "}"
             combined_content += (match[20:-1].strip())[1:]
+            if i == 0:
+                combined_content = combined_content[:(combined_content.index('clef treble') + len('clef treble'))] + """
+        ^\\markup \\bold """  + "{" f""" "step {scale_numbers[i][0]}_{scale_numbers[i][1]}" """ + "}" + combined_content[(combined_content.index('clef treble') + len('clef treble')):]
+           
         
         else:
             combined_content += f"\n%scale {scale_num_1d}"
             if i != 0:
                 combined_content += """
-    \\mark \\markup \\bold """  + "{" f""" "Scale {scale_num_1d}" """ + "}"
+    ^\\markup \\bold """  + "{" f""" "step {scale_num_1d}" """ + "}"
             combined_content += (match[20:-1].strip())[1:]
+            if i == 0:
+                combined_content = combined_content[:(combined_content.index('clef treble') + len('clef treble'))] + """
+        ^\\markup \\bold """  + "{" f""" "step {scale_num_1d}" """ + "}" + combined_content[(combined_content.index('clef treble') + len('clef treble')):]
             scale_num_1d += 1
 
         combined_content += f"""    r8
@@ -183,33 +198,36 @@ def to_midi(filename):
     combined_content += """
     }
     >>
-    \layout {
-        indent = 0\mm
-        line-width = 190\mm
+    \\layout {
+        indent = 0\\mm
+        line-width = 190\\mm
+        \\override Stem.transparent = ##t
     }
-    \midi{ }
+    \\midi{ }
     
     }
     """
     diagonal_1 += """
     }
     >>
-    \layout {
-        indent = 0\mm
-        line-width = 190\mm
+    \\layout {
+        indent = 0\\mm
+        line-width = 190\\mm
+        \\override Stem.transparent = ##t
     }
-    \midi{ }
+    \\midi{ }
     
     }
     """
     diagonal_2 += """
     }
     >>
-    \layout {
-        indent = 0\mm
-        line-width = 190\mm
+    \\layout {
+        indent = 0\\mm
+        line-width = 190\\mm
+        \\override Stem.transparent = ##t
     }
-    \midi{ }
+    \\midi{ }
     
     }
     """
@@ -222,9 +240,6 @@ def to_midi(filename):
 
         with open(f"results/2d/diagonal_2.ly", "w") as file:
             file.write(diagonal_2)
-        folder = '2d'
-    else:
-        folder = '1d'
 
     with open(f"results/{folder}/{filename}.ly", "w") as file:
         file.write(combined_content)
@@ -232,3 +247,12 @@ def to_midi(filename):
 
 
     print("Saved score as MIDI file correctly in the Interpolation/results folder.")
+
+def calculate_lbp_similarity(matrix1, matrix2, radius=6, points=6):
+    # Calculates LBP for matrix 1 and 2
+    lbp1 = mahotas.features.lbp(matrix1, radius, points)
+    lbp2 = mahotas.features.lbp(matrix2, radius, points)
+
+    # Euclidian distance between LBPs
+    distance = euclidean(lbp1, lbp2)
+    return distance

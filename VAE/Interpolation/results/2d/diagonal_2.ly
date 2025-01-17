@@ -9,55 +9,59 @@
     <<
         \cadenzaOn
         \override Beam.breakable = ##t
-
+        \accidentalStyle Score.forget
+        \override Score.TextScript.padding = #2
+        \override Stem.transparent = ##t
     {
     
-%scale 0_4
-    \mark \markup \bold { "Scale 0_4" }
+%Scale 0_4
+        ^\markup \bold { "step 0_4" }
     \clef treble
-    c16 [ g, f e b, a gis ees a ]
-    c' [ g f' e' b a' gis' ees' des'' ]
-    c'' [ des'' ees' gis' a' b e' f' g ]
-    c' [ a ees gis a b, e f g, ]
+    c16 [ e bes fis ais e' ]
+    c' [ e' bes' fis' ais' e'' ]
+    c'' [ e'' bes'' fis'' ais'' e''' ]
+    c''' [ e''' ais'' fis'' bes'' e'' ]
+    c'' [ e'' ais' fis' bes' e' ]
+    c' [ e' ais fis bes e ]
     c    r8
     \bar ""
     \break
         
-%scale 1_3
-    \mark \markup \bold { "Scale 1_3" }
+%Scale 1_3
+        ^\markup \bold { "step 1_3" }
     \clef treble
-    c16 [ e g aes ]
-    c' [ ees' e' gis' b' ]
-    c'' [ e'' g'' aes'' ]
-    c''' [ ees''' e''' gis''' b''' ]
-    c'''' [ b''' gis''' e''' ees''' ]
-    c''' [ aes'' g'' e'' ]
-    c'' [ b' gis' e' ees' ]
-    c' [ aes g e ]
+    c16 [ cis' bes fis g' e' ]
+    c' [ cis'' bes' fis' g'' e'' ]
+    c'' [ cis''' bes'' fis'' g''' e''' ]
+    c''' [ e''' g''' fis'' bes'' cis''' ]
+    c'' [ e'' g'' fis' bes' cis'' ]
+    c' [ e' g' fis bes cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 3_1
-    \mark \markup \bold { "Scale 3_1" }
+%Scale 3_1
+        ^\markup \bold { "step 3_1" }
     \clef treble
-    c16 [ ees g aes b dis' e' fis' b' ]
-    c'' [ ees'' g'' aes'' a'' dis''' e''' fis''' b''' ]
-    c'''' [ b''' fis''' e''' dis''' a'' aes'' g'' ees'' ]
-    c'' [ b' fis' e' dis' b aes g ees ]
+    c16 [ cis' g fis g' d' ]
+    c' [ f' e' fis' g'' d'' ]
+    c'' [ cis''' a'' fis'' g''' d''' ]
+    c''' [ d''' g''' fis'' a'' cis''' ]
+    c'' [ d'' g'' fis' a' f' ]
+    c' [ d' g' fis g cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 4_0
-    \mark \markup \bold { "Scale 4_0" }
+%Scale 4_0
+        ^\markup \bold { "step 4_0" }
     \clef treble
-    c16 [ cis g e ]
-    c [ dis' e' f' b' ]
-    c'' [ aes g'' e' a'' dis''' e''' e' b''' ]
-    c'''' [ b''' e' e''' dis''' a'' e' g'' ees'' ]
-    c'' [ b' f' e' dis' ]
-    c [ e g cis ]
+    c16 [ a, g fis b d' ]
+    c' [ f g' fis' a d'' ]
+    c'' [ cis' e'' fis'' f' d''' ]
+    c''' [ d''' f' fis'' e'' cis''' ]
+    c'' [ d'' a fis' g' f ]
+    c' [ d' gis fis g a, ]
     c    r8
     \bar ""
     \break
@@ -67,6 +71,7 @@
     \layout {
         indent = 0\mm
         line-width = 190\mm
+        \override Stem.transparent = ##t
     }
     \midi{ }
     

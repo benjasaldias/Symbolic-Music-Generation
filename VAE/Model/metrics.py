@@ -28,7 +28,6 @@ def calculate_symmetry(matrix):
 
     for i in range(18):
         last_row = len(matrix)
-        print(last_row)
         for row in range(len(matrix)):
             if np.all(np.max(matrix, axis=1) < 1):
                 last_row = row - 1

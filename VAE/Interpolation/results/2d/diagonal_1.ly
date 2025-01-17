@@ -9,65 +9,70 @@
     <<
         \cadenzaOn
         \override Beam.breakable = ##t
-
+        \accidentalStyle Score.forget
+        \override Score.TextScript.padding = #2
+        \override Stem.transparent = ##t
     {
     
-%scale 0_0
+%Scale 0_0
     \clef treble
-    c16 [ a e des' gis f' ]
-    c' [ a' e' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' e' a' ]
-    c' [ f' gis des' e a ]
+        ^\markup \bold { "step 0_0" }
+    c16 [ f b fis b cis' gis ees' g' fis' b' b' e' f'' cis'' fis'' b'' g'' ]
+    c'' [ g'' b'' fis'' cis'' f'' ]
+    c'' [ b' b' fis' g' ees' ]
+    c' [ cis' b fis b f ]
     c    r8
     \bar ""
     \break
         
-%scale 1_1
-    \mark \markup \bold { "Scale 1_1" }
+%Scale 1_1
+        ^\markup \bold { "step 1_1" }
     \clef treble
-    c16 [ a g des' gis f' e' a' b' des'' gis' f'' ]
-    c'' [ a'' e'' des''' gis'' f''' ]
-    c'''' [ f''' gis'' des''' e'' a'' ]
-    c'' [ f'' gis' des'' b' a' e' f' gis des' g a ]
+    c16 [ f b fis b cis' ]
+    c' [ f' g' fis' b' b' ]
+    c'' [ f'' cis'' fis'' b'' b'' ]
+    c''' [ b'' b'' fis'' cis'' f'' ]
+    c'' [ b' b' fis' g' f' ]
+    c' [ e' b fis b f ]
     c    r8
     \bar ""
     \break
         
-%scale 2_2
-    \mark \markup \bold { "Scale 2_2" }
+%Scale 2_2
+        ^\markup \bold { "step 2_2" }
     \clef treble
-    c16 [ d g aes bes f' e' fis' b' ]
-    c'' [ d'' g'' aes'' b'' ees''' e''' fis''' b''' ]
-    c'''' [ b''' fis''' e''' ees''' b'' aes'' g'' d'' ]
-    c'' [ b' fis' e' f' bes aes g d ]
+    c16 [ cis' a fis g' d' ]
+    c' [ cis'' a' fis' g'' d'' ]
+    c'' [ cis''' a'' fis'' g''' d''' ]
+    c''' [ d''' g''' fis'' a'' cis''' ]
+    c'' [ d'' g'' fis' a' cis'' ]
+    c' [ d' g' fis a cis' ]
     c    r8
     \bar ""
     \break
         
-%scale 3_3
-    \mark \markup \bold { "Scale 3_3" }
+%Scale 3_3
+        ^\markup \bold { "step 3_3" }
     \clef treble
-    c16 [ aes g fis d' f' ]
-    c' [ aes' b' fis' d'' f'' ]
-    c'' [ aes'' g'' fis'' d''' f''' ]
-    c''' [ f''' d''' fis'' g'' aes'' ]
-    c'' [ f'' d'' fis' b' aes' ]
-    c' [ f' d' fis g aes ]
+    c16 [ b a fis f' d' ]
+    c' [ b' a' fis' f'' d'' ]
+    c'' [ b'' a'' fis'' f''' d''' ]
+    c''' [ d''' f''' fis'' a'' b'' ]
+    c'' [ d'' f'' fis' a' b' ]
+    c' [ d' f' fis a b ]
     c    r8
     \bar ""
     \break
         
-%scale 4_4
-    \mark \markup \bold { "Scale 4_4" }
+%Scale 4_4
+        ^\markup \bold { "step 4_4" }
     \clef treble
-    c16 [ d g fis d' des' ]
-    c' [ e' a' fis' d'' f'' ]
-    c'' [ aes'' g'' fis'' d''' d''' ]
-    c''' [ d''' d''' fis'' g'' e'' ]
-    c'' [ f'' d'' fis' g' aes' ]
-    c' [ des' ais fis g d ]
+    c16 [ g, e fis cis ees' ]
+    c' [ g e' fis' cis' bes' ]
+    c'' [ g' e'' fis'' cis'' bes'' ]
+    c''' [ bes'' cis'' fis'' e'' g' ]
+    c'' [ bes' cis' fis' e' g ]
+    c' [ ees' cis fis e g, ]
     c    r8
     \bar ""
     \break
@@ -77,6 +82,7 @@
     \layout {
         indent = 0\mm
         line-width = 190\mm
+        \override Stem.transparent = ##t
     }
     \midi{ }
     

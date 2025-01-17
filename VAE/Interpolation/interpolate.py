@@ -1,6 +1,8 @@
 import os
 import sys
 import torch
+import json
+import random
 import plotly.express as px
 import numpy as np
 import pandas as pd
@@ -18,29 +20,25 @@ Z_DIM = u.Z_DIM
 
 DEVICE = "cpu"
 
-# Get vae.pth path to load the trained model
+# Get vae.pth path to load the trained model and data.json for known scales
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 vae_path = os.path.join(root_dir, "Model", "vae.pth")
+json_path = os.path.join(root_dir, "Model", "data.json")
 
 # Empty the output lilypond file
-with open('results/interpolation.ly', 'w') as f: 
+with open('results/1d/interpolation.ly', 'w') as f: 
     f.write('')
-
-def calculate_lbp_similarity(matrix1, matrix2, radius=6, points=6):
-    # Calculates LBP for matrix 1 and 2
-    lbp1 = mahotas.features.lbp(matrix1, radius, points)
-    lbp2 = mahotas.features.lbp(matrix2, radius, points)
-
-    # Euclidian distance between LBPs
-    distance = euclidean(lbp1, lbp2)
-    return distance
 
 # Load model
 model = m.VariationalAutoEncoder(input_dim=u.INPUT_DIM)
 model.load_state_dict(torch.load(vae_path))
 model.eval()
 
-def interpolate(model, visualize=False, interpolation_type='slerp'):
+# Load from a JSON file
+with open(json_path, "r") as json_file:
+    loaded_data = json.load(json_file)
+
+def interpolate(model, visualize=False, interpolation_type='slerp', running_multiple=False, random_known=True):
     latent_points = []
     scales = []
     generated_scales = []
@@ -49,20 +47,34 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
     latent_points_original_interp = []
     
     # Get Z vectors input
-    inp_z1 = input(f"Input your first vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
-    inp_z2 = input(f"Input your second vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
-
-    if inp_z1 == 'random' or inp_z1 == '':
+    inp_z1 = ''
+    inp_z2 = ''
+    random_key_z1 = ''
+    random_key_z2 = ''
+    if not running_multiple and not random_known:
+        inp_z1 = input(f"Input your first vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
+        inp_z2 = input(f"Input your second vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
+  
+    if (inp_z1 == 'random' or inp_z1 == '' or running_multiple) and not random_known:
         z1 = torch.randn(1, Z_DIM).to(DEVICE) # Normal Distribution
+    elif inp_z1 == 'known' or random_known:
+        random_key_z1 = random.choice(list(loaded_data.keys()))
+        z1 = loaded_data[random_key_z1]
+        z1 = torch.tensor(z1).view(1, Z_DIM)
     else:
         inp_z1 = inp_z1.split(' ')
-        z1 = torch.tensor([float(x) for x in inp_z1]).to(DEVICE)
+        z1 = torch.tensor([float(x) for x in inp_z1]).to(DEVICE).view(1, Z_DIM)
+        print(z1.shape)
 
-    if inp_z2 == 'random' or inp_z2 == '':
+    if (inp_z2 == 'random' or inp_z2 == '' or running_multiple) and not random_known:
         z2 = torch.randn(1, Z_DIM).to(DEVICE) # Normal Distribution
+    elif inp_z2 == 'known' or random_known:
+        random_key_z2 = random.choice(list(loaded_data.keys()))
+        z2 = loaded_data[random_key_z2]
+        z2 = torch.tensor(z2).view(1, Z_DIM)
     else:
         inp_z2 = inp_z2.split(' ')
-        z2 = torch.tensor([float(x) for x in inp_z2]).to(DEVICE)
+        z2 = torch.tensor([float(x) for x in inp_z2]).to(DEVICE).view(1, Z_DIM)
 
     # Check if input vectors are in Z_DIM dimensions
     if z1.shape[1] != Z_DIM or z2.shape[1] != Z_DIM:
@@ -83,10 +95,6 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         transition_vectors = torch.stack(transition_vectors) # stack vectors
     original_transition_vectors = transition_vectors
     
-
-    # print("Transition vectors:")
-    # print(transition_vectors)
-    
     written = []
     counter = 0
     scale_number = 0
@@ -96,29 +104,31 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
         with torch.no_grad():
             reconstructed_matrix = model.decode(z) 
 
-        output_matrix = u.get_binary(reconstructed_matrix)
-        lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, i)
+        if not running_multiple:
+            output_matrix = u.get_binary(reconstructed_matrix)
+            lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, i)
 
-        with open('results/interpolation.ly', 'a') as f:  
-            if lilypond_output not in written:
-                f.write(f'\n%scale{scale_number}')
-                scale_number += 1
-                f.write(lilypond_output)
-                generated_scales.append(lilypond_output)
-                original_scales.append(lilypond_output)
-                written.append(lilypond_output)
-                latent_points_interpolated.append(transition_vectors[i].cpu().numpy().flatten())
-            else:
-                original_scales.append(lilypond_output)
-                latent_points_original_interp.append(original_transition_vectors[i].cpu().numpy().flatten())
-                continue
-            counter += 1
+            with open('results/1d/interpolation.ly', 'a') as f:  
+                if lilypond_output[lilypond_output.index('c16'):] not in written:
+                    f.write(f'\n%scale{scale_number}')
+                    scale_number += 1
+                    f.write(lilypond_output)
+                    generated_scales.append(lilypond_output)
+                    original_scales.append(lilypond_output)
+                    written.append(lilypond_output[lilypond_output.index('c16'):])
+                    latent_points_interpolated.append(transition_vectors[i].cpu().numpy().flatten())
+                else:
+                    original_scales.append(lilypond_output)
+                    latent_points_original_interp.append(original_transition_vectors[i].cpu().numpy().flatten())
+                    continue
+                counter += 1
 
         # Store latent point and its score
         latent_points.append(z.cpu().numpy().flatten()) 
         scales.append(f'scale {i}') 
-    u.to_midi("interpolation")
-    print('LilyPond file saved in the Interpolation/results folder.')
+    if not running_multiple:
+        u.to_midi("interpolation")
+        print('LilyPond file saved in the Interpolation/results folder.')
     
     if visualize == True:
         latent_points = np.array(latent_points)
@@ -165,7 +175,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
 
         # Calculate SSIM and LBP per step
         ssim_score = ssim(output_matrix1, output_matrix2, data_range=1.0)
-        lbp_score = calculate_lbp_similarity(output_matrix1, output_matrix2)
+        lbp_score = u.calculate_lbp_similarity(output_matrix1, output_matrix2)
         ssim_scores.append(ssim_score)
         lbp_scores.append(lbp_score)
 
@@ -182,25 +192,30 @@ def interpolate(model, visualize=False, interpolation_type='slerp'):
     output_matrix_start = u.get_binary(matrix_start)
     output_matrix_finish = u.get_binary(matrix_finish)
     ssim_score_s_f = ssim(output_matrix_start, output_matrix_finish, data_range=1.0)
-    lbp_score_s_f = calculate_lbp_similarity(output_matrix_start, output_matrix_finish)
+    lbp_score_s_f = u.calculate_lbp_similarity(output_matrix_start, output_matrix_finish)
 
     # Get l2 regularity mean
     average_l2_regularity = np.mean(l2_regularities)
     average_l2_regularity = np.divide(average_l2_regularity, l2_total_distance)
 
     # Print metrics
-    print("\nInterpolation Metrics:")
-    print("\n #### L2 Regularity ### \n")
-    print(f"- Average L2 Regularity: {average_l2_regularity:.4f}")
-    print(f"- L2 Regularity per step: {l2_regularities}")
-    print("\n ### SSIM ### \n")
-    print(f"- Average SSIM: {average_ssim:.4f}")
-    print(f"- SSIM per step: {ssim_scores}")
-    print(f"- SSIM start-finish: {ssim_score_s_f:.4f}")
-    print("\n ### LBP ### \n")
-    print(f"- Average LBP: {average_lbp:.4f}")
-    print(f"- LBP per step: {lbp_scores}")
-    print(f"- LBP start-finish: {lbp_score_s_f:.4f}")
+    if random_known or inp_z1 == 'known' or inp_z2 == 'known':
+        print(f"Thesaurus scale taken for z1 {random_key_z1}")
+        print(f"Thesaurus scale taken for z2 {random_key_z2}")
+
+    if not running_multiple:
+        print("\nInterpolation Metrics:")
+        print("\n #### L2 Regularity ### \n")
+        print(f"- Average L2 Regularity: {average_l2_regularity:.4f}")
+        print(f"- L2 Regularity per step: {l2_regularities}")
+        print("\n ### SSIM ### \n")
+        print(f"- Average SSIM: {average_ssim:.4f}")
+        print(f"- SSIM per step: {ssim_scores}")
+        print(f"- SSIM start-finish: {ssim_score_s_f:.4f}")
+        print("\n ### LBP ### \n")
+        print(f"- Average LBP: {average_lbp:.4f}")
+        print(f"- LBP per step: {lbp_scores}")
+        print(f"- LBP start-finish: {lbp_score_s_f:.4f}")
     return [average_ssim, ssim_score_s_f, average_lbp, lbp_score_s_f]
 
 def run_multiple(visualize, interpolation_type):
@@ -208,9 +223,9 @@ def run_multiple(visualize, interpolation_type):
     s_f_total_ssim = 0
     total_lbp = 0
     s_f_total_lbp = 0
-    QUANTITY = 10
+    QUANTITY = 500
     for _ in range(QUANTITY):
-        result = interpolate(model, visualize=visualize, interpolation_type=interpolation_type)
+        result = interpolate(model, visualize=visualize, interpolation_type=interpolation_type, running_multiple=True)
         total_ssim += result[0]
         s_f_total_ssim += result[1]
         total_lbp += result[2]
@@ -226,5 +241,17 @@ def run_multiple(visualize, interpolation_type):
     print(f'Average LBP per step: {total_average_lbp}')
     print(f'Average start-finish LBP: {s_f_average_lbp}')
 
-interpolate(model, visualize=False, interpolation_type='slerp')
-# run_multiple(visualize=True, interpolation_type='slerp')
+interpolate(model, visualize=False, interpolation_type='linear', running_multiple=False, random_known=False)
+# run_multiple(visualize=False, interpolation_type='linear')
+
+### METRICS FOR 500 SLERP RUNS ###
+# Average SSIM per step: 0.9340
+# Average start-finish SSIM: 0.6720
+# Average LBP per step: 4.2414
+# Average start-finish LBP: 10.7317
+
+### METRICS FOR 500 LERP RUNS ###
+# Average SSIM per step: 0.9294
+# Average start-finish SSIM: 0.6605
+# Average LBP per step: 4.3747
+# Average start-finish LBP: 10.5974
