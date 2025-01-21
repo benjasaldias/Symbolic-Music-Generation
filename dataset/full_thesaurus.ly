@@ -9,14 +9,10 @@
 
 % Thesaurus of Scales and Melodic Patterns by Nicolas Slonimsky, 1947.
 
-% Nota: toda partitura está hecha sin ciertos comandos que facilitan la transcripción,
-% pues esto dificulta la manipulación de los datos. Tampoco se tienen títulos visibles en PDF,
-% éstos se encuentran comentados.
-% Algunas partituras fueron transpuestas por comodidad del uso específico al ser creadas, siéntase
-% libre de hacer los cambios que estime conveniente :).
+% Note: All scales are written as raw as possible, avoiding certain commands. Feel free to make the changes you see fit :).
 
-% IMPORTANTE: Toda sección que esté incompleta tiene un comentario que dice "---falta---". Puedes buscar
-% aquellas secciones con ctrl+f dentro de Frescobaldi.
+% IMPORTANTE: All missing scales and sections are labeled as '---falta---', we will be adding them in the future.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% TRITONE PROGRESSION %%%%

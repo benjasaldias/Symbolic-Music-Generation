@@ -44,7 +44,7 @@ dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False)
 loss_fn = torch.nn.BCELoss(reduction="sum")
 
 # Check reconstruction and calculate loss
-correctas = 0
+correct = 0
 known_scales = {}
 for i, original in enumerate(dataloader):
     original = original.to(DEVICE).view(BATCH_SIZE, INPUT_DIM)
@@ -55,7 +55,6 @@ for i, original in enumerate(dataloader):
     reconstruction_loss = loss_fn(reconstructed, original)
     total_loss = reconstruction_loss
 
-    mato = False
     # Print results
     print(f'Original matrix {i}:')
     print(original.view(u.NUM_ROWS, u.NOTE_RANGE))
@@ -66,11 +65,10 @@ for i, original in enumerate(dataloader):
     # Check if the model has perfectly reconstructed the scale
     if np.all(u.get_binary(original) == u.get_binary(reconstructed)):
         print('The model has perfectly reconstructed the scale.')
-        correctas += 1
+        correct += 1
         known_scales[str(i)] = mu.tolist()
     else:
         print('The model has not perfectly reconstructed the scale.')
-        mato = True
 
     # Visualize the output matrix
     output_matrix = u.get_binary(reconstructed)
@@ -80,9 +78,7 @@ for i, original in enumerate(dataloader):
 
     text = matrix2lilypond.matrix_to_lilypond(output_matrix)    
     print(text)
-    # if mato:
-    #     break
-print(f'total = {correctas/227}')
+print(f'total = {correct/227}')
 
 # Save to a JSON file
 with open("data.json", "w") as json_file:

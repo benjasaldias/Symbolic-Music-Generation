@@ -1,7 +1,7 @@
 \version "2.22.2"
 \header {
 title = "Interpolation"
-composer = "Benjamín Saldías"
+composer = "Symbolic Music Generation"
 }
 
 \score {

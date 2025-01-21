@@ -13,7 +13,7 @@ from skimage.metrics import structural_similarity as ssim
 DEVICE = "cpu"
 INPUT_DIM = u.INPUT_DIM
 Z_DIM = u.Z_DIM
-BATCH_SIZE = u.BATCH_SIZE
+LEN_DATASET = 227
 NUM_SAMPLES = 1000
 
 # Load model
@@ -80,7 +80,7 @@ def calculate_metrics(original, generated, mu, logvar, dataset):
 def evaluate_model(dataset, model, num_samples=1000):
     print('This may take a few minutes...')
     all_metrics = []
-    for i in range(BATCH_SIZE):
+    for i in range(LEN_DATASET):
         # Random z vector sampling
         original = dataset[i].to(DEVICE).unsqueeze(0)
         mu, logvar = model.encode(original)
