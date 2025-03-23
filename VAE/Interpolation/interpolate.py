@@ -52,6 +52,8 @@ def interpolate(model, visualize=False, interpolation_type='slerp', running_mult
     random_key_z1 = ''
     random_key_z2 = ''
     if not running_multiple and not random_known:
+        # inp_z1 = "random"
+        # inp_z2 = "random"
         inp_z1 = input(f"Input your first vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
         inp_z2 = input(f"Input your second vector of {Z_DIM} dimensions (example: x1 x2 x3...): ")
   
@@ -61,16 +63,21 @@ def interpolate(model, visualize=False, interpolation_type='slerp', running_mult
         random_key_z1 = random.choice(list(loaded_data.keys()))
         z1 = loaded_data[random_key_z1]
         z1 = torch.tensor(z1).view(1, Z_DIM)
+    elif inp_z1.isnumeric():
+        z1 = loaded_data[inp_z1]
+        z1 = torch.tensor(z1).view(1, Z_DIM)
     else:
         inp_z1 = inp_z1.split(' ')
         z1 = torch.tensor([float(x) for x in inp_z1]).to(DEVICE).view(1, Z_DIM)
-        print(z1.shape)
 
     if (inp_z2 == 'random' or inp_z2 == '' or running_multiple) and not random_known:
         z2 = torch.randn(1, Z_DIM).to(DEVICE) # Normal Distribution
     elif inp_z2 == 'known' or random_known:
         random_key_z2 = random.choice(list(loaded_data.keys()))
         z2 = loaded_data[random_key_z2]
+        z2 = torch.tensor(z2).view(1, Z_DIM)
+    elif inp_z2.isnumeric():
+        z2 = loaded_data[inp_z2]
         z2 = torch.tensor(z2).view(1, Z_DIM)
     else:
         inp_z2 = inp_z2.split(' ')
@@ -174,7 +181,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp', running_mult
         output_matrix2 = u.get_binary(matrix2)
 
         # Calculate SSIM and LBP per step
-        ssim_score = ssim(output_matrix1, output_matrix2, data_range=1.0)
+        ssim_score = ssim(output_matrix1, output_matrix2, data_range=1.0) # default 7x7 patch size
         lbp_score = u.calculate_lbp_similarity(output_matrix1, output_matrix2)
         ssim_scores.append(ssim_score)
         lbp_scores.append(lbp_score)
@@ -225,7 +232,7 @@ def run_multiple(visualize, interpolation_type):
     s_f_total_lbp = 0
     QUANTITY = 500
     for _ in range(QUANTITY):
-        result = interpolate(model, visualize=visualize, interpolation_type=interpolation_type, running_multiple=True)
+        result = interpolate(model, visualize=visualize, interpolation_type=interpolation_type, running_multiple=True, random_known=False)
         total_ssim += result[0]
         s_f_total_ssim += result[1]
         total_lbp += result[2]
@@ -241,8 +248,8 @@ def run_multiple(visualize, interpolation_type):
     print(f'Average LBP per step: {total_average_lbp}')
     print(f'Average start-finish LBP: {s_f_average_lbp}')
 
-interpolate(model, visualize=False, interpolation_type='linear', running_multiple=False, random_known=False)
-# run_multiple(visualize=False, interpolation_type='linear')
+interpolate(model, visualize=False, interpolation_type='slerp', running_multiple=False, random_known=False)
+# run_multiple(visualize=False, interpolation_type='slerp')
 
 ### METRICS FOR 500 SLERP RUNS ###
 # Average SSIM per step: 0.9340

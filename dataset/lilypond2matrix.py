@@ -3,6 +3,7 @@ import os
 import sys
 import numpy as np
 import torch
+import random
 
 # Read and filter lilypond file
 def read_lilypond_sheet(file_name):
@@ -74,21 +75,12 @@ def get_notes(content):
 def sheet_to_matrix(notes, max_length):
     # Define range of notes
     note_range = [
-        'c,', 'cis,', 'des,', 'd,', 'dis,', 'ees,', 'e,', 'eis,',
-        "fes,", 'f,', 'fis,', 'ges,', 'g,', 'gis,', 'aes,', 'a,', 
-        'ais,', 'bes,', 'b,', 'bis,', 'ces,',
-        'c', 'cis', 'des', 'd', 'dis', 'ees', 'e', 'eis',
-        "fes", 'f', 'fis', 'ges', 'g', 'gis', 'aes', 'a', 
-        'ais', 'bes', 'b', 'bis', 'ces',
-        "c'", "cis'", "des'", "d'", "dis'", "ees'", "e'", "eis'",
-        "fes'", "f'", "fis'", "ges'", "g'", "gis'", "aes'", "a'", 
-        "ais'", "bes'", "b'", "bis'", "ces'",
-        "c''", "cis''", "des''", "d''", "dis''", "ees''", "e''", "eis''",
-        "fes''", "f''", "fis''", "ges''", "g''", "gis''", "aes''", "a''", 
-        "ais''", "bes''", "b''", "bis''", "ces''", 
-        "c'''", "cis'''", "des'''", "d'''", "dis'''", "ees'''", "e'''", "eis'''",
-        "fes'''", "f'''", "fis'''", "ges'''", "g'''", "gis'''", "aes'''", "a'''",
-        "ais'''", "bes'''", "b'''", "bis'''", "ces'''", "c''''"
+        'c,', 'cis,', 'd,', 'ees,', 'e,', 'f,', 'fis,', 'g,', 'aes,', 'a,', 'bes,', 'b,',
+        'c', 'cis', 'd', 'ees', 'e', 'f', 'fis', 'g', 'aes', 'a', 'bes', 'b',
+        "c'", "cis'", "d'", "ees'", "e'", "f'", "fis'", "g'", "aes'", "a'", "bes'", "b'", 
+        "c''", "cis''", "d''", "ees''", "e''", "f''", "fis''", "g''", "aes''", "a''", "bes''", "b''",  
+        "c'''", "cis'''", "d'''", "ees'''", "e'''", "f'''", "fis'''", "g'''", "aes'''", "a'''", "bes'''", "b'''", 
+        "c''''"
         ]
     
     # Initialize a zero matrix with dynamic length
@@ -123,18 +115,45 @@ def thesaurus_to_matrix(notes):
         matrixes.append(sheet_to_matrix(scale, max_length))
     return matrixes
 
-def torcher(file: str):
+def augment_data(matrix):
+    """Applies data augmentation to the piano roll matrix."""
+    
+    # Convert PyTorch tensor to NumPy for easier manipulation
+    if isinstance(matrix, torch.Tensor):
+        matrix = matrix.numpy()
+    
+    # Random transposition (shift by -3 to +3 semitones)
+    shift = random.randint(-3, 3)
+    matrix = np.roll(matrix, shift, axis=1)  # Shift columns (pitches)
+    if shift > 0:
+        matrix[:, :shift] = 0  # Remove out-of-range notes
+    elif shift < 0:
+        matrix[:, shift:] = 0  # Remove out-of-range notes
+    
+    # Convert back to PyTorch tensor
+    return torch.tensor(matrix, dtype=torch.float32)
+
+
+def torcher(file: str, apply_augmentation = True):
     if file[-3:] != '.ly':
         raise SyntaxError("File must end with .ly (archivo lilypond).") 
     file_name = file
     content = read_lilypond_sheet(file_name)
     notes = get_notes(content)
     file_matrixes = thesaurus_to_matrix(notes)
+    augmented_data = []
+    if apply_augmentation:
+        for matrix in file_matrixes:
+            augmented_data.append(augment_data(matrix=matrix))
+    file_matrixes = file_matrixes + augmented_data       
 
     np.set_printoptions(threshold=np.inf)
 
     # Convert NumPy matrixes to Torch tensors and stack them
-    torch_data = torch.stack([torch.from_numpy(matrix).unsqueeze(0) for matrix in file_matrixes]) 
+    torch_data = torch.stack([
+        torch.from_numpy(matrix.numpy() if isinstance(matrix, torch.Tensor) else matrix).unsqueeze(0)
+        for matrix in file_matrixes
+    ])
     torch_data = torch_data.float()
 
     # Print shape for debugging

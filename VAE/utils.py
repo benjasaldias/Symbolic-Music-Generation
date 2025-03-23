@@ -1,40 +1,32 @@
-import torch
-import numpy
+import os
 import re
 import sys
+import torch
+import numpy
 import mahotas
 from scipy.spatial.distance import euclidean
 
 ### DATA ###
 
 # training
-INPUT_DIM = 3922
 NUM_ROWS = 37
-NOTE_RANGE = 106
+NOTE_RANGE = 61
+INPUT_DIM = NUM_ROWS*NOTE_RANGE
 NOTE_RANGE_LIST = [
-        'c,', 'cis,', 'des,', 'd,', 'dis,', 'ees,', 'e,', 'eis,',
-        "fes,", 'f,', 'fis,', 'ges,', 'g,', 'gis,', 'aes,', 'a,', 
-        'ais,', 'bes,', 'b,', 'bis,', 'ces,',
-        'c', 'cis', 'des', 'd', 'dis', 'ees', 'e', 'eis',
-        "fes", 'f', 'fis', 'ges', 'g', 'gis', 'aes', 'a', 
-        'ais', 'bes', 'b', 'bis', 'ces',
-        "c'", "cis'", "des'", "d'", "dis'", "ees'", "e'", "eis'",
-        "fes'", "f'", "fis'", "ges'", "g'", "gis'", "aes'", "a'", 
-        "ais'", "bes'", "b'", "bis'", "ces'",
-        "c''", "cis''", "des''", "d''", "dis''", "ees''", "e''", "eis''",
-        "fes''", "f''", "fis''", "ges''", "g''", "gis''", "aes''", "a''", 
-        "ais''", "bes''", "b''", "bis''", "ces''", 
-        "c'''", "cis'''", "des'''", "d'''", "dis'''", "ees'''", "e'''", "eis'''",
-        "fes'''", "f'''", "fis'''", "ges'''", "g'''", "gis'''", "aes'''", "a'''",
-        "ais'''", "bes'''", "b'''", "bis'''", "ces'''", "c''''"
+        'c,', 'cis,', 'd,', 'ees,', 'e,', 'f,', 'fis,', 'g,', 'aes,', 'a,', 'bes,', 'b,',
+        'c', 'cis', 'd', 'ees', 'e', 'f', 'fis', 'g', 'aes', 'a', 'bes', 'b',
+        "c'", "cis'", "d'", "ees'", "e'", "f'", "fis'", "g'", "aes'", "a'", "bes'", "b'", 
+        "c''", "cis''", "d''", "ees''", "e''", "f''", "fis''", "g''", "aes''", "a''", "bes''", "b''",  
+        "c'''", "cis'''", "d'''", "ees'''", "e'''", "f'''", "fis'''", "g'''", "aes'''", "a'''", "bes'''", "b'''", 
+        "c''''"
         ]
-H_DIM = 800 # base: 800
-Z_DIM = 16 # base: 16
-BATCH_SIZE = 32
-NUM_EPOCHS = 2000
-LR_RATE = 3e-4
+H_DIM = 300 # base: 800
+Z_DIM = 12 # base: 16
+BATCH_SIZE = 16 # base: 32
+NUM_EPOCHS = 1500
+LR_RATE = 3e-5
 ALPHA = 1
-BETA = 0.5 # base: 0.5
+BETA = 0.8 # base: 0.5
 
 
 # interpolation
@@ -47,7 +39,7 @@ GRID_SIZE = 5
 ### GLOBAL FUNCTIONS ###
 def get_binary(reconstructed, numpy=True):
     
-    reconstructed = reconstructed.view(37, 106)
+    reconstructed = reconstructed.view(NUM_ROWS, NOTE_RANGE)
 
     # Crear una matriz de ceros del mismo tamaño
     binary_output = torch.zeros_like(reconstructed)
@@ -64,6 +56,34 @@ def get_binary(reconstructed, numpy=True):
         binary_generated = binary_output.cpu().numpy()
 
     return binary_generated
+
+# Reparameterization trick
+def reparameterize(mu, logvar):
+    std = logvar # Convert logvar to standard deviation
+    eps = torch.randn_like(std)   # Sample from N(0, 1)
+    z = mu + eps * std            # Sample from N(mu, sigma^2)
+    return z
+
+# Read and filter lilypond file
+def read_lilypond_comments(file_name):
+    numbers = []
+    with open(file_name, 'r') as file:
+        lines = file.readlines()
+        filtered_lines = [line for line in lines if '%' in line]
+        content = ''
+        for line in filtered_lines:
+            content = line.strip()
+            content = content.strip('.')
+            content = content.split(' ')
+            if len(content) > 1:
+                if content[1][:-1].isnumeric():
+                    numbers.append(content[1][:-1])
+    return numbers
+
+# empty json file
+def empty_json(file_name):
+    open(file_name, 'w').close()
+    return
 
 ### INTERPOLATION FUNCTIONS ###
 # SLERP interpolation function

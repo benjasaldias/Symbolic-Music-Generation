@@ -14,7 +14,7 @@ DEVICE = "cpu"
 INPUT_DIM = u.INPUT_DIM
 Z_DIM = u.Z_DIM
 LEN_DATASET = 227
-NUM_SAMPLES = 1000
+NUM_SAMPLES = 600
 
 # Load model
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
@@ -117,3 +117,19 @@ def evaluate_model(dataset, model, num_samples=1000):
 input_data = lilypond2matrix.torch_data  # Load dataset
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
 average_metrics = evaluate_model(dataset, model, num_samples=NUM_SAMPLES)
+
+#Promedio de métricas: H_DIM = 300, Z_DIM = 12, BETA = 0.8
+# KL Divergence: 6.8146
+# Sparseness: 0.0094
+# Pitch Coverage: 0.1692
+# Rhythmic Diversity: 2.8428
+# Symmetry: 0.9994
+# Diff: 0.9114
+
+# Promedio de métricas:
+# KL Divergence: 6.0598
+# Sparseness: 0.0164
+# Pitch Coverage: 0.2865
+# Rhythmic Diversity: 2.8095
+# Symmetry: 0.9990
+# Diff: 0.9227
