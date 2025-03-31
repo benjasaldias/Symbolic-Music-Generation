@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import torch
 import json
@@ -103,6 +104,7 @@ def interpolate(model, visualize=False, interpolation_type='slerp', running_mult
     original_transition_vectors = transition_vectors
     
     written = []
+    written_matrixes = []
     counter = 0
     scale_number = 0
     # Decode each latent point into a matrix
@@ -114,15 +116,19 @@ def interpolate(model, visualize=False, interpolation_type='slerp', running_mult
         if not running_multiple:
             output_matrix = u.get_binary(reconstructed_matrix)
             lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix, i)
+            match = re.search(r'([a-g][is|es|,\'\d]*[,\']*\d*|\[[a-gisess\s]+\])', lilypond_output)
+            tonic_index = match.start()
 
             with open('results/1d/interpolation.ly', 'a') as f:  
-                if lilypond_output[lilypond_output.index('c16'):] not in written:
+                if not any(np.array_equal(output_matrix, wm) for wm in written_matrixes):
+                    print(lilypond_output[tonic_index:])
+                    written_matrixes.append(output_matrix)
                     f.write(f'\n%scale{scale_number}')
                     scale_number += 1
                     f.write(lilypond_output)
                     generated_scales.append(lilypond_output)
                     original_scales.append(lilypond_output)
-                    written.append(lilypond_output[lilypond_output.index('c16'):])
+                    written.append(lilypond_output[tonic_index:])
                     latent_points_interpolated.append(transition_vectors[i].cpu().numpy().flatten())
                 else:
                     original_scales.append(lilypond_output)

@@ -9,10 +9,7 @@ from scipy.spatial.distance import euclidean
 ### DATA ###
 
 # training
-NUM_ROWS = 37
-NOTE_RANGE = 61
-INPUT_DIM = NUM_ROWS*NOTE_RANGE
-NOTE_RANGE_LIST = [
+NOTE_RANGE_LIST = [ 'a,,', 'b,,',
         'c,', 'cis,', 'd,', 'ees,', 'e,', 'f,', 'fis,', 'g,', 'aes,', 'a,', 'bes,', 'b,',
         'c', 'cis', 'd', 'ees', 'e', 'f', 'fis', 'g', 'aes', 'a', 'bes', 'b',
         "c'", "cis'", "d'", "ees'", "e'", "f'", "fis'", "g'", "aes'", "a'", "bes'", "b'", 
@@ -20,13 +17,18 @@ NOTE_RANGE_LIST = [
         "c'''", "cis'''", "d'''", "ees'''", "e'''", "f'''", "fis'''", "g'''", "aes'''", "a'''", "bes'''", "b'''", 
         "c''''"
         ]
-H_DIM = 300 # base: 800
-Z_DIM = 12 # base: 16
-BATCH_SIZE = 16 # base: 32
-NUM_EPOCHS = 1500
-LR_RATE = 3e-5
-ALPHA = 1
-BETA = 0.8 # base: 0.5
+NUM_ROWS = 37
+NOTE_RANGE = len(NOTE_RANGE_LIST)
+INPUT_DIM = NUM_ROWS*NOTE_RANGE
+H_DIM = 300 # best: 300
+Z_DIM = 12 # best: 12
+BATCH_SIZE = 16 # best: 16
+NUM_EPOCHS = 2000 # best: 1500
+LR_RATE = 3e-5 # best: 3e-5
+ALPHA = 1 # best: 1
+BETA = 0.8 # best: 0.8
+
+AUGMENTATION_ITER = 2
 
 
 # interpolation

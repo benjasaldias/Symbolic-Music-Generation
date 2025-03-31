@@ -1,13 +1,28 @@
-% z vector: tensor([[-1.8820,  0.9515, -1.5981,  0.3984,  1.3584,  0.5378, -3.4094,  0.8668,-2.8431, -1.7746,  0.7466, -3.7442]])
-    \new PianoStaff <<
-    \cadenzaOn
-    \new Staff = "right" {
+% z vector: tensor([[ 1.6636,  1.1815, -0.0400,  0.5563, -0.9018,  1.5439, -0.3228,  0.3965, 0.9757, -0.7258,  0.4764,  0.7278]])
+    \version "2.22.2"
+    \header {
+    title = "Sample"
+    composer = "Symbolic Music Generation"
+    }
+
+    \score {
+    <<
+        \cadenzaOn
+        \override Beam.breakable = ##t
+        \accidentalStyle Score.forget
+        \override Score.TextScript.padding = #2
+        \override Stem.transparent = ##t
+    {
     \clef treble
-        c16 [ aes b e bes b aes fis' g' ]
-    c' [ d'' cis' e' bes'' e'' aes' aes'' cis'' ]
-    c'' [ cis'' aes'' aes' e'' bes'' e' cis' d'' ]
-    c' [ g' fis' aes b bes e b aes ]
+        c16 [ g, bes, f cis e c' ees' bes f' cis' e' b' g' bes' f'' cis'' e'' b'' e'' cis'' f'' bes' g' b' e' cis' f' bes ees' c' e cis f bes, g, ]
     c
     }
     >>
+    \layout {
+        indent = 0\mm
+        line-width = 190\mm
+        \override Stem.transparent = ##t
+    }    
+    }
+    
     

@@ -45,7 +45,7 @@ dataset = CustomDataset(input_data)
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False)
 
 # Load original, unaugmented data for dictionary creation
-input_data = lilypond2matrix.torcher(data_path, apply_augmentation=False)
+input_data = lilypond2matrix.torcher(data_path, augmentation_iter=0)
 
 # Loss function
 loss_fn = torch.nn.BCELoss(reduction="sum")

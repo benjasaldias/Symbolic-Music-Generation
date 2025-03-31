@@ -1,9 +1,12 @@
 import re
 import os
 import sys
+import json
 import numpy as np
 import torch
 import random
+sys.path.append('../')
+import VAE.utils as u
 
 # Read and filter lilypond file
 def read_lilypond_sheet(file_name):
@@ -74,14 +77,7 @@ def get_notes(content):
 # Converts the processed data into a binary matrix (Piano Roll).
 def sheet_to_matrix(notes, max_length):
     # Define range of notes
-    note_range = [
-        'c,', 'cis,', 'd,', 'ees,', 'e,', 'f,', 'fis,', 'g,', 'aes,', 'a,', 'bes,', 'b,',
-        'c', 'cis', 'd', 'ees', 'e', 'f', 'fis', 'g', 'aes', 'a', 'bes', 'b',
-        "c'", "cis'", "d'", "ees'", "e'", "f'", "fis'", "g'", "aes'", "a'", "bes'", "b'", 
-        "c''", "cis''", "d''", "ees''", "e''", "f''", "fis''", "g''", "aes''", "a''", "bes''", "b''",  
-        "c'''", "cis'''", "d'''", "ees'''", "e'''", "f'''", "fis'''", "g'''", "aes'''", "a'''", "bes'''", "b'''", 
-        "c''''"
-        ]
+    note_range = u.NOTE_RANGE_LIST
     
     # Initialize a zero matrix with dynamic length
     note_amount = len(note_range)
@@ -134,17 +130,20 @@ def augment_data(matrix):
     return torch.tensor(matrix, dtype=torch.float32)
 
 
-def torcher(file: str, apply_augmentation = True):
+def torcher(file: str, augmentation_iter=u.AUGMENTATION_ITER, output_json="torch_data.json"):
     if file[-3:] != '.ly':
         raise SyntaxError("File must end with .ly (archivo lilypond).") 
+    
     file_name = file
     content = read_lilypond_sheet(file_name)
     notes = get_notes(content)
     file_matrixes = thesaurus_to_matrix(notes)
+    
     augmented_data = []
-    if apply_augmentation:
+    for i in range(augmentation_iter):
         for matrix in file_matrixes:
             augmented_data.append(augment_data(matrix=matrix))
+    
     file_matrixes = file_matrixes + augmented_data       
 
     np.set_printoptions(threshold=np.inf)
@@ -156,8 +155,16 @@ def torcher(file: str, apply_augmentation = True):
     ])
     torch_data = torch_data.float()
 
-    # Print shape for debugging
+    # Convert to a JSON-serializable format
+    json_data = torch_data.tolist()
+
+    # Save to JSON file
+    with open(output_json, "w") as json_file:
+        json.dump(json_data, json_file)
+
+    print(f"Torch data saved to {output_json}")
     print(torch_data.shape)  # format: (scale_amount, 1, max_length, note_range_length)
+    
     return torch_data
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
+import os
 import torch # type: ignore
 import sys
+import json
 import numpy as np
 sys.path.append('../')
 import utils as u
@@ -20,6 +22,9 @@ NUM_SAMPLES = 600
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
 model.load_state_dict(torch.load('vae.pth'))
 model.eval()
+
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+json_path = os.path.join(root_dir, "Model", "torch_data.json")
 
 # Symmetry metric
 def calculate_symmetry(matrix):
@@ -114,7 +119,9 @@ def evaluate_model(dataset, model, num_samples=1000):
         print(f"{k}: {v:.4f}")
     return avg_metrics
 
-input_data = lilypond2matrix.torch_data  # Load dataset
+
+with open(json_path, "r") as json_file:
+    input_data = json.load(json_file)
 dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
 average_metrics = evaluate_model(dataset, model, num_samples=NUM_SAMPLES)
 
@@ -126,10 +133,10 @@ average_metrics = evaluate_model(dataset, model, num_samples=NUM_SAMPLES)
 # Symmetry: 0.9994
 # Diff: 0.9114
 
-# Promedio de métricas:
-# KL Divergence: 6.0598
-# Sparseness: 0.0164
-# Pitch Coverage: 0.2865
-# Rhythmic Diversity: 2.8095
-# Symmetry: 0.9990
-# Diff: 0.9227
+# Promedio de métricas: AUGMENTED DATA
+# KL Divergence: 5.9218
+# Sparseness: 0.0159
+# Pitch Coverage: 0.2777
+# Rhythmic Diversity: 2.8114
+# Symmetry: 0.9991
+# Diff: 0.9369

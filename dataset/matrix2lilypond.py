@@ -1,91 +1,93 @@
-""" 
-Format: The matrix entered will be devided into groups of 
-semiquavers, dividing the score on each C note played.
+import sys
+sys.path.append('../')
+import VAE.utils as u
 
-Example:
-
-[ 1   0   0          c[ cis]
-  0   1   0          c[ d cis]
-  1   0   0    ->    c
-  0   0   1
-  0   1   0
-  1   0   0
-]
-"""
 def matrix_to_lilypond(matrix, number=None):
     lilypond_lines = []
     
-    # note_range
-    notes = [
-        'c,', 'cis,', 'd,', 'ees,', 'e,', 'f,', 'fis,', 'g,', 'aes,', 'a,', 'bes,', 'b,',
-        'c', 'cis', 'd', 'ees', 'e', 'f', 'fis', 'g', 'aes', 'a', 'bes', 'b',
-        "c'", "cis'", "d'", "ees'", "e'", "f'", "fis'", "g'", "aes'", "a'", "bes'", "b'", 
-        "c''", "cis''", "d''", "ees''", "e''", "f''", "fis''", "g''", "aes''", "a''", "bes''", "b''",  
-        "c'''", "cis'''", "d'''", "ees'''", "e'''", "f'''", "fis'''", "g'''", "aes'''", "a'''", "bes'''", "b'''", 
-        "c''''"
-        ]
+    # List of possible notes
+    notes = u.NOTE_RANGE_LIST
+
+    # 🔹 Find the first active note in the matrix (which will be the scale's tonic)
+    first_active_note_index = None
+    for row in matrix:
+        for i, value in enumerate(row):
+            if value == 1:
+                first_active_note_index = i
+                break
+        if first_active_note_index is not None:
+            break
+    
+    if first_active_note_index is None:
+        raise ValueError("Matrix contains no active notes.")
+
+    tonic_note = notes[first_active_note_index % len(notes)]  # Get tonic from note list
 
     temp_group = []
     line = []
+    
     for row in range(len(matrix)):
-        if matrix[row][0] == 1 or matrix[row][12] == 1 or matrix[row][24] == 1 or matrix[row][36] == 1 or matrix[row][48] == 1  or matrix[row][60] == 1:
+        # 🔹 Instead of hardcoding "C" positions, check if the current row contains the tonic
+        if matrix[row][first_active_note_index] == 1:
             if temp_group:
                 line.append(f"[ {' '.join(temp_group)} ]")
                 lilypond_lines.append(' '.join(line))
                 line = []
-            if matrix[row][0] == 1:
-                if row != 0:
-                    line.append("c,")
-                else:
-                    line.append("c,16")
-            if matrix[row][12] == 1:
-                if row != 0:
-                    line.append("c")
-                else:
-                    line.append("c16")
-            if matrix[row][24] == 1:
-                if row != 0:
-                    line.append("c'")
-                else:
-                    line.append("c'16")
-            if matrix[row][36] == 1:
-                line.append("c''")
-            if matrix[row][48] == 1:
-                line.append("c'''")
-            if matrix[row][60] == 1:
-                line.append("c''''")
+            
+            note = notes[first_active_note_index % len(notes)]
+            if row != 0:
+                line.append(note)
+            else:
+                line.append(note + "16")  # Add duration to the first note
+            
             temp_group = []
-        if row == len(matrix)-1:
+        
+        if row == len(matrix) - 1:
             lilypond_lines.append(' '.join(line))
 
         for i, value in enumerate(matrix[row]):
             if value == 1:
-                note_index = i % len(notes)
-                note = notes[note_index]
+                note = notes[i % len(notes)]
 
-                # Check if note is a C
-                if note.startswith('c') and not note.__contains__('s'):
+                # 🔹 If this is the tonic note, segment the group
+                if i == first_active_note_index:
                     if temp_group:
-                        # Append the current group if the note is a C
                         line.append(f"[ {' '.join(temp_group)} ]")
                 else:
-                    temp_group.append(note)  # If the note isn't a C, append it to the current group.
+                    temp_group.append(note)
 
-        # If the note found is a C, write the current temp_group into the line.
-        if matrix[row][0] == 1 or matrix[row][12] == 1 or matrix[row][24] == 1 or matrix[row][36] == 1 or matrix[row][48] == 1  or matrix[row][60] == 1:
-            if temp_group:
-                line.append(f"[ {' '.join(temp_group)} ]")
+        if matrix[row][first_active_note_index] == 1 and temp_group:
+            line.append(f"[ {' '.join(temp_group)} ]")
+
 
     # Include Lilypond syntax.
     if number == None:
         lilypond_text = """
-    \\new PianoStaff <<
-    \\cadenzaOn
-    \\new Staff = "right" {
+    \\version "2.22.2"
+    \\header {
+    title = "Sample"
+    composer = "Symbolic Music Generation"
+    }
+
+    \\score {
+    <<
+        \\cadenzaOn
+        \\override Beam.breakable = ##t
+        \\accidentalStyle Score.forget
+        \\override Score.TextScript.padding = #2
+        \\override Stem.transparent = ##t
+    {
     \\clef treble
     """ + '    ' + '\n    '.join(lilypond_lines) + """
     }
     >>
+    \\layout {
+        indent = 0\\mm
+        line-width = 190\\mm
+        \\override Stem.transparent = ##t
+    }    
+    }
+    
     """
         return lilypond_text
     else:
