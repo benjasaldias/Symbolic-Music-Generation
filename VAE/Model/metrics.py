@@ -16,7 +16,7 @@ DEVICE = "cpu"
 INPUT_DIM = u.INPUT_DIM
 Z_DIM = u.Z_DIM
 LEN_DATASET = 227
-NUM_SAMPLES = 600
+NUM_SAMPLES = 1000
 
 # Load model
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
@@ -85,26 +85,28 @@ def calculate_metrics(original, generated, mu, logvar, dataset):
 def evaluate_model(dataset, model, num_samples=1000):
     print('This may take a few minutes...')
     all_metrics = []
+
+    # Code and decode samples
+    reconstructed_matrixes = []
+    binary_generated_list = []
+    for _ in range(num_samples):
+        with torch.no_grad(): 
+            z_reparametrized = torch.randn(1, Z_DIM).to(DEVICE)
+            reconstructed = model.decode(z_reparametrized).view(u.NUM_ROWS, u.NOTE_RANGE)
+            reconstructed_matrixes.append(reconstructed)
+
+        binary_generated = u.get_binary(reconstructed)
+
+        # Get binary piano roll format
+        binary_generated = torch.tensor(binary_generated.reshape(-1), dtype=torch.float32)
+        binary_generated = binary_generated.view(u.NUM_ROWS, u.NOTE_RANGE)
+        binary_generated_list.append(binary_generated)
+
+
     for i in range(LEN_DATASET):
         # Random z vector sampling
         original = dataset[i].to(DEVICE).unsqueeze(0)
         mu, logvar = model.encode(original)
-
-        # Code and decode samples
-        reconstructed_matrixes = []
-        binary_generated_list = []
-        for _ in range(num_samples):
-            with torch.no_grad(): 
-                z_reparametrized = torch.randn(1, Z_DIM).to(DEVICE)
-                reconstructed = model.decode(z_reparametrized).view(u.NUM_ROWS, u.NOTE_RANGE)
-                reconstructed_matrixes.append(reconstructed)
-
-            binary_generated = u.get_binary(reconstructed)
-
-            # Get binary piano roll format
-            binary_generated = torch.tensor(binary_generated.reshape(-1), dtype=torch.float32)
-            binary_generated = binary_generated.view(u.NUM_ROWS, u.NOTE_RANGE)
-            binary_generated_list.append(binary_generated)
 
 
         # Calculate metrics
@@ -122,7 +124,7 @@ def evaluate_model(dataset, model, num_samples=1000):
 
 with open(json_path, "r") as json_file:
     input_data = json.load(json_file)
-dataset = [torch.tensor(matrix.reshape(-1), dtype=torch.float32) for matrix in input_data]
+dataset = [torch.tensor(matrix).reshape(-1).float() for matrix in input_data]
 average_metrics = evaluate_model(dataset, model, num_samples=NUM_SAMPLES)
 
 #Promedio de métricas: H_DIM = 300, Z_DIM = 12, BETA = 0.8

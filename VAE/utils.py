@@ -28,7 +28,7 @@ LR_RATE = 3e-5 # best: 3e-5
 ALPHA = 1 # best: 1
 BETA = 0.8 # best: 0.8
 
-AUGMENTATION_ITER = 2
+AUGMENTATION_ITER = 2 # if 2 then 681
 
 
 # interpolation
