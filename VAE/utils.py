@@ -9,6 +9,7 @@ from scipy.spatial.distance import euclidean
 ### DATA ###
 
 # training
+MAX_SCALES = 227
 NOTE_RANGE_LIST = [ 'a,,', 'b,,',
         'c,', 'cis,', 'd,', 'ees,', 'e,', 'f,', 'fis,', 'g,', 'aes,', 'a,', 'bes,', 'b,',
         'c', 'cis', 'd', 'ees', 'e', 'f', 'fis', 'g', 'aes', 'a', 'bes', 'b',
@@ -20,10 +21,10 @@ NOTE_RANGE_LIST = [ 'a,,', 'b,,',
 NUM_ROWS = 37
 NOTE_RANGE = len(NOTE_RANGE_LIST)
 INPUT_DIM = NUM_ROWS*NOTE_RANGE
-H_DIM = 300 # best: 300
+H_DIM = 256 # best: 300
 Z_DIM = 12 # best: 12
-BATCH_SIZE = 16 # best: 16
-NUM_EPOCHS = 2000 # best: 1500
+BATCH_SIZE = 32 # best: 16
+NUM_EPOCHS = 1200 # best: 1500
 LR_RATE = 3e-5 # best: 3e-5
 ALPHA = 1 # best: 1
 BETA = 0.8 # best: 0.8

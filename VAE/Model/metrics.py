@@ -15,8 +15,8 @@ from skimage.metrics import structural_similarity as ssim
 DEVICE = "cpu"
 INPUT_DIM = u.INPUT_DIM
 Z_DIM = u.Z_DIM
-LEN_DATASET = 227
-NUM_SAMPLES = 1000
+LEN_DATASET = u.MAX_SCALES
+NUM_SAMPLES = 800
 
 # Load model
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)
@@ -142,3 +142,37 @@ average_metrics = evaluate_model(dataset, model, num_samples=NUM_SAMPLES)
 # Rhythmic Diversity: 2.8114
 # Symmetry: 0.9991
 # Diff: 0.9369
+
+# Promedio de métricas: 27 SCALES      H_DIM = 64, Z_DIM = 4, BATCH_SIZE=4, LOSS=81
+# KL Divergence: 4.4157
+# Sparseness: 0.0159
+# Pitch Coverage: 0.2988
+# Rhythmic Diversity: 2.9146
+# Symmetry: 0.9994
+# Diff: 0.5250
+
+# Promedio de métricas: 252 SCALES     H_DIM=160, Z_DIM=12, BATCH_SIZE=12, LOSS=124
+# KL Divergence: 5.9096
+# Sparseness: 0.0159
+# Pitch Coverage: 0.2891
+# Rhythmic Diversity: 2.8683
+# Symmetry: 0.9994
+# Diff: 0.7275
+
+
+# Promedio de métricas: 600 SCALES     H_DIM=256, Z_DIM=12, BATCH_SIZE=12, LOSS=286
+# KL Divergence: 6.2207
+# Sparseness: 0.0159
+# Pitch Coverage: 0.2765
+# Rhythmic Diversity: 2.8042
+# Symmetry: 0.9991
+# Diff: 0.9487
+
+
+# Promedio de métricas: 681 SCALES    H_DIM=256, Z_DIM=12, BATCH_SIZE=32, LOSS 239
+# KL Divergence: 6.2991
+# Sparseness: 0.0159
+# Pitch Coverage: 0.2790
+# Rhythmic Diversity: 2.8153
+# Symmetry: 0.9990
+# Diff: 0.9537

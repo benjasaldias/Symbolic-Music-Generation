@@ -8,6 +8,8 @@ import random
 sys.path.append('../')
 import VAE.utils as u
 
+MAX_SCALES = u.MAX_SCALES
+
 # Read and filter lilypond file
 def read_lilypond_sheet(file_name):
     with open(file_name, 'r') as file:
@@ -107,8 +109,12 @@ def thesaurus_to_matrix(notes):
     
     # Convert each scale to a binary matrix
     matrixes = []
+    matrix_counter = 0
     for scale in notes:
+        matrix_counter += 1
         matrixes.append(sheet_to_matrix(scale, max_length))
+        if matrix_counter >= MAX_SCALES:
+            break
     return matrixes
 
 def augment_data(matrix):
