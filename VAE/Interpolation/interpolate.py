@@ -99,6 +99,8 @@ def interpolate(model, visualize=False, interpolation_type='slerp', running_mult
         elif interpolation_type == 'linear':
             z_point = u.linear_interpolation(z1, z2, 10)
             transition_vectors = z_point
+        else:
+            print(f"Interpolation type '{interpolation_type}' is not valid.")
     if interpolation_type == 'slerp':
         transition_vectors = torch.stack(transition_vectors) # stack vectors
     original_transition_vectors = transition_vectors
@@ -236,7 +238,7 @@ def run_multiple(visualize, interpolation_type):
     s_f_total_ssim = 0
     total_lbp = 0
     s_f_total_lbp = 0
-    QUANTITY = 500
+    QUANTITY = 1000
     for _ in range(QUANTITY):
         result = interpolate(model, visualize=visualize, interpolation_type=interpolation_type, running_multiple=True, random_known=False)
         total_ssim += result[0]
@@ -255,7 +257,7 @@ def run_multiple(visualize, interpolation_type):
     print(f'Average start-finish LBP: {s_f_average_lbp}')
 
 interpolate(model, visualize=False, interpolation_type='slerp', running_multiple=False, random_known=False)
-# run_multiple(visualize=False, interpolation_type='slerp')
+# run_multiple(visualize=False, interpolation_type='linear')
 
 ### METRICS FOR 500 SLERP RUNS ###
 # Average SSIM per step: 0.9340

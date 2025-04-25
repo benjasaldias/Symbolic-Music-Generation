@@ -1,5 +1,4 @@
-% z vector: tensor([[-2.6497e-01, -3.3503e+00,  1.6529e+00, -8.2597e-01, -1.6211e+00,-1.9821e+00, -1.3004e+00,  2.9992e-02,  3.6864e+00,  2.0076e+00,
-        %   5.6287e-04, -3.2564e+00]])
+% z vector: tensor([[-0.6164,  1.9598, -0.6129, -0.3655, -1.9062,  1.1923, -2.1731, -0.5314, 0.8091,  1.4664]])
     \version "2.22.2"
     \header {
     title = "Sample"
@@ -15,8 +14,8 @@
         \override Stem.transparent = ##t
     {
     \clef treble
-        b,16 [ c aes ees e c' g aes e' b c' aes' ees' e' c'' g' aes' e'' b' e'' aes' g' c'' e' ees' aes' c' b e' aes g c' e ees aes c ]
-    b,
+        c16 [ aes aes fis d' ees' c' e' aes' fis' bes' e'' c'' e'' aes'' fis'' bes'' c''' c''' c''' bes'' fis'' aes'' e'' c'' d'' bes' fis' aes' e' c' ees' d' fis aes aes ]
+    c
     }
     >>
     \layout {
