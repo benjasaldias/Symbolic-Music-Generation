@@ -51,21 +51,8 @@ for i in range(CANTIDAD_TESTS):
     with torch.no_grad():
         reconstructed_matrix = model.decode(z)
 
-    # Reshape to (u.NUM_ROWS, u.NOTE_RANGE)
-    reconstructed_matrix = reconstructed_matrix.view(u.NUM_ROWS, u.NOTE_RANGE)
-
-    # Create a zero matrix of the same size
-    binary_output = torch.zeros_like(reconstructed_matrix)
-
-    # Find the maximum value in each row and its index
-    max_values, max_indices = torch.max(reconstructed_matrix, dim=1)
-
-    # Apply thresholding
-    valid_indices = max_values > THRESHOLD
-    binary_output[torch.arange(reconstructed_matrix.size(0))[valid_indices], max_indices[valid_indices]] = 1
-
-    # Convert to numpy for further processing
-    output_matrix = binary_output.cpu().numpy()
+    # Get binary output
+    output_matrix = u.get_binary(reconstructed_matrix, numpy=True)
 
     # Convert the binary matrix to LilyPond format
     lilypond_output = matrix2lilypond.matrix_to_lilypond(output_matrix)

@@ -21,13 +21,13 @@ NOTE_RANGE_LIST = [ 'a,,', 'b,,',
 NUM_ROWS = 37
 NOTE_RANGE = len(NOTE_RANGE_LIST)
 INPUT_DIM = NUM_ROWS*NOTE_RANGE
-H_DIM = 256 # best: 300
-Z_DIM = 12 # best: 12
+H_DIM = 256 # best: 256
+Z_DIM = 10 # best: 10
 BATCH_SIZE = 32 # best: 16
 NUM_EPOCHS = 1200 # best: 1500
 LR_RATE = 3e-5 # best: 3e-5
 ALPHA = 1 # best: 1
-BETA = 0.8 # best: 0.8
+BETA = 1 # best: 1
 
 AUGMENTATION_ITER = 2 # if 2 then 681
 
@@ -40,25 +40,36 @@ GRID_SIZE = 5
 
 
 ### GLOBAL FUNCTIONS ###
-def get_binary(reconstructed, numpy=True):
-    
-    reconstructed = reconstructed.view(NUM_ROWS, NOTE_RANGE)
+def get_binary(reconstructed_matrix, numpy=True, target_tonic_index=14):
+    # Reshape to (NUM_ROWS, NOTE_RANGE)
+    reconstructed_matrix = reconstructed_matrix.view(NUM_ROWS, NOTE_RANGE)
 
-    # Crear una matriz de ceros del mismo tamaño
-    binary_output = torch.zeros_like(reconstructed)
+    # Create a zero matrix of the same size
+    binary_output = torch.zeros_like(reconstructed_matrix)
 
-    # Obtener el índice del valor máximo en cada fila
-    max_indices = torch.argmax(reconstructed, dim=1)
+    # Find the maximum value in each row and its index
+    max_values, max_indices = torch.max(reconstructed_matrix, dim=1)
 
-    # Usar los índices para colocar 1 en el valor máximo de cada fila
-    binary_output[torch.arange(reconstructed.size(0)), max_indices] = 1
+    # Apply thresholding
+    valid_indices = max_values > 0
+    binary_output[torch.arange(reconstructed_matrix.size(0))[valid_indices], max_indices[valid_indices]] = 1
+
+    # Center the tonic if specified
+    if target_tonic_index is not None:
+        # Get the index of the first active note
+        first_active_note = max_indices[0].item()
+        shift_amount = target_tonic_index - first_active_note
+        
+        # Shift the matrix horizontally (note axis)
+        binary_output = torch.roll(binary_output, shifts=shift_amount, dims=1)
 
     binary_generated = binary_output
 
-    if numpy == True:
+    if numpy:
         binary_generated = binary_output.cpu().numpy()
 
     return binary_generated
+
 
 # Reparameterization trick
 def reparameterize(mu, logvar):
