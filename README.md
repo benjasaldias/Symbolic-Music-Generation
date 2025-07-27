@@ -1,7 +1,7 @@
-# Project Website: InterScael
+# Project Website: InterScael 🪄
 Visit https://interscael.netlify.app to test this musical composition tool with an easy-to-use, interactive website. Currently, the Generation and Interpolation features have been implemented; the 2D interpolation feature will be added in a future update.
 
-# Symbolic-Music-Generation 🪄🎹
+# Symbolic-Music-Generation 🎹
 Generating symbolic music with a **Variational AutoEncoder** (VAE). The model is trained with a set of scales and melodic patterns presented by Nicolas Slonimsky in his _Thesaurus of Scales and Melodic Patterns_.
 
 The project revolves around two main ideas:
