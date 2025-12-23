@@ -1,105 +1,40 @@
 import sys
 sys.path.append('../')
+import numpy as np
 import VAE.utils as u
 
-def matrix_to_lilypond(matrix, number=None):
-    lilypond_lines = []
-    
-    # List of possible notes
+def intervals_to_lilypond(interval_vector, normalized_length):
     notes = u.NOTE_RANGE_LIST
-
-    # 🔹 Find the first active note in the matrix (which will be the scale's tonic)
-    first_active_note_index = None
-    for row in matrix:
-        for i, value in enumerate(row):
-            if value == 1:
-                first_active_note_index = i
-                break
-        if first_active_note_index is not None:
-            break
+    # Des-normalizar el largo (ej: 0.5 * 37 = 18.5 -> 18 notas)
+    real_length = int(round(normalized_length * 37))
+    real_length = max(1, min(real_length, 37))
     
-    if first_active_note_index is None:
-        raise ValueError("Matrix contains no active notes.")
-
-    tonic_note = notes[first_active_note_index % len(notes)]  # Get tonic from note list
-
-    temp_group = []
-    line = []
+    # Reconstrucción de la melodía
+    current_idx = int(round(interval_vector[0])) # Nota inicial
+    current_idx = max(0, min(current_idx, len(notes)-1))
     
-    for row in range(len(matrix)):
-        # 🔹 Instead of hardcoding "C" positions, check if the current row contains the tonic
-        if matrix[row][first_active_note_index] == 1:
-            if temp_group:
-                line.append(f"[ {' '.join(temp_group)} ]")
-                lilypond_lines.append(' '.join(line))
-                line = []
-            
-            note = notes[first_active_note_index % len(notes)]
-            if row != 0:
-                line.append(note)
-            else:
-                line.append(note + "16")  # Add duration to the first note
-            
-            temp_group = []
-        
-        if row == len(matrix) - 1:
-            lilypond_lines.append(' '.join(line))
+    result_notes = [notes[current_idx]]
+    
+    for i in range(1, real_length):
+        interval = int(round(interval_vector[i]))
+        current_idx += interval
+        # Asegurar que no se salga de los límites de NOTE_RANGE_LIST
+        current_idx = max(0, min(current_idx, len(notes)-1))
+        result_notes.append(notes[current_idx])
 
-        for i, value in enumerate(matrix[row]):
-            if value == 1:
-                note = notes[i % len(notes)]
-
-                # 🔹 If this is the tonic note, segment the group
-                if i == first_active_note_index:
-                    if temp_group:
-                        line.append(f"[ {' '.join(temp_group)} ]")
-                else:
-                    temp_group.append(note)
-
-        if matrix[row][first_active_note_index] == 1 and temp_group:
-            line.append(f"[ {' '.join(temp_group)} ]")
-
-
-    # Include Lilypond syntax.
-    if number == None:
-        lilypond_text = """
-    \\version "2.22.2"
-    \\header {
-    title = "Sample"
-    composer = "Symbolic Music Generation"
-    }
-
-    \\score {
-    <<
+    # Formateo Lilypond
+    notes_str = " ".join(result_notes)
+    
+    lily_template = f"""
+\\version "2.22.2"
+\\score {{
+    \\new Staff {{
+        \\clef treble
         \\cadenzaOn
-        \\override Beam.breakable = ##t
-        \\accidentalStyle Score.forget
-        \\override Score.TextScript.padding = #2
-        \\override Stem.transparent = ##t
-    {
-    \\clef treble
-    """ + '    ' + '\n    '.join(lilypond_lines) + """
-    }
-    >>
-    \\layout {
-        indent = 0\\mm
-        line-width = 190\\mm
-        \\override Stem.transparent = ##t
-    }    
-    }
-    
-    """
-        return lilypond_text
-    else:
-        lilypond_text = """
-    \\new PianoStaff <<
-    \\cadenzaOn
-    \\new Staff = "right" {
-    """ + "\mark \markup \column" + "{" +  f""" "Scale {number}" """ + "}" """
-    \\clef treble
-    """ + '\n    '.join(lilypond_lines) + """
-    }
-    >>
-    """
-        return lilypond_text    
-
+        {notes_str}
+        \\bar "|."
+    }}
+    \\layout {{ }}
+}}
+"""
+    return lily_template

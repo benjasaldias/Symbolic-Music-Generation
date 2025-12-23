@@ -1,27 +1,2 @@
-% z vector: tensor([[-2.3096,  1.0601, -0.5205,  1.8351,  1.3385,  1.9589,  0.6360,  0.0785, 0.9669, -0.3917]])
-    \version "2.22.2"
-    \header {
-    title = "Sample"
-    composer = "Symbolic Music Generation"
-    }
-
-    \score {
-    <<
-        \cadenzaOn
-        \override Beam.breakable = ##t
-        \accidentalStyle Score.forget
-        \override Score.TextScript.padding = #2
-        \override Stem.transparent = ##t
-    {
-    \clef treble
-        c16
-    }
-    >>
-    \layout {
-        indent = 0\mm
-        line-width = 190\mm
-        \override Stem.transparent = ##t
-    }    
-    }
-    
-    
+% z vector: [[1.0425035953521729, -3.9186081886291504, 0.09451038390398026, -1.2072162628173828, 2.544236421585083, -1.164721965789795, 0.1635739505290985, -1.8958479166030884, 0.705707311630249, -2.9416556358337402]]
+{ \clef treble \cadenzaOn c a ees bes e c' g e' bes f' c' aes' ees' b' f' c'' g' d'' a' d'' fis' c'' f' bes' d' g' c' f' bes ees' g c' e a d a c \bar "|." }
