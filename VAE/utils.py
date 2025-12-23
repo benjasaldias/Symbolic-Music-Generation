@@ -16,18 +16,19 @@ NOTE_RANGE_LIST = [ 'a,,', 'b,,',
         "c'", "cis'", "d'", "ees'", "e'", "f'", "fis'", "g'", "aes'", "a'", "bes'", "b'", 
         "c''", "cis''", "d''", "ees''", "e''", "f''", "fis''", "g''", "aes''", "a''", "bes''", "b''",  
         "c'''", "cis'''", "d'''", "ees'''", "e'''", "f'''", "fis'''", "g'''", "aes'''", "a'''", "bes'''", "b'''", 
-        "c''''"
+        "c''''", "cis''''", "d''''", "ees''''", "e''''", "f''''"
         ]
 NUM_ROWS = 37
 NOTE_RANGE = len(NOTE_RANGE_LIST)
 INPUT_DIM = NUM_ROWS*NOTE_RANGE
 H_DIM = 256 # best: 256
-Z_DIM = 12 # best: 10
-BATCH_SIZE = 32 # best: 16
+Z_DIM = 10 # best: 10
+BATCH_SIZE = 16 # best: 16
 NUM_EPOCHS = 1200 # best: 1500
 LR_RATE = 3e-5 # best: 3e-5
-ALPHA = 1 # best: 1
-BETA = 1 # best: 1
+ALPHA = 1.0 # best: 1
+BETA = 0.2 # best: 1
+GAMMA = 5.0
 
 AUGMENTATION_ITER = 2 # if 2 then 681
 

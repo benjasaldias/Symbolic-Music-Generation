@@ -98,7 +98,10 @@ def sheet_to_matrix(notes, max_length):
             note_index = note_range.index(symbol)
             if current_tick < max_length:
                 matrix[current_tick, note_index] = 1  # Set 1 in matrix for note found
-            
+        else:
+            print(f"falta nota: {symbol}")
+            raise KeyError
+
         current_tick += 1
 
     return matrix
