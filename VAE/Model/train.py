@@ -17,18 +17,17 @@ NUM_EPOCHS = u.NUM_EPOCHS
 BATCH_SIZE = u.BATCH_SIZE
 LR = u.LR_RATE
 
-ALPHA = u.ALPHA         # reconstruction
-BETA = u.BETA          # KL (BAJO)
-GAMMA = u.GAMMA          # symmetry
+ALPHA = u.ALPHA         
+BETA = u.BETA          
+GAMMA = u.GAMMA         
 
-TIME = u.NUM_ROWS
-PITCH = u.NOTE_RANGE
-INPUT_DIM = TIME * PITCH
+# INPUT_DIM ahora es simplemente el largo del vector (37)
+INPUT_DIM = u.INPUT_DIM 
 Z_DIM = u.Z_DIM
 H_DIM = u.H_DIM
 
 # ---------------- Dataset ----------------
-input_data = lilypond2matrix.torch_data  # (N, 37, 63)
+input_data = lilypond2matrix.torch_data  # Asumimos que ahora carga vectores (N, 37)
 
 class CustomDataset(Dataset):
     def __init__(self, data):
@@ -51,11 +50,15 @@ model = m.VariationalAutoEncoder(
 ).to(DEVICE)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=LR)
-bce = nn.BCELoss(reduction="mean")
+# Cambiamos BCE por MSE para regresión de intervalos
+mse_loss = nn.MSELoss(reduction="mean")
 
 # ---------------- Symmetry Loss ----------------
 def symmetry_loss(x_hat):
-    x_rev = torch.flip(x_hat, dims=[1])
+    # En intervalos, la simetría implica que la segunda mitad 
+    # es el espejo negativo de la primera: [2, 1, -1, -2]
+    # x_hat shape: (B, 37)
+    x_rev = -torch.flip(x_hat, dims=[1])
     return torch.mean((x_hat - x_rev) ** 2)
 
 # ---------------- Training ----------------
@@ -66,20 +69,16 @@ for epoch in range(NUM_EPOCHS):
     loop = tqdm(train_loader, desc=f"Epoch {epoch+1}/{NUM_EPOCHS}")
 
     for x in loop:
-        x = x.to(DEVICE)                     # (B, 37, 63)
-        x = x.squeeze(1)                    # [32, 37, 68]
-        x_flat = x.view(x.size(0), -1)       # (B, 2331)
-
-        x_hat_flat, mu, logvar = model(x_flat)
-        x_hat = x_hat_flat.view(-1, TIME, PITCH)
+        x = x.to(DEVICE)                     # (B, 37)
+        
+        x_hat, mu, logvar = model(x)
 
         # --- Losses ---
-        recon = bce(x_hat, x)
+        recon = mse_loss(x_hat, x)
         kl = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
-        # sym = symmetry_loss(x_hat)
+        sym = symmetry_loss(x_hat)
 
-        # loss = ALPHA * recon + BETA * kl + GAMMA * sym
-        loss = ALPHA * recon + BETA * kl
+        loss = ALPHA * recon + BETA * kl + GAMMA * sym
 
         optimizer.zero_grad()
         loss.backward()
@@ -89,9 +88,7 @@ for epoch in range(NUM_EPOCHS):
         loop.set_postfix(
             loss=f"{loss.item():.4f}",
             recon=f"{recon.item():.4f}",
-            # sym=f"{sym.item():.4f}"
+            sym=f"{sym.item():.4f}"
         )
-
-    print(f"Epoch {epoch+1} | Avg Loss: {total_loss / len(train_loader):.4f}")
 
 torch.save(model.state_dict(), "vae.pth")

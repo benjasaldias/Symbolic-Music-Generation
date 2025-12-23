@@ -21,7 +21,6 @@ class VariationalAutoEncoder(nn.Module):
         self.relu = nn.ReLU()
 
     def encode(self, x):
-        # q_phi(z|x)
         h = self.relu(self.sh_2hid(x))
         mu, sigma = self.hid_2mu(h), self.hid_2sigma(h) 
         return mu, sigma
@@ -29,7 +28,8 @@ class VariationalAutoEncoder(nn.Module):
     def decode(self, z):
         # p_theta(x|z)
         h = self.relu(self.z_2hid(z))
-        return torch.sigmoid(self.hid_2sh(h))
+        # Eliminamos Sigmoid: los intervalos pueden ser > 1 o < 0
+        return self.hid_2sh(h) 
 
     def forward(self, x):
         mu, sigma = self.encode(x)
@@ -37,24 +37,3 @@ class VariationalAutoEncoder(nn.Module):
         z_reparametrized = mu + sigma*epsilon
         x_reconstructed = self.decode(z_reparametrized)
         return x_reconstructed, mu, sigma
-
-
-if __name__ == "__main__":
-    x = torch.randn(4, u.INPUT_DIM)
-    vae = VariationalAutoEncoder(input_dim=u.INPUT_DIM)
-    x_reconstructed, mu, sigma = vae(x)
-    print(x_reconstructed.shape)
-    print(mu.shape)
-    print(sigma.shape)
-
-else:
-    # Obtener la ruta absoluta del directorio actual
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(current_dir, "vae.pth")
-
-    x = torch.randn(4, u.INPUT_DIM)
-    vae = VariationalAutoEncoder(input_dim=u.INPUT_DIM)
-    x_reconstructed, mu, sigma = vae(x)
-    print(x_reconstructed.shape)
-    print(mu.shape)
-    print(sigma.shape)
