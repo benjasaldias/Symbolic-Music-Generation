@@ -16,7 +16,7 @@ DEVICE = "cpu"
 INPUT_DIM = u.INPUT_DIM
 Z_DIM = u.Z_DIM
 LEN_DATASET = u.MAX_SCALES
-NUM_SAMPLES = 800
+NUM_SAMPLES = 100
 
 # Load model
 model = m.VariationalAutoEncoder(input_dim=INPUT_DIM)

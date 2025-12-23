@@ -1,8 +1,9 @@
-import torch # type: ignore
+import torch
 import sys
 from tqdm import tqdm
 from torch import nn
 import numpy as np
+
 sys.path.append('../')
 import utils as u
 import Model.model as m
@@ -10,63 +11,87 @@ sys.path.append('../../')
 from dataset import lilypond2matrix
 from torch.utils.data import Dataset, DataLoader
 
-# Configuration
+# ---------------- Config ----------------
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-INPUT_DIM = u.INPUT_DIM
-H_DIM = u.H_DIM
-Z_DIM = u.Z_DIM
 NUM_EPOCHS = u.NUM_EPOCHS
 BATCH_SIZE = u.BATCH_SIZE
-LR_RATE = u.LR_RATE # Karpathy constant = 3e-4
-ALPHA = u.ALPHA
-BETA = u.BETA
+LR = u.LR_RATE
 
-# Dataset Loading
-input_data = lilypond2matrix.torch_data
+ALPHA = u.ALPHA         # reconstruction
+BETA = u.BETA          # KL (BAJO)
+GAMMA = u.GAMMA          # symmetry
+
+TIME = u.NUM_ROWS
+PITCH = u.NOTE_RANGE
+INPUT_DIM = TIME * PITCH
+Z_DIM = u.Z_DIM
+H_DIM = u.H_DIM
+
+# ---------------- Dataset ----------------
+input_data = lilypond2matrix.torch_data  # (N, 37, 63)
 
 class CustomDataset(Dataset):
     def __init__(self, data):
-        self.data = data
+        self.data = torch.tensor(data, dtype=torch.float32)
 
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
-        matrix = self.data[idx].reshape(-1)
-        return torch.tensor(matrix, dtype=torch.float32)
+        return self.data[idx]
 
-# Matrixes list
-data_list = input_data
-input_data = np.array(data_list)
 dataset = CustomDataset(input_data)
+train_loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 
-# Create DataLoader
-train_loader = DataLoader(dataset=dataset, batch_size=BATCH_SIZE, shuffle=True)
-model = m.VariationalAutoEncoder(INPUT_DIM, H_DIM, Z_DIM).to(DEVICE)
-optimizer = torch.optim.Adam(model.parameters(), lr=LR_RATE)
-loss_fn = nn.BCELoss(reduction="sum")
-scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=3e-4, max_lr=5e-4, step_size_up=2000, mode='triangular')
+# ---------------- Model ----------------
+model = m.VariationalAutoEncoder(
+    input_dim=INPUT_DIM,
+    h_dim=H_DIM,
+    z_dim=Z_DIM
+).to(DEVICE)
 
-# Start Training
+optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+bce = nn.BCELoss(reduction="mean")
+
+# ---------------- Symmetry Loss ----------------
+def symmetry_loss(x_hat):
+    x_rev = torch.flip(x_hat, dims=[1])
+    return torch.mean((x_hat - x_rev) ** 2)
+
+# ---------------- Training ----------------
 for epoch in range(NUM_EPOCHS):
-    print(f'iteration {epoch}')
-    loop = tqdm(enumerate(train_loader))
-    total_loss = 0
-    for i, x in loop:
-        # Forward pass
-        x = x.to(DEVICE).view(x.shape[0], INPUT_DIM)
-        x_reconstructed, mu, sigma = model(x)
+    model.train()
+    total_loss = 0.0
 
-        # Compute loss
-        reconstruction_loss = loss_fn(x_reconstructed, x) # Push towards reconstruct image
-        kl_div = -torch.sum(1 + torch.log(sigma.pow(2)) - mu.pow(2) - sigma.pow(2)) # Push towards standard gaussean
+    loop = tqdm(train_loader, desc=f"Epoch {epoch+1}/{NUM_EPOCHS}")
 
-        # Backprop
-        loss = ALPHA*reconstruction_loss + BETA*kl_div
+    for x in loop:
+        x = x.to(DEVICE)                     # (B, 37, 63)
+        x = x.squeeze(1)                    # [32, 37, 68]
+        x_flat = x.view(x.size(0), -1)       # (B, 2331)
+
+        x_hat_flat, mu, logvar = model(x_flat)
+        x_hat = x_hat_flat.view(-1, TIME, PITCH)
+
+        # --- Losses ---
+        recon = bce(x_hat, x)
+        kl = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
+        # sym = symmetry_loss(x_hat)
+
+        # loss = ALPHA * recon + BETA * kl + GAMMA * sym
+        loss = ALPHA * recon + BETA * kl
+
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        scheduler.step()
-        loop.set_postfix(loss = loss.item())
-    
-torch.save(model.state_dict(), 'vae.pth')
+
+        total_loss += loss.item()
+        loop.set_postfix(
+            loss=f"{loss.item():.4f}",
+            recon=f"{recon.item():.4f}",
+            # sym=f"{sym.item():.4f}"
+        )
+
+    print(f"Epoch {epoch+1} | Avg Loss: {total_loss / len(train_loader):.4f}")
+
+torch.save(model.state_dict(), "vae.pth")
