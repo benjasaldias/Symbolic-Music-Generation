@@ -1,16 +1,16 @@
 import re
 import os
 import sys
-import json
-import numpy as np
-import torch
-import random
+# import json
+# import numpy as np
+# import torch
+# import random
 sys.path.append('../')
-import VAE.utils as u
+# import VAE.utils as u
 
-MAX_SCALES = u.MAX_SCALES
+# MAX_SCALES = u.MAX_SCALES
 
-# Read and filter lilypond file
+# # Read and filter lilypond file
 def read_lilypond_sheet(file_name):
     with open(file_name, 'r') as file:
         lines = file.readlines()
@@ -76,114 +76,183 @@ def get_notes(content):
         notes.append(matches)
     return notes
 
-# Converts the processed data into a binary matrix (Piano Roll).
-def sheet_to_matrix(notes, max_length):
-    # Define range of notes
-    note_range = u.NOTE_RANGE_LIST
+# # Converts the processed data into a binary matrix (Piano Roll).
+# def sheet_to_matrix(notes, max_length):
+#     # Define range of notes
+#     note_range = u.NOTE_RANGE_LIST
     
-    # Initialize a zero matrix with dynamic length
-    note_amount = len(note_range)
-    matrix = np.zeros((max_length, note_amount))
+#     # Initialize a zero matrix with dynamic length
+#     note_amount = len(note_range)
+#     matrix = np.zeros((max_length, note_amount))
     
-    # Process each note and its duration
-    current_tick = 0 
-    for note in notes:
-        # Extract note and duration
-        symbol = re.match(r'[a-g](is|es)?[,\']*', note).group()
-        duration = re.findall(r'\d+', note)
-        duration = duration[0] if duration else '16'  # default: semiquaver
+#     # Process each note and its duration
+#     current_tick = 0 
+#     for note in notes:
+#         # Extract note and duration
+#         symbol = re.match(r'[a-g](is|es)?[,\']*', note).group()
+#         duration = re.findall(r'\d+', note)
+#         duration = duration[0] if duration else '16'  # default: semiquaver
             
-        # Search note index in note_range
-        if symbol in note_range:
-            note_index = note_range.index(symbol)
-            if current_tick < max_length:
-                matrix[current_tick, note_index] = 1  # Set 1 in matrix for note found
-        else:
-            print(f"falta nota: {symbol}")
-            raise KeyError
+#         # Search note index in note_range
+#         if symbol in note_range:
+#             note_index = note_range.index(symbol)
+#             if current_tick < max_length:
+#                 matrix[current_tick, note_index] = 1  # Set 1 in matrix for note found
+            
+#         current_tick += 1
 
-        current_tick += 1
+#     return matrix
 
-    return matrix
-
-def thesaurus_to_matrix(notes):
-    # Find the maximum length of all scales
-    max_length = max(len(scale) for scale in notes)
+# def thesaurus_to_matrix(notes):
+#     # Find the maximum length of all scales
+#     max_length = max(len(scale) for scale in notes)
     
-    # Convert each scale to a binary matrix
-    matrixes = []
-    matrix_counter = 0
-    for scale in notes:
-        matrix_counter += 1
-        matrixes.append(sheet_to_matrix(scale, max_length))
-        if matrix_counter >= MAX_SCALES:
-            break
-    return matrixes
+#     # Convert each scale to a binary matrix
+#     matrixes = []
+#     matrix_counter = 0
+#     for scale in notes:
+#         matrix_counter += 1
+#         matrixes.append(sheet_to_matrix(scale, max_length))
+#         if matrix_counter >= MAX_SCALES:
+#             break
+#     return matrixes
 
-def augment_data(matrix):
-    """Applies data augmentation to the piano roll matrix."""
+# def augment_data(matrix):
+#     """Applies data augmentation to the piano roll matrix."""
     
-    # Convert PyTorch tensor to NumPy for easier manipulation
-    if isinstance(matrix, torch.Tensor):
-        matrix = matrix.numpy()
+#     # Convert PyTorch tensor to NumPy for easier manipulation
+#     if isinstance(matrix, torch.Tensor):
+#         matrix = matrix.numpy()
     
-    # Random transposition (shift by -3 to +3 semitones)
-    shift = random.randint(-3, 3)
-    matrix = np.roll(matrix, shift, axis=1)  # Shift columns (pitches)
-    if shift > 0:
-        matrix[:, :shift] = 0  # Remove out-of-range notes
-    elif shift < 0:
-        matrix[:, shift:] = 0  # Remove out-of-range notes
+#     # Random transposition (shift by -3 to +3 semitones)
+#     shift = random.randint(-3, 3)
+#     matrix = np.roll(matrix, shift, axis=1)  # Shift columns (pitches)
+#     if shift > 0:
+#         matrix[:, :shift] = 0  # Remove out-of-range notes
+#     elif shift < 0:
+#         matrix[:, shift:] = 0  # Remove out-of-range notes
     
-    # Convert back to PyTorch tensor
-    return torch.tensor(matrix, dtype=torch.float32)
+#     # Convert back to PyTorch tensor
+#     return torch.tensor(matrix, dtype=torch.float32)
 
 
-def torcher(file: str, augmentation_iter=u.AUGMENTATION_ITER, output_json="torch_data.json"):
-    if file[-3:] != '.ly':
-        raise SyntaxError("File must end with .ly (archivo lilypond).") 
+# def torcher(file: str, augmentation_iter=u.AUGMENTATION_ITER, output_json="torch_data.json"):
+#     if file[-3:] != '.ly':
+#         raise SyntaxError("File must end with .ly (archivo lilypond).") 
     
-    file_name = file
-    content = read_lilypond_sheet(file_name)
-    notes = get_notes(content)
-    file_matrixes = thesaurus_to_matrix(notes)
+#     file_name = file
+#     content = read_lilypond_sheet(file_name)
+#     notes = get_notes(content)
+#     file_matrixes = thesaurus_to_matrix(notes)
     
-    augmented_data = []
-    for i in range(augmentation_iter):
-        for matrix in file_matrixes:
-            augmented_data.append(augment_data(matrix=matrix))
+#     augmented_data = []
+#     for i in range(augmentation_iter):
+#         for matrix in file_matrixes:
+#             augmented_data.append(augment_data(matrix=matrix))
     
-    file_matrixes = file_matrixes + augmented_data       
+#     file_matrixes = file_matrixes + augmented_data       
 
-    np.set_printoptions(threshold=np.inf)
+#     np.set_printoptions(threshold=np.inf)
 
-    # Convert NumPy matrixes to Torch tensors and stack them
-    torch_data = torch.stack([
-        torch.from_numpy(matrix.numpy() if isinstance(matrix, torch.Tensor) else matrix).unsqueeze(0)
-        for matrix in file_matrixes
-    ])
-    torch_data = torch_data.float()
+#     # Convert NumPy matrixes to Torch tensors and stack them
+#     torch_data = torch.stack([
+#         torch.from_numpy(matrix.numpy() if isinstance(matrix, torch.Tensor) else matrix).unsqueeze(0)
+#         for matrix in file_matrixes
+#     ])
+#     torch_data = torch_data.float()
 
-    # Convert to a JSON-serializable format
-    json_data = torch_data.tolist()
+#     # Convert to a JSON-serializable format
+#     json_data = torch_data.tolist()
 
-    # Save to JSON file
-    with open(output_json, "w") as json_file:
-        json.dump(json_data, json_file)
+#     # Save to JSON file
+#     with open(output_json, "w") as json_file:
+#         json.dump(json_data, json_file)
 
-    print(f"Torch data saved to {output_json}")
-    print(torch_data.shape)  # format: (scale_amount, 1, max_length, note_range_length)
+#     print(f"Torch data saved to {output_json}")
+#     print(torch_data.shape)  # format: (scale_amount, 1, max_length, note_range_length)
     
-    return torch_data
+#     return torch_data
 
-if __name__ == '__main__':
-    if len(sys.argv) > 1:    
-        torcher(sys.argv[1])
-    else: 
-        torcher('thesaurus_data.ly')
-else:
-    # Get data file route
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(current_dir, "thesaurus_data.ly")
+# if __name__ == '__main__':
+#     if len(sys.argv) > 1:    
+#         torcher(sys.argv[1])
+#     else: 
+#         torcher('thesaurus_data.ly')
+# else:
+#     # Get data file route
+#     current_dir = os.path.dirname(os.path.abspath(__file__))
+#     data_path = os.path.join(current_dir, "thesaurus_data.ly")
 
-    torch_data = torcher(data_path)
+#     torch_data = torcher(data_path)
+
+import re
+import os
+import sys
+import json
+import numpy as np
+import torch
+import VAE.utils as u
+
+def scale_to_interval_vector(notes_list):
+    """Convierte notas a [Nota_Inicial, Int_1, Int_2... Int_36]"""
+    
+    scales = []
+    for scale in notes_list:
+        indices = []
+        for n in scale:
+            n_limpia = re.sub(r'\d+', '', n)
+            if n_limpia in u.NOTE_RANGE_LIST:
+                indices.append(u.NOTE_RANGE_LIST.index(n_limpia))
+            else:
+                print("sucio; ", n_limpia)
+        # print(len(indices))
+        vector = np.zeros(u.INPUT_DIM)
+        vector[0] = indices[0]
+        real_length = len(indices)
+        for i in range(1, min(real_length, u.INPUT_DIM)):
+            vector[i] = indices[i] - indices[i-1]
+        scales.append([vector, real_length])
+            
+    return scales
+
+def torcher(file, augmentation_iter=1, output_json="torch_data.json"):
+    content = read_lilypond_sheet(file)
+    all_notes = get_notes(content)
+    scales = scale_to_interval_vector(all_notes)
+    
+    print(scales)
+    for scale in scales:
+        vector = scale[0]
+        length = scale[1]
+        data_entry = {
+            "x": vector.tolist(),
+            "length": length / u.INPUT_DIM # Normalización entre 0 y 1
+        }
+    
+    with open(output_json, "w") as f:
+        json.dump([data_entry], f)
+    
+    print(f"Datos guardados en {output_json}. Nuevo INPUT_DIM: {u.INPUT_DIM}")
+    return vector, length
+
+def process_full_thesaurus(file_path):
+    content = read_lilypond_sheet(file_path)
+    all_notes = get_notes(content)
+    scales = scale_to_interval_vector(all_notes)
+    
+    dataset = []
+    for scale in scales:
+        if len(scale) > 0:
+            vector = scale[0]
+            length = scale[1]
+            dataset.append({
+                "x": vector.tolist(),
+                "length": length / u.INPUT_DIM
+            })
+    
+    with open("torch_data.json", "w") as f:
+        json.dump(dataset, f)
+    
+
+process_full_thesaurus(u.DATASET_LY_FILE)
+# torcher("thesaurus_data.ly")
