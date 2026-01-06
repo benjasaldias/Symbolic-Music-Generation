@@ -80,12 +80,16 @@ def scale_to_interval_vector(notes_list):
     scales = []
     for scale in notes_list:
         indices = []
+        counter=0
         for n in scale:
+            counter+=1
             n_limpia = re.sub(r'\d+', '', n)
             if n_limpia in u.NOTE_RANGE_LIST:
                 indices.append(u.NOTE_RANGE_LIST.index(n_limpia))
             else:
                 print("sucio; ", n_limpia)
+            if counter == 19:
+                break
         # print(len(indices))
         vector = np.zeros(u.INPUT_DIM)
         vector[0] = indices[0]

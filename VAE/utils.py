@@ -20,7 +20,7 @@ NOTE_RANGE_LIST = [ 'a,,', 'b,,',
         ]
 NUM_ROWS = 37
 NOTE_RANGE = len(NOTE_RANGE_LIST)
-INPUT_DIM = 37
+INPUT_DIM = 19
 H_DIM = 256 # best: 256
 Z_DIM = 10 # best: 10
 BATCH_SIZE = 16 # best: 16
